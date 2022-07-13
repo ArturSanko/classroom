@@ -4,7 +4,7 @@ const loginPageInteraction = require('../pageobjects/LoginPageInteraction');
 const buyingInteraction = require('../pageobjects/BuyingInteraction');
 
 
-describe('Smoke negative test for log in', function(){
+describe('Buying goods', function(){
     before(async function(){
         await loginPageInteraction.openURL();
         await loginPageInteraction.clickButtonLoginOrRegister();
@@ -22,7 +22,7 @@ describe('Smoke negative test for log in', function(){
         await buyingInteraction.clickButtonConfirmOrder();
     })
 
-    it('user have to get error message', async function(){
+    it('user have to get message about successed order', async function(){
         await expect(await buyingInteraction.getTextFromSuccessOrderPage()).toHaveTextContaining(searchItems.successedOrder);
     });
 });
