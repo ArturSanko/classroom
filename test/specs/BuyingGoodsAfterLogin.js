@@ -16,7 +16,7 @@ describe('Buying goods', function(){
         await buyingInteraction.clickOnCategory();
         await buyingInteraction.inputSearchItem(searchItems.searchItem);
         await buyingInteraction.pressEnter();
-        await buyingInteraction.clickOnGoods();
+        await buyingInteraction.clickOnGoods();  //?
         await buyingInteraction.clickButtonAddToCart();
         await buyingInteraction.clickButtonCheckout();
         await buyingInteraction.clickButtonConfirmOrder();

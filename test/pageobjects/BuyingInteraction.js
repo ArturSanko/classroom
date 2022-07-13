@@ -7,7 +7,7 @@ class BuyingInteraction extends BaseInteraction {
         this.searchField = '#filter_keyword';
         this.categoryMen = '#category_58'
         this.buttonEnter = 'Enter';
-        this.goods = '//*[text()="MAN Eau de Toilette Spray"]';
+        this.goods = '//*[text()="MAN Eau de Toilette Spray"]';  //?
         this.buttonAddToCart = '//*[@class="cart"]';
         this.buttonCheckout = '#cart_checkout1';
         this.buttonConfirmOrder = '#checkout_btn'
@@ -35,7 +35,7 @@ class BuyingInteraction extends BaseInteraction {
     }
 
     async clickOnGoods(){
-        await this.waitForDisplayedAnElement(this.goods);
+        await this.waitForDisplayedAnElement(this.goods);  //?
         await this.clickElement(this.goods);
     }
 
