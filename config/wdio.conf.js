@@ -261,17 +261,14 @@ exports.config = {
     afterTest: async function(test, context, { error, result, duration, passed, retries }) {
         if (!passed) {
           const date = new Date().toLocaleString().replace(/:/g, '-');
-          console.log(date);
           const nameFile = path.basename(test.file).replace(/\W/g, '_');
-          console.log(nameFile);
           const nameTest = test.title.replace(/\W/g, '_');
-          console.log(nameTest);
     
           await browser.saveScreenshot(
             `./screenshots/Date_${date}_FileName_${nameFile}_TestName_${nameTest}.png`
           );
         }
-      }
+      },
 
 
     /**
