@@ -1,3 +1,6 @@
+const fs = require('fs');
+const path = require('path');
+
 exports.config = {
     //
     // ====================
@@ -20,7 +23,7 @@ exports.config = {
     // then the current working directory is where your `package.json` resides, so `wdio`
     // will be called from there.
     //
-    specs: ['./test/spec/**/*js'],
+    specs: ['./test/specs/**/BuyingGoodsAfterLogin.js'],
 
     suites: {
         smokePositive: ['./test/specs/**/LoginSmokeTestPositive.js'],
@@ -159,8 +162,23 @@ exports.config = {
      * @param {Object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
-    // onPrepare: function (config, capabilities) {
-    // },
+    onPrepare: function (config, capabilities) {
+        const screenshotFolder = 'screenshots';
+
+        if (!fs.existsSync(`./${screenshotFolder}`)){
+            fs.mkdirSync(`${screenshotFolder}`)
+        }
+
+        fs.readdir(`${screenshotFolder}`, (err, files) => {
+            if (err) throw err;
+
+            for (const file of files) {
+                fs.unlink(path.join(`${screenshotFolder}`, file), (err) => {
+                    if (err) throw err;
+                });
+            }
+        });
+    },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
      * for that worker as well as modify runtime environments in an async fashion.
@@ -242,9 +260,18 @@ exports.config = {
      */
     afterTest: async function(test, context, { error, result, duration, passed, retries }) {
         if (!passed) {
-            await browser.takeScreenshot();
+          const date = new Date().toLocaleString().replace(/:/g, '-');
+          console.log(date);
+          const nameFile = path.basename(test.file).replace(/\W/g, '_');
+          console.log(nameFile);
+          const nameTest = test.title.replace(/\W/g, '_');
+          console.log(nameTest);
+    
+          await browser.saveScreenshot(
+            `./screenshots/Date_${date}_FileName_${nameFile}_TestName_${nameTest}.png`
+          );
         }
-    },
+      }
 
 
     /**

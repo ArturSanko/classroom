@@ -13,6 +13,7 @@
     },
     "scripts": {
         "smokePositive": "npx wdio run ./config/wdio.conf.js --suite smokePositive",
-        "smokeNegative": "npx wdio run ./config/wdio.conf.js --suite smokeNegative"
+        "smokeNegative": "npx wdio run ./config/wdio.conf.js --suite smokeNegative",
+        "others": "npx wdio run ./config/wdio.conf.js"
     }
 }

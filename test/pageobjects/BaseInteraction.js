@@ -19,6 +19,10 @@ class BaseInteraction{
     async waitForDisplayedAnElement(selector){
         await $(selector).waitForDisplayed({timeout: 6000})
     }
+
+    async pressButton(button){
+        await browser.keys(button)
+    }
 }
 
 
