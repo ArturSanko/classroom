@@ -15,11 +15,7 @@ class LoginPageInteraction extends BaseInteraction {
         this.userName = '//*[text()="Welcome back Name"]'
 
         this.errorMessage = '//div[starts-with(@class, "alert")]';
-        //*[text()="Error: Incorrect login or password provided."]
-        //*[contains(text(), "Error: Incorrect login or password provided.")]  
-        //*[normalize-space(text()) = "Error: Incorrect login or password provided."]
-        //*[.="Error: Incorrect login or password provided."]
-    }
+            }
 
     async openURL(){
         await this.openBrowserWithURL(this.url)
