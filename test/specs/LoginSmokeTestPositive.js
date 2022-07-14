@@ -1,7 +1,7 @@
-const loginCredentials = require("../models/LoginCredentials");
-const loginPageInteraction = require("../pageobjects/LoginPageInteraction");
+const loginCredentials = require('../models/LoginCredentials');
+const loginPageInteraction = require('../pageobjects/LoginPageInteraction');
 
-describe("Smoke positive test for log in", function () {
+describe('Smoke positive test for log in', function () {
   before(async function () {
     await loginPageInteraction.openURL();
     await loginPageInteraction.clickButtonLoginOrRegister();
@@ -11,7 +11,7 @@ describe("Smoke positive test for log in", function () {
     await loginPageInteraction.waitForDisappearLoginButton();
   });
 
-  it("user have to log in", async function () {
+  it('user have to log in', async function () {
     await loginPageInteraction.waitForDisplayedUserName();
   });
 });

@@ -1,9 +1,9 @@
-const loginCredentials = require("../models/LoginCredentials");
-const searchItems = require("../models/SearchItems");
-const loginPageInteraction = require("../pageobjects/LoginPageInteraction");
-const buyingInteraction = require("../pageobjects/BuyingInteraction");
+const loginCredentials = require('../models/LoginCredentials');
+const searchItems = require('../models/SearchItems');
+const loginPageInteraction = require('../pageobjects/LoginPageInteraction');
+const buyingInteraction = require('../pageobjects/BuyingInteraction');
 
-describe("Buying goods", function () {
+describe('Buying goods', function () {
   before(async function () {
     await loginPageInteraction.openURL();
     await loginPageInteraction.clickButtonLoginOrRegister();
@@ -21,7 +21,7 @@ describe("Buying goods", function () {
     await buyingInteraction.clickButtonConfirmOrder();
   });
 
-  it("user have to get message about successed order", async function () {
+  it('user have to get message about successed order', async function () {
     await expect(
       await buyingInteraction.getTextFromSuccessOrderPage()
     ).toHaveTextContaining(searchItems.successedOrder);

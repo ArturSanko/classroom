@@ -1,14 +1,14 @@
-const BaseInteraction = require("./BaseInteraction");
+const BaseInteraction = require('./BaseInteraction');
 
 class LoginPageInteraction extends BaseInteraction {
   constructor() {
     super();
-    this.url = "https://automationteststore.com/";
+    this.url = 'https://automationteststore.com/';
 
     this.buttonLoginOrRegister = '//*[text()="Login or register"]';
 
-    this.loginNameField = "#loginFrm_loginname";
-    this.passwordField = "#loginFrm_password";
+    this.loginNameField = '#loginFrm_loginname';
+    this.passwordField = '#loginFrm_password';
 
     this.buttonLogin = '//*[@title="Login"]';
 
