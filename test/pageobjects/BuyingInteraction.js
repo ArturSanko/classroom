@@ -3,16 +3,14 @@ const BaseInteraction = require('./BaseInteraction');
 class BuyingInteraction extends BaseInteraction {
   constructor() {
     super();
-
     this.searchField = '#filter_keyword';
     this.categoryMen = '#category_58';
     this.buttonEnter = 'Enter';
-    this.goods = '//*[@class="fixed"]/*[text()="MAN Eau de Toilette Spray"]';
-    this.buttonAddToCart = '//*[@class="cart"]';
+    this.goods = '[title="MAN Eau de Toilette Spray"]';
+    this.buttonAddToCart = '.cart';
     this.buttonCheckout = '#cart_checkout1';
     this.buttonConfirmOrder = '#checkout_btn';
-
-    this.successedOrderMessage = '//*[@class="maintext"]';
+    this.successedOrderMessage = '.maintext';
   }
 
   async clickOnSearchField() {

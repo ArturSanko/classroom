@@ -263,7 +263,7 @@ exports.config = {
     { error, result, duration, passed, retries }
   ) {
     if (!passed) {
-      const date = new Date().toLocaleString().replace(/:/g, '-');
+      const date = new Date().toLocaleString().replace(/[:,\/\s]/g, '-');
       const nameFile = path.basename(test.file).replace(/\W/g, '_');
       const nameTest = test.title.replace(/\W/g, '_');
 
