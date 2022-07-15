@@ -6,11 +6,7 @@ const buyingInteraction = require('../pageobjects/BuyingInteraction');
 describe('Buying goods', function () {
   before(async function () {
     await loginPageInteraction.openURL();
-    await loginPageInteraction.clickButtonLoginOrRegister();
-    await loginPageInteraction.inputLogin(loginCredentials.login);
-    await loginPageInteraction.inputPassword(loginCredentials.validPassword);
-    await loginPageInteraction.clickButtonLogin();
-    await loginPageInteraction.waitForDisappearLoginButton();
+    await loginPageInteraction.loginIntoSystem(loginCredentials.login, loginCredentials.validPassword);
     await buyingInteraction.clickOnSearchField();
     await buyingInteraction.clickOnCategory();
     await buyingInteraction.inputSearchItem(searchItems.searchItem);

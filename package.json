@@ -12,7 +12,7 @@
         "wdio-chromedriver-service": "^7.3.2"
     },
     "scripts": {
-        "smokePositive": "npx wdio run ./config/wdio.conf.js --suite smokePositive",
+        "firstTask": "npx wdio run ./config/wdio.conf.js --suite firstTask",
         "smokeNegative": "npx wdio run ./config/wdio.conf.js --suite smokeNegative",
         "others": "npx wdio run ./config/wdio.conf.js"
     }

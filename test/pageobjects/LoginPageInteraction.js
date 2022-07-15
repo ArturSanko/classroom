@@ -47,6 +47,14 @@ class LoginPageInteraction extends BaseInteraction {
   async waitForDisplayedErrorMessage() {
     await this.waitForDisplayedAnElement(this.errorMessage);
   }
+
+  async loginIntoSystem(login, password) {
+    await this.clickButtonLoginOrRegister();
+    await this.inputLogin(login);
+    await this.inputPassword(password);
+    await this.clickButtonLogin();
+    await this.waitForDisappearLoginButton();
+  }
 }
 
 module.exports = new LoginPageInteraction();
