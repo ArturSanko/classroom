@@ -23,6 +23,17 @@ class BaseInteraction {
   async pressButton(button) {
     await browser.keys(button);
   }
+
+  async searchCertainItem(selector, attr, nameItem) {
+    await this.waitForDisplayedAnElement(selector);
+    const allGoods = await $$(selector);
+    for (const goods of allGoods) {
+      const goodsTitle = await goods.getAttribute(attr);
+      if (goodsTitle === nameItem) {
+        await goods.click();
+      }
+    }
+  }
 }
 
 module.exports = BaseInteraction;

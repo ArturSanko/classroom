@@ -13,7 +13,7 @@
     },
     "scripts": {
         "firstTask": "npx wdio run ./config/wdio.conf.js --suite firstTask",
-        "smokeNegative": "npx wdio run ./config/wdio.conf.js --suite smokeNegative",
+        "secondTask": "npx wdio run ./config/wdio.conf.js --suite secondTask",
         "others": "npx wdio run ./config/wdio.conf.js"
     }
 }

@@ -11,6 +11,9 @@ class BuyingInteraction extends BaseInteraction {
     this.buttonCheckout = '#cart_checkout1';
     this.buttonConfirmOrder = '#checkout_btn';
     this.successedOrderMessage = '.maintext';
+
+    this.allGoods = '.fixed a';
+    this.attr = 'title';
   }
 
   async clickOnSearchField() {
@@ -55,6 +58,10 @@ class BuyingInteraction extends BaseInteraction {
   async getTextFromSuccessOrderPage() {
     const elem = await $(this.successedOrderMessage);
     return elem;
+  }
+
+  async searchCertainItem(nameItem) {
+    await super.searchCertainItem(this.allGoods, this.attr, nameItem);
   }
 }
 
