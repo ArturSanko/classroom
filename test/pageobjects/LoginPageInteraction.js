@@ -4,21 +4,12 @@ class LoginPageInteraction extends BaseInteraction {
   constructor() {
     super();
     this.url = 'https://automationteststore.com/';
-
     this.buttonLoginOrRegister = '//*[text()="Login or register"]';
-
     this.loginNameField = '#loginFrm_loginname';
     this.passwordField = '#loginFrm_password';
-
-    this.buttonLogin = '//*[@title="Login"]';
-
+    this.buttonLogin = '[title="Login"]';
     this.userName = '//*[text()="Welcome back Name"]';
-
-    this.errorMessage = '//div[starts-with(@class, "alert")]';
-    //*[text()="Error: Incorrect login or password provided."]
-    //*[contains(text(), "Error: Incorrect login or password provided.")]
-    //*[normalize-space(text()) = "Error: Incorrect login or password provided."]
-    //*[.="Error: Incorrect login or password provided."]
+    this.errorMessage = '[class="alert alert-error alert-danger"]';
   }
 
   async openURL() {
