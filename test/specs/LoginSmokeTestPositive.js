@@ -1,4 +1,4 @@
-const loginCredentials = require('../models/LoginCredentials');
+const { loginCredentials } = require('../../Data/LoginCredentials');
 const loginPageInteraction = require('../pageobjects/LoginPageInteraction');
 
 describe('Smoke positive test for log in', function () {

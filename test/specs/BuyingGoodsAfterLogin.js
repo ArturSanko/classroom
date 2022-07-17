@@ -1,5 +1,5 @@
-const loginCredentials = require('../models/LoginCredentials');
-const searchItems = require('../models/SearchItems');
+const { loginCredentials } = require('../../Data/LoginCredentials');
+const { searchItems } = require('../../Data/SearchItems');
 const loginPageInteraction = require('../pageobjects/LoginPageInteraction');
 const buyingInteraction = require('../pageobjects/BuyingInteraction');
 
