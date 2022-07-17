@@ -14,6 +14,7 @@
     "scripts": {
         "firstTask": "npx wdio run ./config/wdio.conf.js --suite firstTask",
         "secondTask": "npx wdio run ./config/wdio.conf.js --suite secondTask",
-        "newWindow": "npx wdio run ./config/wdio.conf.js --suite newWindow"
+        "newWindow": "npx wdio run ./config/wdio.conf.js --suite newWindow",
+        "iframe": "npx wdio run ./config/wdio.conf.js --suite iframe"
     }
 }
