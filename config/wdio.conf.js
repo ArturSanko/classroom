@@ -28,6 +28,7 @@ exports.config = {
   suites: {
     firstTask: ['./test/specs/**/BuyingGoodsWithHelperMethod.js'],
     secondTask: ['./test/specs/**/SearchInCertainCategorySmokeTest.js'],
+    newWindow: ['./test/specs/**/newWindow.js']
   },
   // Patterns to exclude.
   exclude: [
