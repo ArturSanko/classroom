@@ -1,7 +1,7 @@
 const extraInteraction = require('../pageobjects/ExtraInteraction');
 const { links } = require('../../Data/Links');
 
-describe("Work with page's iframe", function () {
+describe("Work with page's iframe", async function () {
   before(async function () {
     await extraInteraction.openURL(links.iframe);
     await extraInteraction.waitForDisplayedAnElementH3();

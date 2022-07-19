@@ -5,10 +5,12 @@ class BaseInteraction {
   }
 
   async clickElement(selector) {
+    await this.waitForDisplayedAnElement(selector);
     await $(selector).click();
   }
 
   async inputTextIntoElement(selector, text) {
+    await this.waitForDisplayedAnElement(selector);
     await $(selector).addValue(text);
   }
 

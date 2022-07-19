@@ -17,17 +17,14 @@ class BuyingInteraction extends BaseInteraction {
   }
 
   async clickOnSearchField() {
-    await this.waitForDisplayedAnElement(this.searchField);
     await this.clickElement(this.searchField);
   }
 
   async clickOnCategory() {
-    await this.waitForDisplayedAnElement(this.categoryMen);
     await this.clickElement(this.categoryMen);
   }
 
   async inputSearchItem(item) {
-    await this.waitForDisplayedAnElement(this.searchField);
     await this.inputTextIntoElement(this.searchField, item);
   }
 
@@ -36,22 +33,18 @@ class BuyingInteraction extends BaseInteraction {
   }
 
   async clickOnGoods() {
-    await this.waitForDisplayedAnElement(this.goods);
     await this.clickElement(this.goods);
   }
 
   async clickButtonAddToCart() {
-    await this.waitForDisplayedAnElement(this.buttonAddToCart);
     await this.clickElement(this.buttonAddToCart);
   }
 
   async clickButtonCheckout() {
-    await this.waitForDisplayedAnElement(this.buttonCheckout);
     await this.clickElement(this.buttonCheckout);
   }
 
   async clickButtonConfirmOrder() {
-    await this.waitForDisplayedAnElement(this.buttonConfirmOrder);
     await this.clickElement(this.buttonConfirmOrder);
   }
 

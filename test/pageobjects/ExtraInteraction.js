@@ -7,6 +7,13 @@ class ExtraInteraction extends BaseInteraction {
 
     this.fieldForTextIframe = '#tinymce';
     this.elementH3 = '.example';
+
+    this.buttonAlert = '[onclick="jsAlert()"]';
+    this.buttonConfirm = '[onclick="jsConfirm()"]';
+    this.buttonPrompt = '[onclick="jsPrompt()"]';
+    this.alertResult = '//*[text()="You successfully clicked an alert"]';
+    this.confirmResult = '//*[text()="You clicked: Ok"]';
+    this.promptResult = '//*[text()="You entered: text for prompt"]';
   }
 
   async openURL(url) {
@@ -14,7 +21,6 @@ class ExtraInteraction extends BaseInteraction {
   }
 
   async clickButtonClickHere() {
-    await this.waitForDisplayedAnElement(this.buttonForNewWindow);
     await this.clickElement(this.buttonForNewWindow);
   }
 
@@ -27,13 +33,46 @@ class ExtraInteraction extends BaseInteraction {
   }
 
   async inputTextIntoFieldIframe(text) {
-    await this.waitForDisplayedAnElement(this.fieldForTextIframe);
     await super.inputTextIntoElement(this.fieldForTextIframe, text);
   }
 
   async getTextFromFieldIframe() {
     const elem = await $(this.fieldForTextIframe);
     return elem;
+  }
+
+  async clickButtonAlert() {
+    await this.clickElement(this.buttonAlert);
+  }
+
+  async getTextFromAlertResult() {
+    await this.waitForDisplayedAnElement(this.alertResult);
+    const elem = await $(this.alertResult);
+    return elem;
+  }
+
+  async clickButtonConfirm() {
+    await this.clickElement(this.buttonConfirm);
+  }
+
+  async getTextFromConfirmResult() {
+    await this.waitForDisplayedAnElement(this.confirmResult);
+    const elem = await $(this.confirmResult);
+    return elem;
+  }
+
+  async clickButtonPrompt() {
+    await this.clickElement(this.buttonPrompt);
+  }
+
+  async getTextFromPromptResult() {
+    await this.waitForDisplayedAnElement(this.promptResult);
+    const elem = await $(this.promptResult);
+    return elem;
+  }
+
+  inputTextIntoPrompt(text) {
+    browser.sendAlertText(text);
   }
 }
 

@@ -1,7 +1,7 @@
 const extraInteraction = require('../pageobjects/ExtraInteraction');
 const { links } = require('../../Data/Links');
 
-describe('Open new tab', function () {
+describe('Open new tab', async function () {
   before(async function () {
     await extraInteraction.openURL(links.window);
     await extraInteraction.clickButtonClickHere();

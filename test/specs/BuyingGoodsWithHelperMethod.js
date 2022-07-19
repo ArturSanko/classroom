@@ -3,7 +3,7 @@ const { searchItems } = require('../../Data/SearchItems');
 const loginPageInteraction = require('../pageobjects/LoginPageInteraction');
 const buyingInteraction = require('../pageobjects/BuyingInteraction');
 
-describe('Buying goods', function () {
+describe('Buying goods', async function () {
   before(async function () {
     await loginPageInteraction.openURL();
     await loginPageInteraction.loginIntoSystem(

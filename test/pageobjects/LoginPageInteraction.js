@@ -17,22 +17,18 @@ class LoginPageInteraction extends BaseInteraction {
   }
 
   async clickButtonLoginOrRegister() {
-    await this.waitForDisplayedAnElement(this.buttonLoginOrRegister);
     await this.clickElement(this.buttonLoginOrRegister);
   }
 
   async inputLogin(data) {
-    await this.waitForDisplayedAnElement(this.loginNameField);
     await this.inputTextIntoElement(this.loginNameField, data);
   }
 
   async inputPassword(data) {
-    await this.waitForDisplayedAnElement(this.passwordField);
     await this.inputTextIntoElement(this.passwordField, data);
   }
 
   async clickButtonLogin() {
-    await this.waitForDisplayedAnElement(this.buttonLogin);
     await this.clickElement(this.buttonLogin);
   }
 

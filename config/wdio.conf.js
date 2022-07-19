@@ -30,6 +30,7 @@ exports.config = {
     secondTask: ['./test/specs/**/SearchInCertainCategorySmokeTest.js'],
     newWindow: ['./test/specs/**/newWindow.js'],
     iframe: ['./test/specs/**/iframe.js'],
+    alerts: ['./test/specs/**/alertsSmokeTest.js'],
   },
   // Patterns to exclude.
   exclude: [
