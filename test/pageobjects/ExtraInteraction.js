@@ -14,6 +14,9 @@ class ExtraInteraction extends BaseInteraction {
     this.alertResult = '//*[text()="You successfully clicked an alert"]';
     this.confirmResult = '//*[text()="You clicked: Ok"]';
     this.promptResult = '//*[text()="You entered: text for prompt"]';
+
+    this.boxA = '#column-a';
+    this.boxB = '#column-b';
   }
 
   async openURL(url) {
@@ -74,6 +77,15 @@ class ExtraInteraction extends BaseInteraction {
   inputTextIntoPrompt(text) {
     browser.sendAlertText(text);
   }
+
+  async dragAndDropBoxA() {
+    await this.dragAndDropElement(this.boxA, this.boxB);
+  }
+
+  async dragAndDropBoxB() {
+    await this.dragAndDropElement(this.boxB, this.boxA);
+  }
+
 }
 
 module.exports = new ExtraInteraction();

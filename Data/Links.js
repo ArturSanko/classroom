@@ -13,6 +13,8 @@ const links = {
   confirmResult: 'You clicked: Ok',
   promptResult: 'You entered: text for prompt',
   textForPrompt: 'text for prompt',
+
+  dragAndDrpo: 'https://the-internet.herokuapp.com/drag_and_drop',
 };
 
 module.exports = { links };

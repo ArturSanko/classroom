@@ -31,6 +31,7 @@ exports.config = {
     newWindow: ['./test/specs/**/newWindow.js'],
     iframe: ['./test/specs/**/iframe.js'],
     alerts: ['./test/specs/**/alertsSmokeTest.js'],
+    dragAndDrop: ['./test/specs/**/dragAndDrop.js'],
   },
   // Patterns to exclude.
   exclude: [

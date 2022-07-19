@@ -36,6 +36,12 @@ class BaseInteraction {
       }
     }
   }
+
+  async dragAndDropElement(from, to) {
+    const fromPosition = await $(from);
+    const toPosition = await $(to);
+    await fromPosition.dragAndDrop(toPosition);
+  }
 }
 
 module.exports = BaseInteraction;

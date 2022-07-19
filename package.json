@@ -16,6 +16,7 @@
         "secondTask": "npx wdio run ./config/wdio.conf.js --suite secondTask",
         "newWindow": "npx wdio run ./config/wdio.conf.js --suite newWindow",
         "iframe": "npx wdio run ./config/wdio.conf.js --suite iframe",
-        "alerts": "npx wdio run ./config/wdio.conf.js --suite alerts"
+        "alerts": "npx wdio run ./config/wdio.conf.js --suite alerts",
+        "dragAndDrop": "npx wdio run ./config/wdio.conf.js --suite dragAndDrop"
     }
 }
