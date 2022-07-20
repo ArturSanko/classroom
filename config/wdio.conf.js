@@ -1,5 +1,14 @@
 const fs = require('fs');
 const path = require('path');
+const {
+  addStep,
+  addFeature,
+  addAttachment,
+  addIssue,
+  addArgument,
+  addDescription,
+  addEnvironment,
+} = require('@wdio/allure-reporter').default;
 
 exports.config = {
   //
@@ -33,6 +42,7 @@ exports.config = {
     alerts: ['./test/specs/**/alertsSmokeTest.js'],
     dragAndDrop: ['./test/specs/**/dragAndDrop.js'],
     hover: ['./test/specs/**/hover.js'],
+    cookies: ['./test/specs/**/cookiesSmokeTest.js'],
   },
   // Patterns to exclude.
   exclude: [
@@ -144,7 +154,18 @@ exports.config = {
   // Test reporter for stdout.
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
-  reporters: ['spec', ['allure', { outputDir: 'allure-results' }]],
+  reporters: [
+    'spec',
+    [
+      'allure',
+      {
+        outputDir: 'allure-results',
+        disableWebdriverStepsReporting: true,
+        disableWebdriverScreenshotsReporting: true,
+        useCucumberStepReporter: false,
+      },
+    ],
+  ],
 
   //
   // Options to be passed to Mocha.
@@ -168,6 +189,7 @@ exports.config = {
    */
   onPrepare: function (config, capabilities) {
     const screenshotFolder = 'screenshots';
+    const allureResult = 'allure-results';
 
     if (!fs.existsSync(`./${screenshotFolder}`)) {
       fs.mkdirSync(`${screenshotFolder}`);
@@ -178,6 +200,16 @@ exports.config = {
 
       for (const file of files) {
         fs.unlink(path.join(`${screenshotFolder}`, file), (err) => {
+          if (err) throw err;
+        });
+      }
+    });
+
+    fs.readdir(`${allureResult}`, (err, files) => {
+      if (err) throw err;
+
+      for (const file of files) {
+        fs.unlink(path.join(`${allureResult}`, file), (err) => {
           if (err) throw err;
         });
       }
@@ -275,6 +307,11 @@ exports.config = {
       await browser.saveScreenshot(
         `./screenshots/Date_${date}_FileName_${nameFile}_TestName_${nameTest}.png`
       );
+    }
+
+    if (passed) {
+      const cookies = JSON.stringify(await browser.getAllCookie());
+      addAttachment('cookies', cookies, 'text/plain');
     }
   },
 

@@ -3,22 +3,24 @@
     "version": "0.1.0",
     "private": true,
     "devDependencies": {
-        "@wdio/allure-reporter": "^7.20.3",
+        "@wdio/allure-reporter": "^7.20.7",
         "@wdio/cli": "^7.20.5",
         "@wdio/local-runner": "^7.20.5",
         "@wdio/mocha-framework": "^7.20.3",
         "@wdio/spec-reporter": "^7.20.3",
+        "allure-commandline": "^2.18.1",
         "chromedriver": "^103.0.0",
         "wdio-chromedriver-service": "^7.3.2"
     },
     "scripts": {
+        "allure": "allure serve",
         "firstTask": "npx wdio run ./config/wdio.conf.js --suite firstTask",
         "secondTask": "npx wdio run ./config/wdio.conf.js --suite secondTask",
         "newWindow": "npx wdio run ./config/wdio.conf.js --suite newWindow",
         "iframe": "npx wdio run ./config/wdio.conf.js --suite iframe",
         "alerts": "npx wdio run ./config/wdio.conf.js --suite alerts",
         "dragAndDrop": "npx wdio run ./config/wdio.conf.js --suite dragAndDrop",
-        "hover": "npx wdio run ./config/wdio.conf.js --suite hover"
-
+        "hover": "npx wdio run ./config/wdio.conf.js --suite hover",
+        "cookies": "npx wdio run ./config/wdio.conf.js --suite cookies"
     }
 }
