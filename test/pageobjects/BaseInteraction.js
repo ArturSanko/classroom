@@ -15,11 +15,18 @@ class BaseInteraction {
   }
 
   async waitForDisappearAnElement(selector) {
-    await $(selector).waitForDisplayed({ timeout: 6000, reverse: true });
+    await $(selector).waitForDisplayed({
+      timeout: 6000,
+      reverse: true,
+      timeoutMsg: `After 6 sec the elememt: ${selector} was not disappear`,
+    });
   }
 
   async waitForDisplayedAnElement(selector) {
-    await $(selector).waitForDisplayed({ timeout: 6000 });
+    await $(selector).waitForDisplayed({
+      timeout: 6000,
+      timeoutMsg: `After 6 sec the elememt: ${selector} was not displayed`,
+    });
   }
 
   async pressButton(button) {
@@ -41,6 +48,14 @@ class BaseInteraction {
     const fromPosition = await $(from);
     const toPosition = await $(to);
     await fromPosition.dragAndDrop(toPosition);
+  }
+
+  async hoverOverElement(selector) {
+    await this.waitForDisplayedAnElement(selector);
+    const elements = await $$(selector);
+    for (const element of elements) {
+      await element.moveTo();
+    }
   }
 }
 

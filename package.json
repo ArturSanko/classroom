@@ -17,6 +17,8 @@
         "newWindow": "npx wdio run ./config/wdio.conf.js --suite newWindow",
         "iframe": "npx wdio run ./config/wdio.conf.js --suite iframe",
         "alerts": "npx wdio run ./config/wdio.conf.js --suite alerts",
-        "dragAndDrop": "npx wdio run ./config/wdio.conf.js --suite dragAndDrop"
+        "dragAndDrop": "npx wdio run ./config/wdio.conf.js --suite dragAndDrop",
+        "hover": "npx wdio run ./config/wdio.conf.js --suite hover"
+
     }
 }

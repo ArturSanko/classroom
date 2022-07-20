@@ -17,6 +17,8 @@ class ExtraInteraction extends BaseInteraction {
 
     this.boxA = '#column-a';
     this.boxB = '#column-b';
+
+    this.elementForHover = '[alt^="User"]';
   }
 
   async openURL(url) {
@@ -86,6 +88,9 @@ class ExtraInteraction extends BaseInteraction {
     await this.dragAndDropElement(this.boxB, this.boxA);
   }
 
+  async hoverOverElement(){
+    super.hoverOverElement(this.elementForHover)
+  }
 }
 
 module.exports = new ExtraInteraction();

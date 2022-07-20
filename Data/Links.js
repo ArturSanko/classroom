@@ -15,6 +15,8 @@ const links = {
   textForPrompt: 'text for prompt',
 
   dragAndDrpo: 'https://the-internet.herokuapp.com/drag_and_drop',
+
+  hover: 'https://the-internet.herokuapp.com/hovers',
 };
 
 module.exports = { links };
