@@ -10,6 +10,7 @@ class LoginPageInteraction extends BaseInteraction {
     this.buttonLogin = '[title="Login"]';
     this.userName = '//*[text()="Welcome back Name"]';
     this.errorMessage = '[class^="alert"]';
+    this.accountLoginPage = '.maintext';
   }
 
   async openURL() {
@@ -46,6 +47,18 @@ class LoginPageInteraction extends BaseInteraction {
 
   async waitForDisplayedErrorMessage() {
     await this.waitForDisplayedAnElement(this.errorMessage);
+  }
+
+  async waitForDisplayedAccountLoginPage() {
+    await this.waitForDisplayedAnElement(this.accountLoginPage);
+  }
+
+  async getLoginText() {
+    await this.getText(this.loginNameField);
+  }
+
+  async getPasswordText() {
+    await this.getText(this.passwordField);
   }
 }
 

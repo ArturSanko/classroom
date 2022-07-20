@@ -23,6 +23,11 @@ class BaseInteraction {
   async pressButton(button) {
     await browser.keys(button);
   }
+
+  async getText(selector) {
+    const text = $(selector).getText();
+    return text;
+  }
 }
 
 module.exports = BaseInteraction;
