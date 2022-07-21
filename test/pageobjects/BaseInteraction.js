@@ -24,9 +24,17 @@ class BaseInteraction {
     await browser.keys(button);
   }
 
-  async getText(selector) {
-    const text = $(selector).getText();
-    return text;
+    async isDisplayed(selector) {
+    await $(selector).isDisplayed();
+  }
+
+  async getCSSProperty(selector, cssProperty) {
+    await $(selector).getCSSProperty(cssProperty);
+  }
+
+  async getElement(selector) {
+    const elem = await $(selector);
+    return elem;
   }
 }
 
