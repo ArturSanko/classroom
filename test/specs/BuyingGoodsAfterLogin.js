@@ -3,7 +3,7 @@ const { searchItems } = require('../../Data/SearchItems');
 const loginPageInteraction = require('../pageobjects/LoginPageInteraction');
 const buyingInteraction = require('../pageobjects/BuyingInteraction');
 // const { expect } = require('chai');
-var expect = require('chai').expect;
+// var expect = require('chai').expect;
 var chai = require('chai');
 var chaiWebdriver = require('chai-webdriverio').default;
 
@@ -24,28 +24,14 @@ describe('Buying goods', function () {
 
   it('the category is accepted. The category has white color of letters and blue background', async function () {
     await buyingInteraction.clickOnCategory();
-
     await expect(
       await buyingInteraction.getElementCatagory()
     ).toHaveTextContaining(searchItems.chosenCategory);
-
-    // const color = await buyingInteraction.getCSSPropertyOfCatagoryColor();
-    const color = await $('#category_selected').getCSSProperty('color');
-    // const color = await $('#category_selected');
-    // console.log('color: ' + JSON.stringify(color));
-    // console.log('color_parsed-hex: ' + color.parsed.hex);
-
-    await expect(color.parsed.hex).to.equal(searchItems.color);
-
-    // const background =
-    //   await buyingInteraction.getCSSPropertyOfCatagoryBackground();
-    // const background = await $('#category_selected').getCSSProperty(
-    //   'background-color'
-    // );
-    // console.log('background-color: ' + JSON.stringify(background));
-    // console.log('background-color_parsed-hex: ' + background.parsed.hex);
-
-    // await expect(background.parsed.hex).toHaveElementProperty(searchItems.background);
+    const color = await buyingInteraction.getCSSPropertyOfCatagoryColor();
+    expect(await color.parsed.hex).toEqual(searchItems.color);
+    const background =
+      await buyingInteraction.getCSSPropertyOfCatagoryBackground();
+    expect(await background.parsed.hex).toEqual(searchItems.background);
   });
 
   it('the search item in search field is displayed', async function () {

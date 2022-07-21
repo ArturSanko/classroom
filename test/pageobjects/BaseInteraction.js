@@ -24,12 +24,13 @@ class BaseInteraction {
     await browser.keys(button);
   }
 
-    async isDisplayed(selector) {
+  async isDisplayed(selector) {
     await $(selector).isDisplayed();
   }
 
   async getCSSProperty(selector, cssProperty) {
-    await $(selector).getCSSProperty(cssProperty);
+    const property = await $(selector).getCSSProperty(cssProperty);
+    return property;
   }
 
   async getElement(selector) {
