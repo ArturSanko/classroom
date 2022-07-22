@@ -9,6 +9,8 @@
         "@wdio/mocha-framework": "^7.20.3",
         "@wdio/spec-reporter": "^7.20.3",
         "allure-commandline": "^2.18.1",
+        "chai": "^4.0.2",
+        "chai-webdriverio": "^1.0.0",
         "chromedriver": "^103.0.0",
         "wdio-chromedriver-service": "^7.3.2"
     },

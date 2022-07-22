@@ -57,6 +57,22 @@ class BaseInteraction {
       await element.moveTo();
     }
   }
+
+  async isDisplayed(selector) {
+    await $(selector).isDisplayed();
+  }
+
+  async getCSSProperty(selector, cssProperty) {
+    await this.waitForDisplayedAnElement(selector);
+    const property = await $(selector).getCSSProperty(cssProperty);
+    return property;
+  }
+
+  async getElement(selector) {
+    await this.waitForDisplayedAnElement(selector);
+    const elem = await $(selector);
+    return elem;
+  }
 }
 
 module.exports = BaseInteraction;

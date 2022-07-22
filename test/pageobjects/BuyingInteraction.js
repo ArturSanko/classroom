@@ -14,6 +14,16 @@ class BuyingInteraction extends BaseInteraction {
 
     this.allGoods = '.fixed a';
     this.attr = 'title';
+
+    this.dropDown = '#search-category';
+    this.chosenCatagory = '#category_selected';
+    this.valueSearchItem = 'input#keyword';
+    this.textSearchCategory =
+      '//select[@id="category_id"]/option[@selected="selected"][contains(text(), "Men")]';
+    this.chosenGoods = '//span[contains(text(), "MAN Eau de Toilette Spray")]';
+    this.shoppingCartPage = '//span[contains(text(), "Shopping Cart")]';
+    this.checkoutConfirmationPage =
+      '//span[contains(text(), "Checkout Confirmation")]';
   }
 
   async clickOnSearchField() {
@@ -55,6 +65,58 @@ class BuyingInteraction extends BaseInteraction {
 
   async searchCertainItem(nameItem) {
     await super.searchCertainItem(this.allGoods, this.attr, nameItem);
+  }
+
+  async isDisplayedDropDown() {
+    await this.isDisplayed(this.dropDown);
+  }
+
+  async getCSSPropertyOfCatagoryBackground() {
+    const property = await this.getCSSProperty(
+      this.chosenCatagory,
+      'background-color'
+    );
+    return property;
+  }
+
+  async getCSSPropertyOfCatagoryColor() {
+    const property = await this.getCSSProperty(this.chosenCatagory, 'color');
+    return property;
+  }
+
+  async getElementCatagory() {
+    const elem = await this.getElement(this.chosenCatagory);
+    return elem;
+  }
+
+  async getValueOfSearchItem() {
+    const value = await this.getElement(this.valueSearchItem);
+    return value;
+  }
+
+  async getElementSearchCatagery() {
+    const elem = await this.getElement(this.textSearchCategory);
+    return elem;
+  }
+
+  async getElementChosenGood() {
+    const elem = await this.getElement(this.chosenGoods);
+    return elem;
+  }
+
+  async getElementShoppingCartPage() {
+    const elem = await this.getElement(this.shoppingCartPage);
+    return elem;
+  }
+
+  async getElementCheckoutConfirmationPage() {
+    const elem = await this.getElement(this.checkoutConfirmationPage);
+    return elem;
+  }
+
+  async getElementSuccessOrderPage() {
+    const text = await this.getElement(this.successedOrderMessage);
+    return text;
   }
 }
 
