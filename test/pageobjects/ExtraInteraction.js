@@ -88,8 +88,13 @@ class ExtraInteraction extends BaseInteraction {
     await this.dragAndDropElement(this.boxB, this.boxA);
   }
 
-  async hoverOverElements(){
-    super.hoverOverElements(this.elementForHover)
+  async hoverOverElements() {
+    super.hoverOverElements(this.elementForHover);
+  }
+
+  async getCookies() {
+    const allCookies = await browser.getCookies();
+    return allCookies;
   }
 }
 
