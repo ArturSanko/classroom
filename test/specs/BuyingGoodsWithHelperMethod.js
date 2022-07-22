@@ -62,14 +62,14 @@ describe('The user can make an order:', async function () {
   it('checkout confirmation page is opened', async function () {
     await buyingInteraction.clickButtonCheckout();
     await expect(
-      await await buyingInteraction.getElementCheckoutConfirmationPage()
+      await buyingInteraction.getElementCheckoutConfirmationPage()
     ).toHaveTextContaining(searchItems.checkoutConfirmationPage);
   });
 
   it('the order has been processed', async function () {
     await buyingInteraction.clickButtonConfirmOrder();
     await expect(
-      await await buyingInteraction.getElementSuccessOrderPage()
+      await buyingInteraction.getElementSuccessOrderPage()
     ).toHaveText(searchItems.successedOrder);
   });
 });
