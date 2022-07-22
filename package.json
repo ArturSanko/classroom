@@ -15,7 +15,7 @@
         "wdio-chromedriver-service": "^7.3.2"
     },
     "scripts": {
-        "allure": "allure serve",
+        "allure": "npx allure serve",
         "firstTask": "npx wdio run ./config/wdio.conf.js --suite firstTask",
         "secondTask": "npx wdio run ./config/wdio.conf.js --suite secondTask",
         "newWindow": "npx wdio run ./config/wdio.conf.js --suite newWindow",

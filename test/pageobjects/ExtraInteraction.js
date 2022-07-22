@@ -88,8 +88,8 @@ class ExtraInteraction extends BaseInteraction {
     await this.dragAndDropElement(this.boxB, this.boxA);
   }
 
-  async hoverOverElement(){
-    super.hoverOverElement(this.elementForHover)
+  async hoverOverElements(){
+    super.hoverOverElements(this.elementForHover)
   }
 }
 

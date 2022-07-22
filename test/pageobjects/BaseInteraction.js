@@ -50,7 +50,7 @@ class BaseInteraction {
     await fromPosition.dragAndDrop(toPosition);
   }
 
-  async hoverOverElement(selector) {
+  async hoverOverElements(selector) {
     await this.waitForDisplayedAnElement(selector);
     const elements = await $$(selector);
     for (const element of elements) {
