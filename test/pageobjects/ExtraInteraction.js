@@ -19,6 +19,10 @@ class ExtraInteraction extends BaseInteraction {
     this.boxB = '#column-b';
 
     this.elementForHover = '[alt^="User"]';
+
+    this.fileForDownload = '.example > a:nth-child(4)';
+
+    this.downloadedFile = './downloads/Image.jpg';
   }
 
   async openURL(url) {
@@ -95,6 +99,13 @@ class ExtraInteraction extends BaseInteraction {
   async getCookies() {
     const allCookies = await browser.getCookies();
     return allCookies;
+  }
+  async downloadPNGFile() {
+    await this.clickElement(this.fileForDownload);
+  }
+
+  async waitUntilFileDownload() {
+    await super.waitUntilFileDownload(this.downloadedFile);
   }
 }
 

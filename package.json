@@ -15,6 +15,7 @@
         "wdio-chromedriver-service": "^7.3.2"
     },
     "scripts": {
+        "allTests": "npx wdio run ./config/wdio.conf.js",
         "allure": "npx allure serve",
         "firstTask": "npx wdio run ./config/wdio.conf.js --suite firstTask",
         "secondTask": "npx wdio run ./config/wdio.conf.js --suite secondTask",
@@ -23,6 +24,10 @@
         "alerts": "npx wdio run ./config/wdio.conf.js --suite alerts",
         "dragAndDrop": "npx wdio run ./config/wdio.conf.js --suite dragAndDrop",
         "hover": "npx wdio run ./config/wdio.conf.js --suite hover",
-        "cookies": "npx wdio run ./config/wdio.conf.js --suite cookies"
+        "cookies": "npx wdio run ./config/wdio.conf.js --suite cookies",
+        "download": "npx wdio run ./config/wdio.conf.js --suite download",
+        "upload": "npx wdio run ./config/wdio.conf.js --suite upload",
+        "workingWithElementState": "npx wdio run ./config/wdio.conf.js --suite workingWithElementState",
+        "executeJS": "npx wdio run ./config/wdio.conf.js --suite executeJS"
     }
 }

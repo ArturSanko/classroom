@@ -43,6 +43,10 @@ exports.config = {
     dragAndDrop: ['./test/specs/**/dragAndDrop.js'],
     hover: ['./test/specs/**/hover.js'],
     cookies: ['./test/specs/**/cookiesSmokeTest.js'],
+    download: ['./test/specs/**/downloadFile.js'],
+    upload: ['./test/specs/**/uploadFile.js'],
+    workingWithElementState: ['./test/specs/**/workingWithElementState.js'],
+    executeJS: ['./test/specs/**/executeJS.js'],
   },
   // Patterns to exclude.
   exclude: [
@@ -79,6 +83,14 @@ exports.config = {
       //
       browserName: 'chrome',
       acceptInsecureCerts: true,
+      'goog:chromeOptions': {
+        prefs: {
+          download: {
+            default_directory:
+              './downloads',
+          },
+        },
+      },
       // If outputDir is provided WebdriverIO can capture driver session logs
       // it is possible to configure which logTypes to include/exclude.
       // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
@@ -190,9 +202,14 @@ exports.config = {
   onPrepare: function (config, capabilities) {
     const screenshotFolder = 'screenshots';
     const allureResult = 'allure-results';
+    const downloads = 'downloads';
 
     if (!fs.existsSync(`./${screenshotFolder}`)) {
       fs.mkdirSync(`${screenshotFolder}`);
+    }
+
+    if (!fs.existsSync(`./${downloads}`)) {
+      fs.mkdirSync(`${downloads}`);
     }
 
     fs.readdir(`${screenshotFolder}`, (err, files) => {
@@ -210,6 +227,16 @@ exports.config = {
 
       for (const file of files) {
         fs.unlink(path.join(`${allureResult}`, file), (err) => {
+          if (err) throw err;
+        });
+      }
+    });
+
+    fs.readdir(`${downloads}`, (err, files) => {
+      if (err) throw err;
+
+      for (const file of files) {
+        fs.unlink(path.join(`${downloads}`, file), (err) => {
           if (err) throw err;
         });
       }
@@ -309,10 +336,10 @@ exports.config = {
       );
     }
 
-    if (passed) {
-      const cookies = JSON.stringify(await browser.getAllCookie());
-      addAttachment('cookies', cookies, 'text/plain');
-    }
+    // if (passed) {
+    //   const cookies = JSON.stringify(await browser.getAllCookie());
+    //   addAttachment('cookies', cookies, 'text/plain');
+    // }
   },
 
   /**

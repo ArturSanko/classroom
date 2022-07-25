@@ -18,7 +18,12 @@ const links = {
 
   hover: 'https://the-internet.herokuapp.com/hovers',
 
-  
+  downloads: 'https://the-internet.herokuapp.com/download',
+
+  upload: 'https://the-internet.herokuapp.com/upload',
+
+  workingWithElementState:
+    'https://the-internet.herokuapp.com/dynamic_loading/1',
 };
 
 module.exports = { links };

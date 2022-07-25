@@ -1,3 +1,6 @@
+const fs = require('fs');
+const { constants } = require('fs');
+
 class BaseInteraction {
   async openBrowserWithURL(url) {
     await browser.maximizeWindow();
@@ -72,6 +75,18 @@ class BaseInteraction {
     await this.waitForDisplayedAnElement(selector);
     const elem = await $(selector);
     return elem;
+  }
+
+  async waitUntilFileDownload(fileName) {
+    await browser.waitUntil(
+      async function () {
+        return fs.existsSync(`${fileName}`);
+      },
+      {
+        timeout: 6000,
+        timeoutMsg: 'file does not exist',
+      }
+    );
   }
 }
 
