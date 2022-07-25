@@ -14,7 +14,7 @@ describe('Cookies', function () {
     );
     await loginPageInteraction.waitForDisplayedUserName();
     const cookiesValid = await extraInteraction.getCookies();
-    console.log('invalid: ' + cookiesValid);
+    console.log('valid: ' + cookiesValid);
   });
 
 //   it('cookies after unsuccessful login', async function () {

@@ -22,7 +22,11 @@ class ExtraInteraction extends BaseInteraction {
 
     this.fileForDownload = '.example > a:nth-child(4)';
 
-    this.downloadedFile = './downloads/Image.jpg';
+    this.downloadedFile = '../../downloads/Image.PNG';
+
+    this.fileForUpload = './uploads/Image.jpg';
+    this.buttonUpload = '#file-submit';
+    this.uploadedFile = '#id="uploaded-files"';
   }
 
   async openURL(url) {
@@ -106,6 +110,18 @@ class ExtraInteraction extends BaseInteraction {
 
   async waitUntilFileDownload() {
     await super.waitUntilFileDownload(this.downloadedFile);
+  }
+
+  async uploadFile(path, selector) {
+    await super.uploadFile(path, selector);
+  }
+
+  async clickButtonOnPage(selector) {
+    await this.clickElement(selector);
+  }
+
+  async waitForElement(selector) {
+    await this.waitForDisplayedAnElement(selector);
   }
 }
 

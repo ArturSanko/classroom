@@ -1,4 +1,6 @@
 const fs = require('fs');
+const path = require('path');
+
 const { constants } = require('fs');
 
 class BaseInteraction {
@@ -87,6 +89,12 @@ class BaseInteraction {
         timeoutMsg: 'file does not exist',
       }
     );
+  }
+
+  async uploadFile(pathToFile, selector) {
+    const filePath = path.join(__dirname, pathToFile);
+    const file = await browser.uploadFile(filePath);
+    await $(selector).setValue(file);
   }
 }
 
