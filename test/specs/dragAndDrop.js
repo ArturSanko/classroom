@@ -1,5 +1,6 @@
 const extraInteraction = require('../pageobjects/ExtraInteraction');
 const { links } = require('../../Data/Links');
+const { selectors } = require('../../Data/Selectors');
 
 describe('Handle drag and drop', function () {
   before(function () {
@@ -8,13 +9,13 @@ describe('Handle drag and drop', function () {
 
   context('Box A:', function () {
     it('box A should change its position', function () {
-      extraInteraction.dragAndDropBoxA();
+      extraInteraction.dragAndDropBox(selectors.boxA, selectors.boxB);
     });
   });
 
   context('Box B:', function () {
     it('box B should change its position', function () {
-      extraInteraction.dragAndDropBoxB();
+      extraInteraction.dragAndDropBox(selectors.boxB, selectors.boxA);
     });
   });
 });

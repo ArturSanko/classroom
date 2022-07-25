@@ -1,5 +1,7 @@
 const extraInteraction = require('../pageobjects/ExtraInteraction');
 const { links } = require('../../Data/Links');
+const { textToAsserts } = require('../../Data/TextToAsserts');
+const { selectors } = require('../../Data/Selectors');
 
 describe('Handle alerts on page', async function () {
   before(async function () {
@@ -8,45 +10,45 @@ describe('Handle alerts on page', async function () {
 
   context('Alert:', function () {
     it('alert should contain certain text', function () {
-      extraInteraction.clickButtonAlert();
+      extraInteraction.clickButton(selectors.buttonAlert);
       const alertsText = browser.getAlertText();
-      expect(alertsText).toHaveText(links.textFromAlert);
+      expect(alertsText).toHaveText(textToAsserts.textFromAlert);
     });
 
     it('alert should be accept', function () {
       browser.acceptAlert();
-      expect(extraInteraction.getTextFromAlertResult()).toHaveText(
-        links.alertResult
+      expect(extraInteraction.getElement(selectors.alertResult)).toHaveText(
+        textToAsserts.alertResult
       );
     });
   });
 
   context('Confirm:', function () {
     it('confirm should contain certain text', function () {
-      extraInteraction.clickButtonConfirm();
+      extraInteraction.clickButton(selectors.buttonConfirm);
       const confirmsText = browser.getAlertText();
-      expect(confirmsText).toHaveText(links.textFromConfirm);
+      expect(confirmsText).toHaveText(textToAsserts.textFromConfirm);
     });
 
     it('confirm should be accept', function () {
       browser.acceptAlert();
-      expect(extraInteraction.getTextFromConfirmResult()).toHaveText(
-        links.confirmResult
+      expect(extraInteraction.getElement(selectors.confirmResult)).toHaveText(
+        textToAsserts.confirmResult
       );
     });
   });
 
   context('Prompt:', function () {
     it('prompt should contain certain text', function () {
-      extraInteraction.clickButtonPrompt();
+      extraInteraction.clickButton(selectors.buttonPrompt);
       const promptsText = browser.getAlertText();
-      expect(promptsText).toHaveText(links.textFromPrompt);
+      expect(promptsText).toHaveText(textToAsserts.textFromPrompt);
     });
 
     it('prompt should be accept with text', function () {
-      extraInteraction.inputTextIntoPrompt(links.textForPrompt);
+      extraInteraction.inputTextIntoPrompt(textToAsserts.textForPrompt);
       browser.acceptAlert();
-      expect(extraInteraction.getTextFromPromptResult()).toHaveText(
+      expect(extraInteraction.getElement(selectors.promptResult)).toHaveText(
         links.promptResult
       );
     });

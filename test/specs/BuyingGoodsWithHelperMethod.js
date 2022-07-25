@@ -3,11 +3,14 @@ const { searchItems } = require('../../Data/SearchItems');
 const loginPageInteraction = require('../pageobjects/LoginPageInteraction');
 const buyingInteraction = require('../pageobjects/BuyingInteraction');
 var chai = require('chai');
+const { links } = require('../../Data/Links');
+const { selectors } = require('../../Data/Selectors');
+const { properties } = require('../../Data/Properties');
 var chaiWebdriver = require('chai-webdriverio').default;
 
 describe('The user can make an order:', async function () {
   before(async function () {
-    await loginPageInteraction.openURL();
+    await loginPageInteraction.openURL(links.shop);
     await loginPageInteraction.loginIntoSystem(
       loginCredentials.login,
       loginCredentials.validPassword
@@ -15,61 +18,76 @@ describe('The user can make an order:', async function () {
   });
 
   it('drop down with categories of goods is displayed', async function () {
-    await buyingInteraction.clickOnSearchField();
-    await buyingInteraction.isDisplayedDropDown();
+    await buyingInteraction.clickElement(selectors.searchField);
+    await buyingInteraction.isDisplayed(selectors.dropDown);
   });
 
   it('the category is accepted. The category has white color of letters and blue background', async function () {
-    await buyingInteraction.clickOnCategory();
-    await expect(
-      await buyingInteraction.getElementCatagory()
-    ).toHaveTextContaining(searchItems.chosenCategory);
-    const color = await buyingInteraction.getCSSPropertyOfCatagoryColor();
+    await buyingInteraction.clickElement(selectors.categoryMen);
+    const chosenCategory = await buyingInteraction.getElement(
+      selectors.chosenCatagory
+    );
+    await expect(chosenCategory).toHaveText(searchItems.chosenCategory);
+    const color = await buyingInteraction.getCSSProperty(
+      selectors.chosenCatagory,
+      properties.color
+    );
     expect(await color.parsed.hex).toEqual(searchItems.color);
-    const background =
-      await buyingInteraction.getCSSPropertyOfCatagoryBackground();
+    const background = await buyingInteraction.getCSSProperty(
+      selectors.chosenCatagory,
+      properties.background
+    );
     expect(await background.parsed.hex).toEqual(searchItems.background);
   });
 
   it('the search item in search field is displayed', async function () {
-    await buyingInteraction.inputSearchItem(searchItems.searchItem);
+    await buyingInteraction.inputText(
+      selectors.searchField,
+      searchItems.searchItem
+    );
   });
 
   it('the store displayed search result page for the search item and filtered by the category', async function () {
     await buyingInteraction.pressEnter();
-    await expect(await buyingInteraction.getValueOfSearchItem()).toHaveValue(
-      searchItems.searchItem
+    const valueOfItem = await buyingInteraction.getElement(
+      selectors.valueSearchItem
     );
-    await expect(await buyingInteraction.getElementSearchCatagery()).toHaveText(
-      searchItems.chosenCategory
+    await expect(valueOfItem).toHaveValue(searchItems.searchItem);
+    const searchItem = await buyingInteraction.getElement(
+      selectors.textSearchCategory
     );
+    await expect(searchItem).toHaveText(searchItems.chosenCategory);
   });
 
   it('page with chosen goods is opened', async function () {
-    await buyingInteraction.clickOnGoods();
-    await expect(
-      await buyingInteraction.getElementChosenGood()
-    ).toHaveTextContaining(searchItems.searchGoods);
+    await buyingInteraction.clickElement(selectors.goods);
+    const chosenCatagory = await buyingInteraction.getElement(
+      selectors.chosenGoods
+    );
+    await expect(chosenCatagory).toHaveText(searchItems.searchGoods);
   });
 
   it('shopping cart page is opened', async function () {
-    await buyingInteraction.clickButtonAddToCart();
-    await expect(
-      await buyingInteraction.getElementShoppingCartPage()
-    ).toHaveTextContaining(searchItems.shoppingCartPage);
+    await buyingInteraction.clickElement(selectors.buttonAddToCart);
+    const cartPage = await buyingInteraction.getElement(
+      selectors.shoppingCartPage
+    );
+    await expect(cartPage).toHaveText(searchItems.shoppingCartPage);
   });
 
   it('checkout confirmation page is opened', async function () {
-    await buyingInteraction.clickButtonCheckout();
-    await expect(
-      await buyingInteraction.getElementCheckoutConfirmationPage()
-    ).toHaveTextContaining(searchItems.checkoutConfirmationPage);
+    await buyingInteraction.clickElement(selectors.buttonCheckout);
+    const confirmPage = await buyingInteraction.getElement(
+      selectors.checkoutConfirmationPage
+    );
+    await expect(confirmPage).toHaveText(searchItems.checkoutConfirmationPage);
   });
 
   it('the order has been processed', async function () {
-    await buyingInteraction.clickButtonConfirmOrder();
-    await expect(
-      await buyingInteraction.getElementSuccessOrderPage()
-    ).toHaveText(searchItems.successedOrder);
+    await buyingInteraction.clickElement(selectors.buttonConfirmOrder);
+    const orderPage = await buyingInteraction.getElement(
+      selectors.successedOrderMessage
+    );
+    await expect(orderPage).toHaveText(searchItems.successedOrder);
   });
 });

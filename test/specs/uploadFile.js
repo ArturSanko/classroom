@@ -10,10 +10,10 @@ describe('Upload a file', async function () {
       paths.fileForUpload,
       selectors.buttonChooseFile
     );
-    await extraInteraction.clickButtonOnPage(selectors.buttonUpload);
+    await extraInteraction.clickButton(selectors.buttonUpload);
   });
 
   it('check if file is uploaded', async function () {
-    await extraInteraction.waitForElement(selectors.uploadedFile);
+    await extraInteraction.waitForDisplayed(selectors.uploadedFile);
   });
 });

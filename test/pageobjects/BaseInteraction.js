@@ -10,16 +10,16 @@ class BaseInteraction {
   }
 
   async clickElement(selector) {
-    await this.waitForDisplayedAnElement(selector);
+    await this.waitForDisplayed(selector);
     await $(selector).click();
   }
 
-  async inputTextIntoElement(selector, text) {
-    await this.waitForDisplayedAnElement(selector);
+  async inputText(selector, text) {
+    await this.waitForDisplayed(selector);
     await $(selector).addValue(text);
   }
 
-  async waitForDisappearAnElement(selector) {
+  async waitForDisappear(selector) {
     await $(selector).waitForDisplayed({
       timeout: 6000,
       reverse: true,
@@ -27,7 +27,7 @@ class BaseInteraction {
     });
   }
 
-  async waitForDisplayedAnElement(selector) {
+  async waitForDisplayed(selector) {
     await $(selector).waitForDisplayed({
       timeout: 6000,
       timeoutMsg: `After 6 sec the elememt: ${selector} was not displayed`,
@@ -39,7 +39,7 @@ class BaseInteraction {
   }
 
   async searchCertainItem(selector, attr, nameItem) {
-    await this.waitForDisplayedAnElement(selector);
+    await this.waitForDisplayed(selector);
     const allGoods = await $$(selector);
     for (const goods of allGoods) {
       const goodsTitle = await goods.getAttribute(attr);
@@ -56,7 +56,7 @@ class BaseInteraction {
   }
 
   async hoverOverElements(selector) {
-    await this.waitForDisplayedAnElement(selector);
+    await this.waitForDisplayed(selector);
     const elements = await $$(selector);
     for (const element of elements) {
       await element.moveTo();
@@ -68,17 +68,18 @@ class BaseInteraction {
   }
 
   async getCSSProperty(selector, cssProperty) {
-    await this.waitForDisplayedAnElement(selector);
+    await this.waitForDisplayed(selector);
     const property = await $(selector).getCSSProperty(cssProperty);
     return property;
   }
 
   async getElement(selector) {
-    await this.waitForDisplayedAnElement(selector);
+    await this.waitForDisplayed(selector);
     const elem = await $(selector);
     return elem;
   }
 
+  //change
   async waitUntilFileDownload(fileName) {
     await browser.waitUntil(
       async function () {

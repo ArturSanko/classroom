@@ -3,111 +3,52 @@ const BaseInteraction = require('./BaseInteraction');
 class ExtraInteraction extends BaseInteraction {
   constructor() {
     super();
-    this.buttonForNewWindow = '//*[text()="Click Here"]';
-
-    this.fieldForTextIframe = '#tinymce';
-    this.elementH3 = '.example';
-
-    this.buttonAlert = '[onclick="jsAlert()"]';
-    this.buttonConfirm = '[onclick="jsConfirm()"]';
-    this.buttonPrompt = '[onclick="jsPrompt()"]';
-    this.alertResult = '//*[text()="You successfully clicked an alert"]';
-    this.confirmResult = '//*[text()="You clicked: Ok"]';
-    this.promptResult = '//*[text()="You entered: text for prompt"]';
-
-    this.boxA = '#column-a';
-    this.boxB = '#column-b';
-
-    this.elementForHover = '[alt^="User"]';
-
-    this.fileForDownload = '.example > a:nth-child(4)';
-
-    this.downloadedFile = '../../downloads/Image.PNG';
-
-    this.fileForUpload = './uploads/Image.jpg';
-    this.buttonUpload = '#file-submit';
-    this.uploadedFile = '#id="uploaded-files"';
   }
 
   async openURL(url) {
     await this.openBrowserWithURL(url);
   }
 
-  async clickButtonClickHere() {
-    await this.clickElement(this.buttonForNewWindow);
+  async waitForDisplayed(selector) {
+    await super.waitForDisplayed(selector);
   }
 
-  async waitForDisplayedAnElementH3() {
-    await this.waitForDisplayedAnElement(this.elementH3);
+  async inputText(selector, text) {
+    await super.inputText(selector, text);
   }
 
   async switchFrame() {
     await browser.switchToFrame(0);
   }
 
-  async inputTextIntoFieldIframe(text) {
-    await super.inputTextIntoElement(this.fieldForTextIframe, text);
-  }
-
-  async getTextFromFieldIframe() {
-    const elem = await $(this.fieldForTextIframe);
+  async getElement(selector) {
+    const elem = await super.getElement(selector);
     return elem;
   }
 
-  async clickButtonAlert() {
-    await this.clickElement(this.buttonAlert);
+  async inputTextIntoPrompt(text) {
+    await browser.sendAlertText(text);
   }
 
-  async getTextFromAlertResult() {
-    await this.waitForDisplayedAnElement(this.alertResult);
-    const elem = await $(this.alertResult);
-    return elem;
+  async dragAndDropBox(from, to) {
+    await this.dragAndDropElement(from, to);
   }
 
-  async clickButtonConfirm() {
-    await this.clickElement(this.buttonConfirm);
-  }
-
-  async getTextFromConfirmResult() {
-    await this.waitForDisplayedAnElement(this.confirmResult);
-    const elem = await $(this.confirmResult);
-    return elem;
-  }
-
-  async clickButtonPrompt() {
-    await this.clickElement(this.buttonPrompt);
-  }
-
-  async getTextFromPromptResult() {
-    await this.waitForDisplayedAnElement(this.promptResult);
-    const elem = await $(this.promptResult);
-    return elem;
-  }
-
-  inputTextIntoPrompt(text) {
-    browser.sendAlertText(text);
-  }
-
-  async dragAndDropBoxA() {
-    await this.dragAndDropElement(this.boxA, this.boxB);
-  }
-
-  async dragAndDropBoxB() {
-    await this.dragAndDropElement(this.boxB, this.boxA);
-  }
-
-  async hoverOverElements() {
-    super.hoverOverElements(this.elementForHover);
+  async hoverOverElements(selector) {
+    super.hoverOverElements(selector);
   }
 
   async getCookies() {
     const allCookies = await browser.getCookies();
     return allCookies;
   }
+
+  //change
   async downloadPNGFile() {
     await this.clickElement(this.fileForDownload);
   }
 
+  //change
   async waitUntilFileDownload() {
     await super.waitUntilFileDownload(this.downloadedFile);
   }
@@ -116,12 +57,8 @@ class ExtraInteraction extends BaseInteraction {
     await super.uploadFile(path, selector);
   }
 
-  async clickButtonOnPage(selector) {
+  async clickButton(selector) {
     await this.clickElement(selector);
-  }
-
-  async waitForElement(selector) {
-    await this.waitForDisplayedAnElement(selector);
   }
 }
 

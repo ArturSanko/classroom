@@ -12,8 +12,8 @@ class LoginPageInteraction extends BaseInteraction {
     this.errorMessage = '[class^="alert"]';
   }
 
-  async openURL() {
-    await this.openBrowserWithURL(this.url);
+  async openURL(url) {
+    await this.openBrowserWithURL(url);
   }
 
   async clickButtonLoginOrRegister() {
@@ -21,11 +21,11 @@ class LoginPageInteraction extends BaseInteraction {
   }
 
   async inputLogin(data) {
-    await this.inputTextIntoElement(this.loginNameField, data);
+    await this.inputText(this.loginNameField, data);
   }
 
   async inputPassword(data) {
-    await this.inputTextIntoElement(this.passwordField, data);
+    await this.inputText(this.passwordField, data);
   }
 
   async clickButtonLogin() {
@@ -33,15 +33,15 @@ class LoginPageInteraction extends BaseInteraction {
   }
 
   async waitForDisappearLoginButton() {
-    await this.waitForDisappearAnElement(this.buttonLogin);
+    await this.waitForDisappear(this.buttonLogin);
   }
 
   async waitForDisplayedUserName() {
-    await this.waitForDisplayedAnElement(this.userName);
+    await this.waitForDisplayed(this.userName);
   }
 
   async waitForDisplayedErrorMessage() {
-    await this.waitForDisplayedAnElement(this.errorMessage);
+    await this.waitForDisplayed(this.errorMessage);
   }
 
   async loginIntoSystem(login, password) {
