@@ -39,8 +39,8 @@ class ExtraInteraction extends BaseInteraction {
     await super.inputText(selector, text);
   }
 
-  async switchFrame() {
-    await browser.switchToFrame(0);
+  async switchFrame(id) {
+    await browser.switchToFrame(id);
   }
 
   async getElement(selector) {
