@@ -25,6 +25,10 @@ class ExtraInteraction extends BaseInteraction {
     this.buttonChooseFile = '#file-upload';
     this.buttonUpload = '#file-submit';
     this.uploadedFile = '#uploaded-files';
+
+    this.buttonStart = '#start > button';
+    this.loadingLine = '.example > #loading';
+    this.finishLoading = '.example > #finish';
   }
 
   async openURL(url) {
@@ -81,6 +85,10 @@ class ExtraInteraction extends BaseInteraction {
 
   async clickButton(selector) {
     await this.clickElement(selector);
+  }
+
+  async isDisplayed(selector) {
+    await super.isDisplayed(selector);
   }
 }
 
