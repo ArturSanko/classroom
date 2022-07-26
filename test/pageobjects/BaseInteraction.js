@@ -97,6 +97,14 @@ class BaseInteraction {
     const file = await browser.uploadFile(filePath);
     await $(selector).setValue(file);
   }
+
+  async executeScript(script, argument0, argument1) {
+    await browser.executeScript(script, argument0, argument1);
+  }
+
+  async execute(script, argument0, argument1) {
+    await browser.execute(script, argument0, argument1);
+  }
 }
 
 module.exports = BaseInteraction;

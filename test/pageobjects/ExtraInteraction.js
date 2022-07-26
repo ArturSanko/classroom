@@ -29,6 +29,12 @@ class ExtraInteraction extends BaseInteraction {
     this.buttonStart = '#start > button';
     this.loadingLine = '.example > #loading';
     this.finishLoading = '.example > #finish';
+
+    this.banner = '.slider';
+    this.hiddenText = '.welcome_msg';
+    this.buttonCart = '#main_menu_top > [data-id$="cart"] > a';
+    this.searchField = 'div >#filter_keyword';
+    this.cartPage = '//span[contains(text(), "Shopping Cart")]';
   }
 
   async openURL(url) {
@@ -89,6 +95,14 @@ class ExtraInteraction extends BaseInteraction {
 
   async isDisplayed(selector) {
     await super.isDisplayed(selector);
+  }
+
+  async waitForDisappear(selector) {
+    await super.waitForDisappear(selector);
+  }
+
+  async execute(script, argument0, argument1) {
+    await super.execute(script, argument0, argument1);
   }
 }
 

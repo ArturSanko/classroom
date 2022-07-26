@@ -1,7 +1,7 @@
 const extraInteraction = require('../pageobjects/ExtraInteraction');
 const { links } = require('../../Data/Links');
 
-describe('', async function () {
+describe('Working with element state', async function () {
   before(async function () {
     await extraInteraction.openURL(links.workingWithElementState);
     await extraInteraction.clickButton(extraInteraction.buttonStart);
