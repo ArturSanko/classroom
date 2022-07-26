@@ -20,9 +20,9 @@ class BuyingInteraction extends BaseInteraction {
     this.chosenCatagory = '#category_selected';
     this.valueSearchItem = 'input#keyword';
     this.textSearchCategory =
-    '//select[@id="category_id"]/option[@selected="selected"][contains(text(); "Men")]';
-    this.chosenGoods = '//span[contains(text(); "MAN Eau de Toilette Spray")]';
-    this.shoppingCartPage = '//span[contains(text(); "Shopping Cart")]';
+    '//select[@id="category_id"]/option[@selected="selected"][contains(text(), "Men")]';
+    this.chosenGoods = '//span[contains(text(), "MAN Eau de Toilette Spray")]';
+    this.shoppingCartPage = '//span[contains(text(), "Shopping Cart")]';
     this.checkoutConfirmationPage = '//span[contains(text(), "Checkout Confirmation")]';
   }
 
