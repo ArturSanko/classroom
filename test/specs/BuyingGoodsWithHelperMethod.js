@@ -4,7 +4,6 @@ const loginPageInteraction = require('../pageobjects/LoginPageInteraction');
 const buyingInteraction = require('../pageobjects/BuyingInteraction');
 var chai = require('chai');
 const { links } = require('../../Data/Links');
-const { selectors } = require('../../Data/Selectors');
 const { properties } = require('../../Data/Properties');
 var chaiWebdriver = require('chai-webdriverio').default;
 
@@ -18,23 +17,23 @@ describe('The user can make an order:', async function () {
   });
 
   it('drop down with categories of goods is displayed', async function () {
-    await buyingInteraction.clickElement(selectors.searchField);
-    await buyingInteraction.isDisplayed(selectors.dropDown);
+    await buyingInteraction.clickElement(buyingInteraction.searchField);
+    await buyingInteraction.isDisplayed(buyingInteraction.dropDown);
   });
 
   it('the category is accepted. The category has white color of letters and blue background', async function () {
-    await buyingInteraction.clickElement(selectors.categoryMen);
+    await buyingInteraction.clickElement(buyingInteraction.categoryMen);
     const chosenCategory = await buyingInteraction.getElement(
-      selectors.chosenCatagory
+      buyingInteraction.chosenCatagory
     );
     await expect(chosenCategory).toHaveText(searchItems.chosenCategory);
     const color = await buyingInteraction.getCSSProperty(
-      selectors.chosenCatagory,
+      buyingInteraction.chosenCatagory,
       properties.color
     );
     expect(await color.parsed.hex).toEqual(searchItems.color);
     const background = await buyingInteraction.getCSSProperty(
-      selectors.chosenCatagory,
+      buyingInteraction.chosenCatagory,
       properties.background
     );
     expect(await background.parsed.hex).toEqual(searchItems.background);
@@ -42,7 +41,7 @@ describe('The user can make an order:', async function () {
 
   it('the search item in search field is displayed', async function () {
     await buyingInteraction.inputText(
-      selectors.searchField,
+      buyingInteraction.searchField,
       searchItems.searchItem
     );
   });
@@ -50,43 +49,43 @@ describe('The user can make an order:', async function () {
   it('the store displayed search result page for the search item and filtered by the category', async function () {
     await buyingInteraction.pressEnter();
     const valueOfItem = await buyingInteraction.getElement(
-      selectors.valueSearchItem
+      buyingInteraction.valueSearchItem
     );
     await expect(valueOfItem).toHaveValue(searchItems.searchItem);
     const searchItem = await buyingInteraction.getElement(
-      selectors.textSearchCategory
+      buyingInteraction.textSearchCategory
     );
     await expect(searchItem).toHaveText(searchItems.chosenCategory);
   });
 
   it('page with chosen goods is opened', async function () {
-    await buyingInteraction.clickElement(selectors.goods);
+    await buyingInteraction.clickElement(buyingInteraction.goods);
     const chosenCatagory = await buyingInteraction.getElement(
-      selectors.chosenGoods
+      buyingInteraction.chosenGoods
     );
     await expect(chosenCatagory).toHaveText(searchItems.searchGoods);
   });
 
   it('shopping cart page is opened', async function () {
-    await buyingInteraction.clickElement(selectors.buttonAddToCart);
+    await buyingInteraction.clickElement(buyingInteraction.buttonAddToCart);
     const cartPage = await buyingInteraction.getElement(
-      selectors.shoppingCartPage
+      buyingInteraction.shoppingCartPage
     );
     await expect(cartPage).toHaveText(searchItems.shoppingCartPage);
   });
 
   it('checkout confirmation page is opened', async function () {
-    await buyingInteraction.clickElement(selectors.buttonCheckout);
+    await buyingInteraction.clickElement(buyingInteraction.buttonCheckout);
     const confirmPage = await buyingInteraction.getElement(
-      selectors.checkoutConfirmationPage
+      buyingInteraction.checkoutConfirmationPage
     );
     await expect(confirmPage).toHaveText(searchItems.checkoutConfirmationPage);
   });
 
   it('the order has been processed', async function () {
-    await buyingInteraction.clickElement(selectors.buttonConfirmOrder);
+    await buyingInteraction.clickElement(buyingInteraction.buttonConfirmOrder);
     const orderPage = await buyingInteraction.getElement(
-      selectors.successedOrderMessage
+      buyingInteraction.successedOrderMessage
     );
     await expect(orderPage).toHaveText(searchItems.successedOrder);
   });

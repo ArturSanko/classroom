@@ -3,6 +3,28 @@ const BaseInteraction = require('./BaseInteraction');
 class ExtraInteraction extends BaseInteraction {
   constructor() {
     super();
+    this.buttonForNewWindow = '//*[text()="Click Here"]';
+
+    this.fieldForTextIframe = '#tinymce';
+    this.elementH3 = '.example';
+
+    this.buttonAlert = '[onclick="jsAlert()"]';
+    this.buttonConfirm = '[onclick="jsConfirm()"]';
+    this.buttonPrompt = '[onclick="jsPrompt()"]';
+    this.alertResult = '//*[text()="You successfully clicked an alert"]';
+    this.confirmResult = '//*[text()="You clicked= Ok"]';
+    this.promptResult = '//*[text()="You entered= text for prompt"]';
+
+    this.boxA = '#column-a';
+    this.boxB = '#column-b';
+
+    this.elementForHover = '[alt^="User"]';
+
+    this.fileForDownload = '.example > a=nth-child(4)';
+
+    this.buttonChooseFile = '#file-upload';
+    this.buttonUpload = '#file-submit';
+    this.uploadedFile = '#uploaded-files';
   }
 
   async openURL(url) {
