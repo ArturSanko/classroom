@@ -85,10 +85,7 @@ exports.config = {
       acceptInsecureCerts: true,
       'goog:chromeOptions': {
         prefs: {
-          download: {
-            default_directory:
-              './downloads',
-          },
+          'download.default_directory': path.join(__dirname, '../downloads'),
         },
       },
       // If outputDir is provided WebdriverIO can capture driver session logs

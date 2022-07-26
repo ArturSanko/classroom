@@ -1,5 +1,5 @@
 const paths = {
-  downloadedFile: '../../downloads/Image.PNG',
+  downloadedFile: '../../downloads/java_tutorial.pdf',
 
   fileForUpload: '../../uploads/Image.PNG',
 };

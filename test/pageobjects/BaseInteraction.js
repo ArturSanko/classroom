@@ -1,8 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 
-const { constants } = require('fs');
-
 class BaseInteraction {
   async openBrowserWithURL(url) {
     await browser.maximizeWindow();
@@ -79,11 +77,11 @@ class BaseInteraction {
     return elem;
   }
 
-  //change
-  async waitUntilFileDownload(fileName) {
+  async waitUntilFileDownload(pathToFile) {
     await browser.waitUntil(
       async function () {
-        return fs.existsSync(`${fileName}`);
+        const filePath = path.join(__dirname, pathToFile);
+        return fs.existsSync(filePath);
       },
       {
         timeout: 6000,

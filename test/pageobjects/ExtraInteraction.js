@@ -20,7 +20,7 @@ class ExtraInteraction extends BaseInteraction {
 
     this.elementForHover = '[alt^="User"]';
 
-    this.fileForDownload = '.example > a=nth-child(4)';
+    this.fileForDownload = '.example > a:nth-child(2)';
 
     this.buttonChooseFile = '#file-upload';
     this.buttonUpload = '#file-submit';
@@ -75,14 +75,8 @@ class ExtraInteraction extends BaseInteraction {
     return allCookies;
   }
 
-  //change
-  async downloadPNGFile() {
-    await this.clickElement(this.fileForDownload);
-  }
-
-  //change
-  async waitUntilFileDownload() {
-    await super.waitUntilFileDownload(this.downloadedFile);
+  async waitUntilFileDownload(path) {
+    await super.waitUntilFileDownload(path);
   }
 
   async uploadFile(path, selector) {
