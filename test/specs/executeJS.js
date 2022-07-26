@@ -31,5 +31,6 @@ describe('Execute JS', async function () {
       extraInteraction.searchField,
       textForScripts.text
     );
+    expect(extraInteraction.searchField).toHaveText(textForScripts.text);
   });
 });

@@ -333,10 +333,10 @@ exports.config = {
       );
     }
 
-    // if (passed) {
-    //   const cookies = JSON.stringify(await browser.getAllCookie());
-    //   addAttachment('cookies', cookies, 'text/plain');
-    // }
+    if (passed) {
+      const cookies = JSON.stringify(await browser.getAllCookies());
+      addAttachment('cookies', cookies, 'text/plain');
+    }
   },
 
   /**

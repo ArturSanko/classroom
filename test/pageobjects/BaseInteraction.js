@@ -103,6 +103,18 @@ class BaseInteraction {
   async execute(script, argument0, argument1) {
     await browser.execute(script, argument0, argument1);
   }
+
+  async getAllCookies() {
+    const allCookies = await browser.getAllCookies();
+    return allCookies;
+  }
+
+  async deleteCookies() {
+    await browser.deleteCookies();
+  }
+  async refresh() {
+    await browser.refresh();
+  }
 }
 
 module.exports = BaseInteraction;

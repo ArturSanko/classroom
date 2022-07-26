@@ -70,9 +70,17 @@ class ExtraInteraction extends BaseInteraction {
     super.hoverOverElements(selector);
   }
 
-  async getCookies() {
-    const allCookies = await browser.getCookies();
+  async getAllCookies() {
+    const allCookies = await super.getAllCookies();
     return allCookies;
+  }
+
+  async deleteCookies() {
+    await super.deleteCookies();
+  }
+
+  async refresh() {
+    await super.refresh();
   }
 
   async waitUntilFileDownload(path) {
