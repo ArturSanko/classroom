@@ -36,6 +36,7 @@ describe('The user can make an order:', async function () {
       buyingInteraction.chosenCatagory,
       properties.background
     );
+    expect(await background.parsed.hex).toEqual(searchItems.background);
   });
 
   it('the search item in search field is displayed', async function () {
@@ -43,6 +44,7 @@ describe('The user can make an order:', async function () {
       buyingInteraction.searchField,
       searchItems.searchItem
     );
+    expect(buyingInteraction.searchField).toHaveText(searchItems.searchItem);
   });
 
   it('the store displayed search result page for the search item and filtered by the category', async function () {
