@@ -49,7 +49,6 @@ class LoginPageInteraction extends BaseInteraction {
     await this.inputLogin(login);
     await this.inputPassword(password);
     await this.clickButtonLogin();
-    // await this.waitForDisappearLoginButton();
   }
 }
 
