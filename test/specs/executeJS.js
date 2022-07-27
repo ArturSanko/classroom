@@ -1,6 +1,5 @@
 const extraInteraction = require('../pageobjects/ExtraInteraction');
 const { links } = require('../../Data/Links');
-const { scripts } = require('../../Data/Scripts');
 const { textForScripts } = require('../../Data/TextForScripts');
 
 describe('Execute JS', async function () {
@@ -11,7 +10,7 @@ describe('Execute JS', async function () {
 
   it('remove an element', async function () {
     await extraInteraction.execute(
-      scripts.removeElement,
+      extraInteraction.removeElementScript,
       extraInteraction.banner
     );
     await extraInteraction.waitForDisplayed(extraInteraction.hiddenText);
@@ -19,7 +18,7 @@ describe('Execute JS', async function () {
 
   it('click on element', async function () {
     await extraInteraction.execute(
-      scripts.clickElement,
+      extraInteraction.clickElementScript,
       extraInteraction.buttonCart
     );
     await extraInteraction.waitForDisplayed(extraInteraction.cartPage);
@@ -27,7 +26,7 @@ describe('Execute JS', async function () {
 
   it('input search item into search field', async function () {
     await extraInteraction.execute(
-      scripts.inputText,
+      extraInteraction.inputTextScript,
       extraInteraction.searchField,
       textForScripts.text
     );

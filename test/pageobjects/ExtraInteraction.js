@@ -35,6 +35,11 @@ class ExtraInteraction extends BaseInteraction {
     this.buttonCart = '#main_menu_top > [data-id$="cart"] > a';
     this.searchField = 'div >#filter_keyword';
     this.cartPage = '//span[contains(text(), "Shopping Cart")]';
+
+    this.removeElementScript = 'document.querySelector(arguments[0]).remove()';
+    this.clickElementScript = 'document.querySelector(arguments[0]).click()';
+    this.inputTextScript =
+      'document.querySelector(arguments[0]).value = arguments[1]';
   }
 
   async openURL(url) {
