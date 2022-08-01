@@ -41,21 +41,20 @@ class BaseInteraction {
     await this.waitForDisplayed(selector);
     try {
       const allGoods = await $$(selector);
+      let goodsTitle;
       for (const goods of allGoods) {
-        const goodsTitle = await goods.getAttribute(attr);
+        goodsTitle = await goods.getAttribute(attr);
         if (goodsTitle === nameItem) {
           await goods.click();
-          // break;
         }
-        // throw new Error(
-        //   `SearchCertainItem Error: Goods -> ${nameItem} was not found`
-        // );
       }
-    } catch (e) {
-      throw new Error(
+      if (goodsTitle !== nameItem) {
+        throw new Error(
           `SearchCertainItem Error: Goods -> ${nameItem} was not found`
         );
-      // throw e;
+      }
+    } catch (e) {
+      throw e;
     }
   }
 
