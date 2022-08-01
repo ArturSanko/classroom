@@ -1,5 +1,14 @@
 const fs = require('fs');
 const path = require('path');
+const {
+  addStep,
+  addFeature,
+  addAttachment,
+  addIssue,
+  addArgument,
+  addDescription,
+  addEnvironment,
+} = require('@wdio/allure-reporter').default;
 
 exports.config = {
   //
@@ -23,11 +32,15 @@ exports.config = {
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
   //
-  specs: ['./test/specs/**/BuyingGoodsAfterLogin.js'],
+  specs: ['./test/specs/**/**.js'],
 
   suites: {
-    smokePositive: ['./test/specs/**/LoginSmokeTestPositive.js'],
-    smokeNegative: ['./test/specs/**/LoginSmokeTestNegative.js'],
+    loginPositive: ['./test/specs/**/loginPositive.js'],
+    loginNegative: ['./test/specs/**/loginNegative.js'],
+    buyingGoods: ['./test/specs/**/buyingGoods.js'],
+    searchInCertainCategory: [
+      './test/specs/**/searchInCertainCategory.js',
+    ],
   },
   // Patterns to exclude.
   exclude: [
@@ -64,6 +77,11 @@ exports.config = {
       //
       browserName: 'chrome',
       acceptInsecureCerts: true,
+      'goog:chromeOptions': {
+        prefs: {
+          'download.default_directory': path.join(__dirname, '../downloads'),
+        },
+      },
       // If outputDir is provided WebdriverIO can capture driver session logs
       // it is possible to configure which logTypes to include/exclude.
       // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
@@ -139,7 +157,18 @@ exports.config = {
   // Test reporter for stdout.
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
-  reporters: ['spec', ['allure', { outputDir: 'allure-results' }]],
+  reporters: [
+    'spec',
+    [
+      'allure',
+      {
+        outputDir: 'allure-results',
+        disableWebdriverStepsReporting: true,
+        disableWebdriverScreenshotsReporting: true,
+        useCucumberStepReporter: false,
+      },
+    ],
+  ],
 
   //
   // Options to be passed to Mocha.
@@ -163,9 +192,19 @@ exports.config = {
    */
   onPrepare: function (config, capabilities) {
     const screenshotFolder = 'screenshots';
+    const allureResult = 'allure-results';
+    const downloads = 'downloads';
 
     if (!fs.existsSync(`./${screenshotFolder}`)) {
       fs.mkdirSync(`${screenshotFolder}`);
+    }
+
+    if (!fs.existsSync(`./${downloads}`)) {
+      fs.mkdirSync(`${downloads}`);
+    }
+
+    if (!fs.existsSync(`./${allureResult}`)) {
+      fs.mkdirSync(`${allureResult}`);
     }
 
     fs.readdir(`${screenshotFolder}`, (err, files) => {
@@ -173,6 +212,26 @@ exports.config = {
 
       for (const file of files) {
         fs.unlink(path.join(`${screenshotFolder}`, file), (err) => {
+          if (err) throw err;
+        });
+      }
+    });
+
+    fs.readdir(`${allureResult}`, (err, files) => {
+      if (err) throw err;
+
+      for (const file of files) {
+        fs.unlink(path.join(`${allureResult}`, file), (err) => {
+          if (err) throw err;
+        });
+      }
+    });
+
+    fs.readdir(`${downloads}`, (err, files) => {
+      if (err) throw err;
+
+      for (const file of files) {
+        fs.unlink(path.join(`${downloads}`, file), (err) => {
           if (err) throw err;
         });
       }
@@ -270,6 +329,20 @@ exports.config = {
       await browser.saveScreenshot(
         `./screenshots/Date_${date}_FileName_${nameFile}_TestName_${nameTest}.png`
       );
+
+      addAttachment(
+        `Date_${date}_FileName_${nameFile}_TestName_${nameTest}`,
+        Buffer.from(await browser.takeScreenshot(), 'base64'),
+        'image/png'
+      );
+
+      const cookiesAfterFaild = JSON.stringify(await browser.getAllCookies());
+      addAttachment('cookies', cookiesAfterFaild, 'text/plain');
+    }
+
+    if (passed) {
+      const cookiesPass = JSON.stringify(await browser.getAllCookies());
+      addAttachment('cookies', cookiesPass, 'text/plain');
     }
   },
 

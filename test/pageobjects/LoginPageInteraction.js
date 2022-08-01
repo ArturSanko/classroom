@@ -13,52 +13,28 @@ class LoginPageInteraction extends BaseInteraction {
     this.accountLoginPage = '.maintext';
   }
 
-  async openURL() {
-    await this.openBrowserWithURL(this.url);
+  async openURL(url) {
+    await this.openBrowserWithURL(url);
   }
 
-  async clickButtonLoginOrRegister() {
-    await this.waitForDisplayedAnElement(this.buttonLoginOrRegister);
+  async clickElement(selector) {
+    await super.clickElement(selector);
+  }
+
+  async inputText(selector, data) {
+    await super.inputText(selector, data);
+  }
+
+  async waitForDisplayed(selector) {
+    await super.waitForDisplayed(selector);
+  }
+
+  async loginIntoSystem(login, password) {
     await this.clickElement(this.buttonLoginOrRegister);
-  }
-
-  async inputLogin(data) {
-    await this.waitForDisplayedAnElement(this.loginNameField);
-    await this.inputTextIntoElement(this.loginNameField, data);
-  }
-
-  async inputPassword(data) {
-    await this.waitForDisplayedAnElement(this.passwordField);
-    await this.inputTextIntoElement(this.passwordField, data);
-  }
-
-  async clickButtonLogin() {
-    await this.waitForDisplayedAnElement(this.buttonLogin);
+    await this.waitForDisplayed(this.accountLoginPage);
+    await this.inputText(this.loginNameField, login);
+    await this.inputText(this.passwordField, password);
     await this.clickElement(this.buttonLogin);
-  }
-
-  async waitForDisappearLoginButton() {
-    await this.waitForDisappearAnElement(this.buttonLogin);
-  }
-
-  async waitForDisplayedUserName() {
-    await this.waitForDisplayedAnElement(this.userName);
-  }
-
-  async waitForDisplayedErrorMessage() {
-    await this.waitForDisplayedAnElement(this.errorMessage);
-  }
-
-  async waitForDisplayedAccountLoginPage() {
-    await this.waitForDisplayedAnElement(this.accountLoginPage);
-  }
-
-  async getLoginText() {
-    await this.getText(this.loginNameField);
-  }
-
-  async getPasswordText() {
-    await this.getText(this.passwordField);
   }
 }
 

@@ -3,19 +3,23 @@
     "version": "0.1.0",
     "private": true,
     "devDependencies": {
-        "@wdio/allure-reporter": "^7.20.3",
+        "@wdio/allure-reporter": "^7.20.7",
         "@wdio/cli": "^7.20.5",
         "@wdio/local-runner": "^7.20.5",
         "@wdio/mocha-framework": "^7.20.3",
         "@wdio/spec-reporter": "^7.20.3",
-        "chai": "^4.0.1",
+        "allure-commandline": "^2.18.1",
+        "chai": "^4.0.2",
         "chai-webdriverio": "^1.0.0",
         "chromedriver": "^103.0.0",
         "wdio-chromedriver-service": "^7.3.2"
     },
     "scripts": {
-        "smokePositive": "npx wdio run ./config/wdio.conf.js --suite smokePositive",
-        "smokeNegative": "npx wdio run ./config/wdio.conf.js --suite smokeNegative",
-        "others": "npx wdio run ./config/wdio.conf.js"
+        "allTests": "npx wdio run ./config/wdio.conf.js",
+        "allure": "npx allure serve",
+        "loginPositive": "npx wdio run ./config/wdio.conf.js --suite loginPositive",
+        "loginNegative": "npx wdio run ./config/wdio.conf.js --suite loginNegative",
+        "buyingGoods": "npx wdio run ./config/wdio.conf.js --suite buyingGoods",
+        "searchInCertainCategory": "npx wdio run ./config/wdio.conf.js --suite searchInCertainCategory"       
     }
 }
