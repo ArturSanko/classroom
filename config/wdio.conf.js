@@ -35,12 +35,7 @@ exports.config = {
   specs: ['./test/specs/**/**.js'],
 
   suites: {
-    loginPositive: ['./test/specs/**/loginPositive.js'],
-    loginNegative: ['./test/specs/**/loginNegative.js'],
-    buyingGoods: ['./test/specs/**/buyingGoods.js'],
-    searchInCertainCategory: [
-      './test/specs/**/searchInCertainCategory.js',
-    ],
+    positiveAndNegativeLogin: ['./test/specs/**/positiveAndNegativeLogin.js'],
   },
   // Patterns to exclude.
   exclude: [

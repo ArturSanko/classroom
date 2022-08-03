@@ -17,9 +17,6 @@
     "scripts": {
         "allTests": "npx wdio run ./config/wdio.conf.js",
         "allure": "npx allure serve",
-        "loginPositive": "npx wdio run ./config/wdio.conf.js --suite loginPositive",
-        "loginNegative": "npx wdio run ./config/wdio.conf.js --suite loginNegative",
-        "buyingGoods": "npx wdio run ./config/wdio.conf.js --suite buyingGoods",
-        "searchInCertainCategory": "npx wdio run ./config/wdio.conf.js --suite searchInCertainCategory"       
+        "positiveAndNegativeLogin": "npx wdio run ./config/wdio.conf.js --suite positiveAndNegativeLogin"   
     }
 }

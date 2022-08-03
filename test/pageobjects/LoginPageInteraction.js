@@ -35,6 +35,12 @@ class LoginPageInteraction extends BaseInteraction {
     await this.inputText(this.loginNameField, login);
     await this.inputText(this.passwordField, password);
     await this.clickElement(this.buttonLogin);
+    await this.waitForDisplayed(this.accountLoginPage);
+
+  }
+
+  async deleteCookies() {
+    await super.deleteCookies();
   }
 }
 

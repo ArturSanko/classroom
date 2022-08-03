@@ -73,6 +73,10 @@ class BaseInteraction {
     const elem = await $(selector);
     return elem;
   }
+
+  async deleteCookies() {
+    await browser.deleteCookies();
+  }
 }
 
 module.exports = BaseInteraction;
