@@ -29,7 +29,7 @@ describe('Smoke positive and negatives test for log in', function () {
 
   loginCredentials.forEach(({ login, password, selector }) => {
     it(`the user logged in with login: ${login} and password: ${password} and shoud get the element: ${selector}`, async function () {
-      await $(loginPageInteraction.banner).hideElement();
+      // await $(loginPageInteraction.banner).hideElement();
       await browser.getBrowserVersion();
       await loginPageInteraction.loginIntoSystem(login, password, selector);
       await loginPageInteraction.deleteCookies();

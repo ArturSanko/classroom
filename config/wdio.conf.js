@@ -10,6 +10,59 @@ const {
   addEnvironment,
 } = require('@wdio/allure-reporter').default;
 
+const bsCaps = [
+  {
+    'bstack:options': {
+      os: 'Windows',
+      osVersion: '11',
+      local: 'false',
+      seleniumVersion: '3.14.0',
+      userName: process.env.BROWSERSTACK_USERNAME,
+      accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
+    },
+    browserName: 'Chrome',
+    browserVersion: 'latest',
+  },
+  {
+    'bstack:options': {
+      os: 'Windows',
+      osVersion: '10',
+      local: 'false',
+      seleniumVersion: '3.10.0',
+      userName: process.env.BROWSERSTACK_USERNAME,
+      accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
+    },
+    browserName: 'Firefox',
+    browserVersion: 'latest',
+  },
+  {
+    'bstack:options': {
+      osVersion: '8.0',
+      deviceName: 'Samsung Galaxy S9 Plus',
+      realMobile: 'true',
+      local: 'false',
+      userName: process.env.BROWSERSTACK_USERNAME,
+      accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
+    },
+    browserName: 'chrome',
+  },
+];
+
+const localCaps = [
+  {
+    maxInstances: 5,
+    browserName: 'chrome',
+    acceptInsecureCerts: true,
+    'goog:chromeOptions': {
+      prefs: {
+        'download.default_directory': path.join(__dirname, '../downloads'),
+      },
+    },
+  },
+];
+
+const bsServies = ['browserstack'];
+const localServises = ['chromedriver'];
 exports.config = {
   //
   // ====================
@@ -32,6 +85,18 @@ exports.config = {
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
   //
+  // Browserstack Config
+  user: process.env.BROWSERSTACK_USERNAME,
+  key: process.env.BROWSERSTACK_ACCESS_KEY,
+  services: [
+    [
+      'browserstack',
+      {
+        browserstackLocal: true,
+      },
+    ],
+  ],
+
   specs: ['./test/specs/**/**.js'],
 
   suites: {
@@ -63,26 +128,7 @@ exports.config = {
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
   // https://saucelabs.com/platform/platform-configurator
   //
-  capabilities: [
-    {
-      // maxInstances can get overwritten per capability. So if you have an in-house Selenium
-      // grid with only 5 firefox instances available you can make sure that not more than
-      // 5 instances get started at a time.
-      maxInstances: 5,
-      //
-      browserName: 'chrome',
-      acceptInsecureCerts: true,
-      'goog:chromeOptions': {
-        prefs: {
-          'download.default_directory': path.join(__dirname, '../downloads'),
-        },
-      },
-      // If outputDir is provided WebdriverIO can capture driver session logs
-      // it is possible to configure which logTypes to include/exclude.
-      // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
-      // excludeDriverLogs: ['bugreport', 'server'],
-    },
-  ],
+  capabilities: localCaps,  // localCaps    bsCaps
   //
   // ===================
   // Test Configurations
@@ -130,7 +176,7 @@ exports.config = {
   // Services take over a specific job you don't want to take care of. They enhance
   // your test setup with almost no effort. Unlike plugins, they don't add new
   // commands. Instead, they hook themselves up into the test process.
-  services: ['chromedriver'],
+  services: localServises,  // localServises  bsServies
 
   // Framework you want to run your specs with.
   // The following are supported: Mocha, Jasmine, and Cucumber
