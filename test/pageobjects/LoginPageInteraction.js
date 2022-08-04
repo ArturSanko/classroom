@@ -11,6 +11,9 @@ class LoginPageInteraction extends BaseInteraction {
     this.userName = '//*[text()="Welcome back Name"]';
     this.errorMessage = '[class^="alert"]';
     this.accountLoginPage = '.maintext';
+
+    this.banner = '.slider';
+    this.hideElementScript = 'document.querySelector(arguments[0]).hidden = true';
   }
 
   async openURL(url) {
@@ -41,6 +44,10 @@ class LoginPageInteraction extends BaseInteraction {
 
   async deleteCookies() {
     await super.deleteCookies();
+  }
+
+  async execute(script, argument0, argument1) {
+    await super.execute(script, argument0, argument1);
   }
 }
 

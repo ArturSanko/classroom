@@ -77,6 +77,10 @@ class BaseInteraction {
   async deleteCookies() {
     await browser.deleteCookies();
   }
+
+  async execute(script, argument0, argument1) {
+    await browser.execute(script, argument0, argument1);
+  }
 }
 
 module.exports = BaseInteraction;
