@@ -17,24 +17,24 @@ class LoginPageInteraction extends BaseInteraction {
     await this.openBrowserWithURL(url);
   }
 
-  async clickElement(selector, timeout) {
-    await super.clickElement(selector, timeout);
+  async clickElement(selector) {
+    await super.clickElement(selector);
   }
 
-  async inputText(selector, data, timeout) {
-    await super.inputText(selector, data, timeout);
+  async inputText(selector, data) {
+    await super.inputText(selector, data);
   }
 
-  async waitForDisplayedWhithin(selector, timeout) {
-    await super.waitForDisplayedWhithin(selector, timeout);
+  async waitForDisplayed(selector) {
+    await super.waitForDisplayed(selector);
   }
 
-  async loginIntoSystem(login, password, timeout) {
-    await this.clickElement(this.buttonLoginOrRegister, timeout);
-    await this.waitForDisplayedWhithin(this.accountLoginPage, timeout);
-    await this.inputText(this.loginNameField, login, timeout);
-    await this.inputText(this.passwordField, password, timeout);
-    await this.clickElement(this.buttonLogin, timeout);
+  async loginIntoSystem(login, password) {
+    await this.clickElement(this.buttonLoginOrRegister);
+    await this.waitForDisplayed(this.accountLoginPage);
+    await this.inputText(this.loginNameField, login);
+    await this.inputText(this.passwordField, password);
+    await this.clickElement(this.buttonLogin);
   }
 }
 

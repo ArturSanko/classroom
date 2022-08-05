@@ -20,39 +20,40 @@ class BuyingInteraction extends BaseInteraction {
     this.chosenCatagory = '#category_selected';
     this.valueSearchItem = 'input#keyword';
     this.textSearchCategory =
-    '//select[@id="category_id"]/option[@selected="selected"][contains(text(), "Men")]';
+      '//select[@id="category_id"]/option[@selected="selected"][contains(text(), "Men")]';
     this.chosenGoods = '//span[contains(text(), "MAN Eau de Toilette Spray")]';
     this.shoppingCartPage = '//span[contains(text(), "Shopping Cart")]';
-    this.checkoutConfirmationPage = '//span[contains(text(), "Checkout Confirmation")]';
+    this.checkoutConfirmationPage =
+      '//span[contains(text(), "Checkout Confirmation")]';
   }
 
-  async clickElement(selector, timeout) {
-    await super.clickElement(selector, timeout);
+  async clickElement(selector) {
+    await super.clickElement(selector);
   }
 
-  async inputText(selector, text, timeout) {
-    await super.inputText(selector, text, timeout);
+  async inputText(selector, text) {
+    await super.inputText(selector, text);
   }
 
   async pressEnter() {
     await this.pressButton(this.buttonEnter);
   }
 
-  async clickOnSearchItem(goods, attr, nameItem, timeout) {
-    await super.clickOnSearchItem(goods, attr, nameItem, timeout);
+  async clickOnSearchItem(goods, attr, nameItem) {
+    await super.clickOnSearchItem(goods, attr, nameItem);
   }
 
   async isDisplayed(selector) {
     await super.isDisplayed(selector);
   }
 
-  async getCSSProperty(selector, prop, timeout) {
-    const property = await super.getCSSProperty(selector, prop, timeout);
+  async getCSSProperty(selector, prop) {
+    const property = await super.getCSSProperty(selector, prop);
     return property;
   }
 
-  async getElement(selector, timeout) {
-    const elem = await super.getElement(selector, timeout);
+  async getElement(selector) {
+    const elem = await super.getElement(selector);
     return elem;
   }
 }

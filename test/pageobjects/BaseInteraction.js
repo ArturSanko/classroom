@@ -1,27 +1,23 @@
-const fs = require('fs');
-const path = require('path');
-
 class BaseInteraction {
   async openBrowserWithURL(url) {
     await browser.maximizeWindow();
     await browser.url(url);
   }
 
-  async clickElement(selector, timeout) {
-    await this.waitForDisplayedWhithin(selector, timeout);
+  async clickElement(selector) {
+    await $(selector).isClickable();
     await $(selector).click();
   }
 
-  async inputText(selector, text, timeout) {
-    await this.waitForDisplayedWhithin(selector, timeout);
+  async inputText(selector, text) {
+    await this.waitForDisplayed(selector);
     await $(selector).addValue(text);
   }
 
-  async waitForDisappear(selector, timeout) {
-    await $(selector).waitForDisplayedWhithin({
-      timeout: timeout,
+  async waitForDisappear(selector) {
+    await $(selector).waitForDisplayed({
       reverse: true,
-      timeoutMsg: `After ${timeout} ms the elememt: ${selector} was not disappear`,
+      timeoutMsg: `The elememt: ${selector} was not disappear`,
     });
   }
 
@@ -32,12 +28,18 @@ class BaseInteraction {
     });
   }
 
+  async waitForDisplayed(selector) {
+    await $(selector).waitForDisplayed({
+      timeoutMsg: `The elememt: ${selector} was not displayed`,
+    });
+  }
+
   async pressButton(button) {
     await browser.keys(button);
   }
 
-  async clickOnSearchItem(selector, attr, nameItem, timeout) {
-    await this.waitForDisplayedWhithin(selector, timeout);
+  async clickOnSearchItem(selector, attr, nameItem) {
+    await this.waitForDisplayed(selector);
     try {
       const allGoods = await $$(selector);
       let goodsTitle;
@@ -61,14 +63,14 @@ class BaseInteraction {
     await $(selector).isDisplayed();
   }
 
-  async getCSSProperty(selector, cssProperty, timeout) {
-    await this.waitForDisplayedWhithin(selector, timeout);
+  async getCSSProperty(selector, cssProperty) {
+    await this.waitForDisplayed(selector);
     const property = await $(selector).getCSSProperty(cssProperty);
     return property;
   }
 
-  async getElement(selector, timeout) {
-    await this.waitForDisplayedWhithin(selector, timeout);
+  async getElement(selector) {
+    await this.waitForDisplayed(selector);
     const elem = await $(selector);
     return elem;
   }

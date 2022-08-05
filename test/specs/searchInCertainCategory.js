@@ -12,33 +12,29 @@ describe('The user can make an order:', async function () {
     await loginPageInteraction.openURL(links.shop);
     await loginPageInteraction.loginIntoSystem(
       loginCredentials.login,
-      loginCredentials.validPassword,
-      5000
+      loginCredentials.validPassword
     );
   });
 
   it('drop down with categories of goods is displayed', async function () {
-    await buyingInteraction.clickElement(buyingInteraction.searchField, 5000);
+    await buyingInteraction.clickElement(buyingInteraction.searchField);
     await buyingInteraction.isDisplayed(buyingInteraction.dropDown);
   });
 
   it('the category is accepted. The category has white color of letters and blue background', async function () {
-    await buyingInteraction.clickElement(buyingInteraction.categoryMen, 5000);
+    await buyingInteraction.clickElement(buyingInteraction.categoryMen);
     const chosenCategory = await buyingInteraction.getElement(
-      buyingInteraction.chosenCatagory,
-      5000
+      buyingInteraction.chosenCatagory
     );
     await expect(chosenCategory).toHaveText(searchItems.chosenCategory);
     const color = await buyingInteraction.getCSSProperty(
       buyingInteraction.chosenCatagory,
-      properties.color,
-      5000
+      properties.color
     );
     expect(await color.parsed.hex).toEqual(searchItems.color);
     const background = await buyingInteraction.getCSSProperty(
       buyingInteraction.chosenCatagory,
-      properties.background,
-      5000
+      properties.background
     );
     expect(await background.parsed.hex).toEqual(searchItems.background);
   });
@@ -46,8 +42,7 @@ describe('The user can make an order:', async function () {
   it('the search item in search field is displayed', async function () {
     await buyingInteraction.inputText(
       buyingInteraction.searchField,
-      searchItems.searchItem,
-      5000
+      searchItems.searchItem
     );
     expect(buyingInteraction.searchField).toHaveText(searchItems.searchItem);
   });
@@ -55,13 +50,11 @@ describe('The user can make an order:', async function () {
   it('the store displayed search result page for the search item and filtered by the category', async function () {
     await buyingInteraction.pressEnter();
     const searchItem = await buyingInteraction.getElement(
-      buyingInteraction.valueSearchItem,
-      5000
+      buyingInteraction.valueSearchItem
     );
     await expect(searchItem).toHaveValue(searchItems.searchItem);
     const category = await buyingInteraction.getElement(
-      buyingInteraction.textSearchCategory,
-      5000
+      buyingInteraction.textSearchCategory
     );
     await expect(category).toHaveText(searchItems.chosenCategory);
   });
@@ -70,12 +63,10 @@ describe('The user can make an order:', async function () {
     await buyingInteraction.clickOnSearchItem(
       buyingInteraction.allGoods,
       buyingInteraction.attr,
-      searchItems.searchGoods,
-      5000
+      searchItems.searchGoods
     );
     const chosenCatagory = await buyingInteraction.getElement(
-      buyingInteraction.chosenGoods,
-      5000
+      buyingInteraction.chosenGoods
     );
     await expect(chosenCatagory).toHaveText(searchItems.searchGoods);
   });

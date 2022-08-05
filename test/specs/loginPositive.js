@@ -7,15 +7,11 @@ describe('Smoke positive test for log in', function () {
     await loginPageInteraction.openURL(links.shop);
     await loginPageInteraction.loginIntoSystem(
       loginCredentials.login,
-      loginCredentials.validPassword,
-      5000
+      loginCredentials.validPassword
     );
   });
 
   it('the user logged in. My account page is opened', async function () {
-    await loginPageInteraction.waitForDisplayedWhithin(
-      loginPageInteraction.userName,
-      5000
-    );
+    await loginPageInteraction.waitForDisplayed(loginPageInteraction.userName);
   });
 });
