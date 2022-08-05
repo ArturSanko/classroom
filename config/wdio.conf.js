@@ -9,7 +9,7 @@ const {
   addDescription,
   addEnvironment,
 } = require('@wdio/allure-reporter').default;
-require('dotenv').config()
+require('dotenv').config();
 
 const bsCaps = [
   {
@@ -62,7 +62,14 @@ const localCaps = [
   },
 ];
 
-const bsServies = ['browserstack'];
+const bsServies = [
+  [
+    'browserstack',
+    {
+      browserstackLocal: true,
+    },
+  ],
+];
 const localServises = ['chromedriver'];
 exports.config = {
   //
@@ -90,15 +97,7 @@ exports.config = {
   user: process.env.BROWSERSTACK_USERNAME || 'artursanko_EXT34R',
   key: process.env.BROWSERSTACK_ACCESS_KEY || 'QhGGLoKDeiyPHGyK1Hhj',
   host: 'hub.browserstack.com',
-  services: [
-    [
-      'browserstack',
-      {
-        browserstackLocal: true,
-      },
-    ],
-  ],
-
+ 
   specs: ['./test/specs/**/**.js'],
 
   suites: {
@@ -130,7 +129,7 @@ exports.config = {
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
   // https://saucelabs.com/platform/platform-configurator
   //
-  capabilities: bsCaps, // localCaps    bsCaps
+  capabilities: localCaps, // localCaps    bsCaps
   //
   // ===================
   // Test Configurations
@@ -178,7 +177,7 @@ exports.config = {
   // Services take over a specific job you don't want to take care of. They enhance
   // your test setup with almost no effort. Unlike plugins, they don't add new
   // commands. Instead, they hook themselves up into the test process.
-  services: bsServies, // localServises  bsServies
+  services: localServises, // localServises  bsServies
 
   // Framework you want to run your specs with.
   // The following are supported: Mocha, Jasmine, and Cucumber
