@@ -7,28 +7,28 @@ class BaseInteraction {
     await browser.url(url);
   }
 
-  async clickElement(selector) {
-    await this.waitForDisplayed(selector);
+  async clickElement(selector, timeout) {
+    await this.waitForDisplayedWhithin(selector, timeout);
     await $(selector).click();
   }
 
-  async inputText(selector, text) {
-    await this.waitForDisplayed(selector);
+  async inputText(selector, text, timeout) {
+    await this.waitForDisplayedWhithin(selector, timeout);
     await $(selector).addValue(text);
   }
 
-  async waitForDisappear(selector) {
-    await $(selector).waitForDisplayed({
-      timeout: 6000,
+  async waitForDisappear(selector, timeout) {
+    await $(selector).waitForDisplayedWhithin({
+      timeout: timeout,
       reverse: true,
-      timeoutMsg: `After 6 sec the elememt: ${selector} was not disappear`,
+      timeoutMsg: `After ${timeout} ms the elememt: ${selector} was not disappear`,
     });
   }
 
-  async waitForDisplayed(selector) {
+  async waitForDisplayedWhithin(selector, timeout) {
     await $(selector).waitForDisplayed({
-      timeout: 6000,
-      timeoutMsg: `After 6 sec the elememt: ${selector} was not displayed`,
+      timeout: timeout,
+      timeoutMsg: `After ${timeout} ms the elememt: ${selector} was not displayed`,
     });
   }
 
@@ -36,9 +36,8 @@ class BaseInteraction {
     await browser.keys(button);
   }
 
-  // try - catch
-  async searchCertainItem(selector, attr, nameItem) {
-    await this.waitForDisplayed(selector);
+  async clickOnSearchItem(selector, attr, nameItem, timeout) {
+    await this.waitForDisplayedWhithin(selector, timeout);
     try {
       const allGoods = await $$(selector);
       let goodsTitle;
@@ -50,7 +49,7 @@ class BaseInteraction {
       }
       if (goodsTitle !== nameItem) {
         throw new Error(
-          `SearchCertainItem Error: Goods -> ${nameItem} was not found`
+          `clickOnSearchItem Error: Goods -> ${nameItem} was not found and clicked`
         );
       }
     } catch (e) {
@@ -62,14 +61,14 @@ class BaseInteraction {
     await $(selector).isDisplayed();
   }
 
-  async getCSSProperty(selector, cssProperty) {
-    await this.waitForDisplayed(selector);
+  async getCSSProperty(selector, cssProperty, timeout) {
+    await this.waitForDisplayedWhithin(selector, timeout);
     const property = await $(selector).getCSSProperty(cssProperty);
     return property;
   }
 
-  async getElement(selector) {
-    await this.waitForDisplayed(selector);
+  async getElement(selector, timeout) {
+    await this.waitForDisplayedWhithin(selector, timeout);
     const elem = await $(selector);
     return elem;
   }

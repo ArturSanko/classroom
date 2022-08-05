@@ -26,33 +26,33 @@ class BuyingInteraction extends BaseInteraction {
     this.checkoutConfirmationPage = '//span[contains(text(), "Checkout Confirmation")]';
   }
 
-  async clickElement(selector) {
-    await super.clickElement(selector);
+  async clickElement(selector, timeout) {
+    await super.clickElement(selector, timeout);
   }
 
-  async inputText(selector, text) {
-    await super.inputText(selector, text);
+  async inputText(selector, text, timeout) {
+    await super.inputText(selector, text, timeout);
   }
 
   async pressEnter() {
     await this.pressButton(this.buttonEnter);
   }
 
-  async searchCertainItem(goods, attr, nameItem) {
-    await super.searchCertainItem(goods, attr, nameItem);
+  async clickOnSearchItem(goods, attr, nameItem, timeout) {
+    await super.clickOnSearchItem(goods, attr, nameItem, timeout);
   }
 
   async isDisplayed(selector) {
     await super.isDisplayed(selector);
   }
 
-  async getCSSProperty(selector, prop) {
-    const property = await super.getCSSProperty(selector, prop);
+  async getCSSProperty(selector, prop, timeout) {
+    const property = await super.getCSSProperty(selector, prop, timeout);
     return property;
   }
 
-  async getElement(selector) {
-    const elem = await super.getElement(selector);
+  async getElement(selector, timeout) {
+    const elem = await super.getElement(selector, timeout);
     return elem;
   }
 }
