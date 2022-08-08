@@ -5,7 +5,7 @@ class BaseInteraction {
   }
 
   async clickElement(selector) {
-    await $(selector).isClickable();
+    await this.verifyElementCondition(selector, isClickable);
     await $(selector).click();
   }
 
@@ -59,10 +59,6 @@ class BaseInteraction {
     }
   }
 
-  async isDisplayed(selector) {
-    await $(selector).isDisplayed();
-  }
-
   async getCSSProperty(selector, cssProperty) {
     await this.waitForDisplayed(selector);
     const property = await $(selector).getCSSProperty(cssProperty);
@@ -73,6 +69,39 @@ class BaseInteraction {
     await this.waitForDisplayed(selector);
     const elem = await $(selector);
     return elem;
+  }
+
+  async verifyElementCondition(selector, method) {
+    switch (method) {
+      case 'isClickable':
+        $(selector).isClickable();
+        break;
+      case 'isDisplayed':
+        $(selector).isDisplayed();
+        break;
+      case 'isDisplayedInViewport':
+        $(selector).isDisplayedInViewport();
+        break;
+      case 'isEnabled':
+        $(selector).isEnabled();
+        break;
+      case 'isEqual':
+        $(selector).isEqual();
+        break;
+      case 'isExisting':
+        $(selector).isExisting();
+        break;
+      case 'isFocused':
+        $(selector).isFocused();
+        break;
+      case 'isSelected':
+        $(selector).isSelected();
+        break;
+      default:
+        throw new Error(
+          `verifyElementCondition Error: Method -> ${method} was not found`
+        );
+    }
   }
 }
 
