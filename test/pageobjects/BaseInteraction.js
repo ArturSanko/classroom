@@ -8,7 +8,7 @@ class BaseInteraction {
   }
 
   async clickElement(selector) {
-    await this.waitForDisplayed(selector);
+    await this.verifyElementCondition(selector, isClickable);
     await $(selector).click();
   }
 
@@ -19,16 +19,21 @@ class BaseInteraction {
 
   async waitForDisappear(selector) {
     await $(selector).waitForDisplayed({
-      timeout: 6000,
       reverse: true,
-      timeoutMsg: `After 6 sec the elememt: ${selector} was not disappear`,
+      timeoutMsg: `The elememt: ${selector} was not disappear`,
     });
   }
 
   async waitForDisplayed(selector) {
     await $(selector).waitForDisplayed({
-      timeout: 6000,
-      timeoutMsg: `After 6 sec the elememt: ${selector} was not displayed`,
+      timeoutMsg: `The elememt: ${selector} was not displayed`,
+    });
+  }
+
+  async waitForDisplayedWhithin(selector, timeout) {
+    await $(selector).waitForDisplayed({
+      timeout: timeout,
+      timeoutMsg: `After ${timeout} ms the elememt: ${selector} was not displayed`,
     });
   }
 
@@ -36,8 +41,7 @@ class BaseInteraction {
     await browser.keys(button);
   }
 
-  // try - catch
-  async searchCertainItem(selector, attr, nameItem) {
+  async clickOnSearchItem(selector, attr, nameItem) {
     await this.waitForDisplayed(selector);
     try {
       const allGoods = await $$(selector);
@@ -50,16 +54,12 @@ class BaseInteraction {
       }
       if (goodsTitle !== nameItem) {
         throw new Error(
-          `SearchCertainItem Error: Goods -> ${nameItem} was not found`
+          `clickOnSearchItem Error: Goods -> ${nameItem} was not found and clicked`
         );
       }
     } catch (e) {
       throw e;
     }
-  }
-
-  async isDisplayed(selector) {
-    await $(selector).isDisplayed();
   }
 
   async getCSSProperty(selector, cssProperty) {
@@ -80,6 +80,39 @@ class BaseInteraction {
 
   async execute(script, argument0, argument1) {
     await browser.execute(script, argument0, argument1);
+  }
+
+  async verifyElementCondition(selector, method) {
+    switch (method) {
+      case 'isClickable':
+        $(selector).isClickable();
+        break;
+      case 'isDisplayed':
+        $(selector).isDisplayed();
+        break;
+      case 'isDisplayedInViewport':
+        $(selector).isDisplayedInViewport();
+        break;
+      case 'isEnabled':
+        $(selector).isEnabled();
+        break;
+      case 'isEqual':
+        $(selector).isEqual();
+        break;
+      case 'isExisting':
+        $(selector).isExisting();
+        break;
+      case 'isFocused':
+        $(selector).isFocused();
+        break;
+      case 'isSelected':
+        $(selector).isSelected();
+        break;
+      default:
+        throw new Error(
+          `verifyElementCondition Error: Method -> ${method} was not found`
+        );
+    }
   }
 }
 
