@@ -21,16 +21,16 @@ class BaseInteraction {
     });
   }
 
+  async waitForDisplayed(selector) {
+    await $(selector).waitForDisplayed({
+      timeoutMsg: `The elememt: ${selector} was not displayed`,
+    });
+  }
+
   async waitForDisplayedWhithin(selector, timeout) {
     await $(selector).waitForDisplayed({
       timeout: timeout,
       timeoutMsg: `After ${timeout} ms the elememt: ${selector} was not displayed`,
-    });
-  }
-
-  async waitForDisplayed(selector) {
-    await $(selector).waitForDisplayed({
-      timeoutMsg: `The elememt: ${selector} was not displayed`,
     });
   }
 
@@ -69,6 +69,14 @@ class BaseInteraction {
     await this.waitForDisplayed(selector);
     const elem = await $(selector);
     return elem;
+  }
+
+  async deleteCookies() {
+    await browser.deleteCookies();
+  }
+
+  async execute(script, argument0, argument1) {
+    await browser.execute(script, argument0, argument1);
   }
 
   async verifyElementCondition(selector, method) {

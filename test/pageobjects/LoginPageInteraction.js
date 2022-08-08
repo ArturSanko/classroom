@@ -11,6 +11,9 @@ class LoginPageInteraction extends BaseInteraction {
     this.userName = '//*[text()="Welcome back Name"]';
     this.errorMessage = '[class^="alert"]';
     this.accountLoginPage = '.maintext';
+
+    this.banner = '.slider';
+    this.hideElementScript = 'document.querySelector(arguments[0]).hidden = true';
   }
 
   async openURL(url) {
@@ -35,6 +38,16 @@ class LoginPageInteraction extends BaseInteraction {
     await this.inputText(this.loginNameField, login);
     await this.inputText(this.passwordField, password);
     await this.clickElement(this.buttonLogin);
+    await this.waitForDisplayed(this.accountLoginPage);
+
+  }
+
+  async deleteCookies() {
+    await super.deleteCookies();
+  }
+
+  async execute(script, argument0, argument1) {
+    await super.execute(script, argument0, argument1);
   }
 }
 

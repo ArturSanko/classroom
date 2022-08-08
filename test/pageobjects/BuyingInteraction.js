@@ -20,11 +20,10 @@ class BuyingInteraction extends BaseInteraction {
     this.chosenCatagory = '#category_selected';
     this.valueSearchItem = 'input#keyword';
     this.textSearchCategory =
-      '//select[@id="category_id"]/option[@selected="selected"][contains(text(), "Men")]';
+    '//select[@id="category_id"]/option[@selected="selected"][contains(text(), "Men")]';
     this.chosenGoods = '//span[contains(text(), "MAN Eau de Toilette Spray")]';
     this.shoppingCartPage = '//span[contains(text(), "Shopping Cart")]';
-    this.checkoutConfirmationPage =
-      '//span[contains(text(), "Checkout Confirmation")]';
+    this.checkoutConfirmationPage = '//span[contains(text(), "Checkout Confirmation")]';
   }
 
   async clickElement(selector) {
@@ -39,8 +38,8 @@ class BuyingInteraction extends BaseInteraction {
     await this.pressButton(this.buttonEnter);
   }
 
-  async clickOnSearchItem(goods, attr, nameItem) {
-    await super.clickOnSearchItem(goods, attr, nameItem);
+  async searchCertainItem(goods, attr, nameItem) {
+    await super.searchCertainItem(goods, attr, nameItem);
   }
 
   async isDisplayed(selector) {
