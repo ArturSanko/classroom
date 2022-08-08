@@ -16,11 +16,12 @@ describe('Smoke positive and negatives test for log in', function () {
     browser.addCommand(
       'hideElement',
       async function () {
-        const elem = this;
-        await loginPageInteraction.waitForDisplayed(elem);
+        const obj = this;
+        const selector = obj.selector;
+        await loginPageInteraction.waitForDisplayed(selector);
         await loginPageInteraction.execute(
           loginPageInteraction.hideElementScript,
-          elem
+          selector
         );
       },
       true
@@ -29,7 +30,7 @@ describe('Smoke positive and negatives test for log in', function () {
 
   loginCredentials.forEach(({ login, password, selector }) => {
     it(`the user logged in with login: ${login} and password: ${password} and shoud get the element: ${selector}`, async function () {
-      // await $(loginPageInteraction.banner).hideElement();
+      await $(loginPageInteraction.banner).hideElement();
       await browser.getBrowserVersion();
       await loginPageInteraction.loginIntoSystem(login, password, selector);
       await loginPageInteraction.deleteCookies();
