@@ -5,7 +5,7 @@ class BaseInteraction {
   }
 
   async clickElement(selector) {
-    await this.verifyElementCondition(selector, isClickable);
+    await this.verifyElementCondition(selector, 'isClickable');
     await $(selector).click();
   }
 
