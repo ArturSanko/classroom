@@ -9,7 +9,7 @@ const {
   addDescription,
   addEnvironment,
 } = require('@wdio/allure-reporter').default;
-require('dotenv').config();
+const { bsCredentials } = require('../Data/BSCredentials');
 
 const bsCaps = [
   {
@@ -94,10 +94,10 @@ exports.config = {
   // will be called from there.
   //
   // Browserstack Config
-  user: process.env.BROWSERSTACK_USERNAME || 'artursanko_EXT34R',
-  key: process.env.BROWSERSTACK_ACCESS_KEY || 'QhGGLoKDeiyPHGyK1Hhj',
+  user: bsCredentials.BROWSERSTACK_USERNAME,
+  key: bsCredentials.BROWSERSTACK_ACCESS_KEY,
   host: 'hub.browserstack.com',
- 
+
   specs: ['./test/specs/**/**.js'],
 
   suites: {
