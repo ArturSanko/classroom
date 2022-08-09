@@ -196,23 +196,23 @@ exports.config = {
    * @param {Object} config wdio configuration object
    * @param {Array.<Object>} capabilities list of capabilities details
    */
-  onPrepare: function (config, capabilities) {
-    const allureResult = 'allure-results';
+  // onPrepare: function (config, capabilities) {
+  //   const allureResult = 'allure-results';
 
-    if (!fs.existsSync(`./${allureResult}`)) {
-      fs.mkdirSync(`${allureResult}`);
-    }
+  //   if (!fs.existsSync(`./${allureResult}`)) {
+  //     fs.mkdirSync(`${allureResult}`);
+  //   }
 
-    fs.readdir(`${allureResult}`, (err, files) => {
-      if (err) throw err;
+  //   fs.readdir(`${allureResult}`, (err, files) => {
+  //     if (err) throw err;
 
-      for (const file of files) {
-        fs.unlink(path.join(`${allureResult}`, file), (err) => {
-          if (err) throw err;
-        });
-      }
-    });
-  },
+  //     for (const file of files) {
+  //       fs.unlink(path.join(`${allureResult}`, file), (err) => {
+  //         if (err) throw err;
+  //       });
+  //     }
+  //   });
+  // },
   /**
    * Gets executed before a worker process is spawned and can be used to initialise specific service
    * for that worker as well as modify runtime environments in an async fashion.
@@ -266,8 +266,23 @@ exports.config = {
    * @param {String}                   uri      path to feature file
    * @param {GherkinDocument.IFeature} feature  Cucumber feature object
    */
-  // beforeFeature: function (uri, feature) {
-  // },
+  beforeFeature: function (uri, feature) {
+    const allureResult = 'allure-results';
+
+    if (!fs.existsSync(`./${allureResult}`)) {
+      fs.mkdirSync(`${allureResult}`);
+    }
+
+    fs.readdir(`${allureResult}`, (err, files) => {
+      if (err) throw err;
+
+      for (const file of files) {
+        fs.unlink(path.join(`${allureResult}`, file), (err) => {
+          if (err) throw err;
+        });
+      }
+    });
+  },
   /**
    *
    * Runs before a Cucumber Scenario.
