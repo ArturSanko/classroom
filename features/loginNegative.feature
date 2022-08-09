@@ -4,7 +4,7 @@ Feature: The user logs into the site with ivalide credentials
 
     Given I am go to 'https://automationteststore.com/' page
     When I login with '<username>' and '<password>'
-   Then I should get an error message saying '<message>'
+    Then I should get an error message saying '<message>'
 
     Examples:
       | username  | password | message                                     |
