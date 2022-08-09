@@ -28,10 +28,10 @@ class LoginPageInteraction extends BaseInteraction {
     await super.waitForDisplayed(selector);
   }
 
-  async loginIntoSystem(login, password) {
+  async loginIntoSystem(username, password) {
     await this.clickElement(this.buttonLoginOrRegister);
     await this.waitForDisplayed(this.accountLoginPage);
-    await this.inputText(this.loginNameField, login);
+    await this.inputText(this.loginNameField, username);
     await this.inputText(this.passwordField, password);
     await this.clickElement(this.buttonLogin);
   }

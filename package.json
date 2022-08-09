@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "devDependencies": {
+        "@cucumber/cucumber": "^8.5.1",
         "@wdio/allure-reporter": "^7.20.7",
         "@wdio/browserstack-service": "^7.20.9",
         "@wdio/cli": "^7.20.9",
@@ -19,6 +20,6 @@
     },
     "scripts": {
         "allure": "npx allure serve",
-        "loginNegative": "npx wdio -f cucumber --spec feature/loginNegative.feature"
-    }
+        "loginNegative": "npx wdio -f cucumber --spec feature/loginNegative.feature",
+        "allTest": "npx wdio run ./wdio.conf.js"    }
 }
