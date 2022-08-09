@@ -32,7 +32,12 @@ exports.config = {
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
   //
-  specs: ['./features/**/*.feature'],
+  specs: ['./features/**/checkingAttr.feature'],
+
+  suites: {
+    loginNegative: ['./features/**/loginNegative.feature'],
+    checkingAttr: ['./features/**/checkingAttr.feature'],
+  },
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'

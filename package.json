@@ -20,6 +20,8 @@
     },
     "scripts": {
         "allure": "npx allure serve",
-        "loginNegative": "npx wdio -f cucumber --spec feature/loginNegative.feature",
-        "allTest": "npx wdio run ./wdio.conf.js"    }
-}
+        "allTest": "npx wdio run ./wdio.conf.js",
+        "loginNegative": "npx wdio run ./wdio.conf.js --suite loginNegative",
+        "checkingAttr": "npx wdio run ./wdio.conf.js --suite checkingAttr"
+    }
+} 
