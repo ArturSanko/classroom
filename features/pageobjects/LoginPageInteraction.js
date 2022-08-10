@@ -7,9 +7,9 @@ class LoginPageInteraction extends BaseInteraction {
     this.loginNameField = '#loginFrm_loginname';
     this.passwordField = '#loginFrm_password';
     this.buttonLogin = '[title="Login"]';
-    this.userName = '//*[text()="Welcome back Name"]';
     this.accountLoginPage = '.maintext';
     this.errorMessage = '[class^="alert"]';
+    this.userName = 'div[class^="menu"]';
   }
 
   async openURL(url) {

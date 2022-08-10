@@ -1,4 +1,4 @@
-Feature: The user logs into the site with ivalide credentials
+Feature: The user logs into the site with invalid credentials
 
   Scenario Outline: As an unregistered user, I can not log into the site
 

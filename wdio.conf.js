@@ -37,6 +37,8 @@ exports.config = {
   suites: {
     loginNegative: ['./features/**/loginNegative.feature'],
     checkingAttr: ['./features/**/checkingAttr.feature'],
+    loginPositive: ['./features/**/loginPositive.feature'],
+    registerNewUser: ['./features/**/registerNewUser.feature'],
   },
   // Patterns to exclude.
   exclude: [

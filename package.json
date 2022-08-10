@@ -22,6 +22,9 @@
         "allure": "npx allure serve",
         "allTest": "npx wdio run ./wdio.conf.js",
         "loginNegative": "npx wdio run ./wdio.conf.js --suite loginNegative",
-        "checkingAttr": "npx wdio run ./wdio.conf.js --suite checkingAttr"
+        "checkingAttr": "npx wdio run ./wdio.conf.js --suite checkingAttr",
+        "loginPositive": "npx wdio run ./wdio.conf.js --suite loginPositive",
+        "registerNewUser": "npx wdio run ./wdio.conf.js --suite registerNewUser"
+
     }
 } 
