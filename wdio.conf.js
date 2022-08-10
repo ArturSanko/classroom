@@ -204,21 +204,6 @@ exports.config = {
    * @param {Array.<Object>} capabilities list of capabilities details
    */
   // onPrepare: function (config, capabilities) {
-  //   const allureResult = 'allure-results';
-
-  //   if (!fs.existsSync(`./${allureResult}`)) {
-  //     fs.mkdirSync(`${allureResult}`);
-  //   }
-
-  //   fs.readdir(`${allureResult}`, (err, files) => {
-  //     if (err) throw err;
-
-  //     for (const file of files) {
-  //       fs.unlink(path.join(`${allureResult}`, file), (err) => {
-  //         if (err) throw err;
-  //       });
-  //     }
-  //   });
   // },
   /**
    * Gets executed before a worker process is spawned and can be used to initialise specific service
@@ -289,6 +274,22 @@ exports.config = {
         });
       }
     });
+
+    const screenshotFolder = 'screenshots';
+
+    if (!fs.existsSync(`./${screenshotFolder}`)) {
+      fs.mkdirSync(`${screenshotFolder}`);
+    }
+
+    fs.readdir(`${screenshotFolder}`, (err, files) => {
+      if (err) throw err;
+
+      for (const file of files) {
+        fs.unlink(path.join(`${screenshotFolder}`, file), (err) => {
+          if (err) throw err;
+        });
+      }
+    });
   },
   /**
    *
@@ -330,8 +331,32 @@ exports.config = {
    * @param {number}                 result.duration  duration of scenario in milliseconds
    * @param {Object}                 context          Cucumber World object
    */
-  // afterScenario: function (world, result, context) {
-  // },
+  afterScenario: async function (world, result, context) {
+    console.log('afterScenario: ' + JSON.stringify(result));
+    console.log('result.passed: ' + result.passed);
+
+    const date = new Date().toLocaleString().replace(/[:,\/\s]/g, '-');
+    const nameFile = path.basename(test.file).replace(/\W/g, '_');
+    const nameTest = test.title.replace(/\W/g, '_');
+
+    if (!result.passed) {
+      await browser.saveScreenshot(
+        `./screenshots/Date_${date}_FileName_${nameFile}_TestName_${nameTest}.png`
+      );
+
+      addAttachment(
+        `Screenshot_Date_${date}_FileName_${nameFile}_TestName_${nameTest}`,
+        Buffer.from(await browser.takeScreenshot(), 'base64'),
+        'image/png'
+      );
+
+      const html = await $('//html').getHTML();
+      addAttachment('HTML', html, 'text/html');
+
+      const cookies = JSON.stringify(await browser.getAllCookies());
+      addAttachment('Cookiess', cookies, 'text/plain');
+    }
+  },
   /**
    *
    * Runs after a Cucumber Feature.
