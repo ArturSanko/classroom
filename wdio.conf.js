@@ -157,8 +157,8 @@ exports.config = {
       {
         outputDir: 'allure-results',
         disableWebdriverStepsReporting: true,
-        disableWebdriverScreenshotsReporting: true,
-        useCucumberStepReporter: false,
+        disableWebdriverScreenshotsReporting: false,
+        useCucumberStepReporter: true,
       },
     ],
   ],
@@ -350,6 +350,14 @@ exports.config = {
         'image/png'
       );
 
+      const html = await $('//html').getHTML();
+      addAttachment('HTML', html, 'text/html');
+
+      const cookies = JSON.stringify(await browser.getAllCookies());
+      addAttachment('Cookiess', cookies, 'text/plain');
+    }
+
+    if (result.passed) {
       const html = await $('//html').getHTML();
       addAttachment('HTML', html, 'text/html');
 

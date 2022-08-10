@@ -16,7 +16,8 @@
         "chai-webdriverio": "^1.0.0",
         "chromedriver": "^103.0.0",
         "dotenv": "^16.0.1",
-        "wdio-chromedriver-service": "^7.3.2"
+        "wdio-chromedriver-service": "^7.3.2",
+        "wdio-cucumber-viewport-logger-service": "^1.0.4"
     },
     "scripts": {
         "allure": "npx allure serve",
