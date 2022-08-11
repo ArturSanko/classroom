@@ -3,9 +3,11 @@ const { Given, When, Then } = require('@wdio/cucumber-framework');
 const loginPageInteraction = require('../pageobjects/LoginPageInteraction.js');
 const pageYaInteraction = require('../pageobjects/PageYaInteraction.js');
 const registerPageInteraction = require('../pageobjects/RegisterPageInteraction.js');
+const shopInteraction = require('../pageobjects/ShopInteraction.js');
 
 Given(/^I am go to '([^']*)' page$/, async (url) => {
-  await loginPageInteraction.openURL(url);
+  await browser.maximizeWindow();
+  await browser.url(url);
 });
 
 When(/^I login with '([^']*)' and '([^']*)'$/, async (username, password) => {
@@ -13,14 +15,10 @@ When(/^I login with '([^']*)' and '([^']*)'$/, async (username, password) => {
 });
 
 Then(/^I should get an error message saying '([^']*)'$/, async (message) => {
-  const msg = loginPageInteraction.getElement(
+  const msg = await loginPageInteraction.getElement(
     loginPageInteraction.errorMessage
   );
   await expect(msg).toHaveTextContaining(message);
-});
-
-Given(/^I open the URL '([^']*)'$/, async (url) => {
-  await pageYaInteraction.openURL(url);
 });
 
 Then(/^I expect elements attributes:$/, async (datatable) => {
@@ -32,7 +30,9 @@ Then(/^I expect elements attributes:$/, async (datatable) => {
 });
 
 Then(/^I should get my name on the page as: '([^']*)'$/, async (message) => {
-  const msg = loginPageInteraction.getElement(loginPageInteraction.userName);
+  const msg = await loginPageInteraction.getElement(
+    loginPageInteraction.userName
+  );
   await expect(msg).toHaveTextContaining(message);
 });
 
@@ -56,8 +56,16 @@ When(/^I register an account with credentials:$/, async (datatable) => {
 });
 
 Then(/^I should get message as: '([^']*)'$/, async (message) => {
-  const msg = registerPageInteraction.getElement(
+  const msg = await registerPageInteraction.getElement(
     registerPageInteraction.successedPage
   );
   await expect(msg).toHaveTextContaining(message);
+});
+
+When(/^I go to '([^']*)' menu item$/, async (item) => {
+  await shopInteraction.clickMenuItem(item);
+});
+
+Then(/^I check shopping card item images:$/, async (formJSON) => {
+  await shopInteraction.checkShoppingCardItemImages(formJSON);
 });

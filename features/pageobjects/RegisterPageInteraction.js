@@ -19,11 +19,6 @@ class RegisterPageInteraction extends BaseInteraction {
     this.passwordConfirm = '#AccountFrm_confirm';
     this.policyRadioButton = '#AccountFrm_agree';
     this.successedPage = '.maintext';
-
-  }
-
-  async openURL(url) {
-    await this.openBrowserWithURL(url);
   }
 
   async clickElement(selector) {

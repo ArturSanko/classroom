@@ -5,10 +5,6 @@ class PageYaInteraction extends BaseInteraction {
     super();
   }
 
-  async openURL(url) {
-    await this.openBrowserWithURL(url);
-  }
-
   async getElement(selector) {
     const elem = await super.getElement(selector);
     return elem;

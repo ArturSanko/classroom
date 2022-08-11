@@ -1,11 +1,9 @@
-@checkingAttr
 Feature: HTML's attribute
 
     Scenario: Check HTML's attribute
 
-        When I open the URL 'https://ya.ru'
+        Given I am go to 'https://ya.ru' page
         Then I expect elements attributes:
             | element     | attribute | value               |
             | .home-link2 | href.     | https://ya.ru/?nr=1 |
-            | input       | name.     | text2               | 
-            
+            | input       | name.     | text2               |

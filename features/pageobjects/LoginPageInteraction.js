@@ -12,10 +12,6 @@ class LoginPageInteraction extends BaseInteraction {
     this.userName = 'div[class^="menu"]';
   }
 
-  async openURL(url) {
-    await this.openBrowserWithURL(url);
-  }
-
   async clickElement(selector) {
     await super.clickElement(selector);
   }

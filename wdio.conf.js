@@ -39,6 +39,7 @@ exports.config = {
     checkingAttr: ['./features/**/checkingAttr.feature'],
     loginPositive: ['./features/**/loginPositive.feature'],
     registerNewUser: ['./features/**/registerNewUser.feature'],
+    checkShoppingCardImages: ['./features/**/checkShoppingCardImages.feature'],
   },
   // Patterns to exclude.
   exclude: [
