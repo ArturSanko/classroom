@@ -3,7 +3,7 @@ Feature: Check all shopping card images on the web site
     Scenario: Check all shopping card images
 
         Given I navigate to 'https://automationteststore.com/'
-        When I go to 'Books' menu item
+        When I click 'Books' element
         Then I check shopping card item images:
             """
             {

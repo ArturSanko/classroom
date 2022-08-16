@@ -28,6 +28,6 @@ When(/^I register an account with credentials:$/, async (datatable) => {
   }
 });
 
-When(/^I go to '([^']*)' menu item$/, async (item) => {
+When(/^I click '([^']*)' element$/, async (item) => {
   await shopInteraction.clickMenuItem(item);
 });
