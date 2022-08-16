@@ -2,7 +2,7 @@ Feature: HTML's attribute
 
     Scenario: Check HTML's attribute
 
-        Given I am go to 'https://ya.ru' page
+        Given I navigate to 'https://ya.ru'
         Then I expect elements attributes:
             | element     | attribute | value               |
             | .home-link2 | href.     | https://ya.ru/?nr=1 |

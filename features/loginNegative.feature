@@ -2,7 +2,7 @@ Feature: The user logs into the site with invalid credentials
 
   Scenario Outline: As an unregistered user, I can not log into the site
 
-    Given I am go to 'https://automationteststore.com/' page
+    Given I navigate to 'https://automationteststore.com/'
     When I login with '<username>' and '<password>'
     Then I should get an error message saying '<message>'
 
