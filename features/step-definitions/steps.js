@@ -18,5 +18,12 @@ const urls = require('../data/urls.js');
  */
 Given(/^I navigate to '([^']*)'$/, async (url) => {
   await browser.maximizeWindow();
-  await browser.url(url);
+  switch (url) {
+    case 'shop':
+      await browser.url(urls.shop);
+      break;
+    case 'yandex':
+      await browser.url(urls.yandex);
+      break;
+  }
 });
