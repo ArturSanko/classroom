@@ -4,7 +4,7 @@ Feature: The user logs into the site with valid credentials
 
         Given I navigate to 'shop'
         When I login with '<username>' and '<password>'
-        Then I should get my name on the page as: '<message>'
+        Then I expect that message of 'loginPageInteraction'.'userName' is equal: '<message>'
 
         Examples:
             | username  | password | message           |
