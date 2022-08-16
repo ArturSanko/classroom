@@ -1,4 +1,5 @@
 const BaseInteraction = require('./BaseInteraction');
+const loginCredentials = require('../data/loginCredentials.js');
 
 class LoginPageInteraction extends BaseInteraction {
   constructor() {
@@ -30,6 +31,35 @@ class LoginPageInteraction extends BaseInteraction {
     await this.inputText(this.loginNameField, username);
     await this.inputText(this.passwordField, password);
     await this.clickElement(this.buttonLogin);
+  }
+
+  async loginIntoSystemThroughSwitch(user) {
+    await this.clickElement(this.buttonLoginOrRegister);
+    await this.waitForDisplayed(this.accountLoginPage);
+    switch (user) {
+      case 'positiveUser':
+        await this.inputText(
+          this.loginNameField,
+          loginCredentials.positiveUser.login
+        );
+        await this.inputText(
+          this.passwordField,
+          loginCredentials.positiveUser.password
+        );
+        await this.clickElement(this.buttonLogin);
+        break;
+      case 'negativeUser':
+        await this.inputText(
+          this.loginNameField,
+          loginCredentials.negativeUser.username
+        );
+        await this.inputText(
+          this.passwordField,
+          loginCredentials.negativeUser.password
+        );
+        await this.clickElement(this.buttonLogin);
+        break;
+    }
   }
 
   async deleteCookies() {

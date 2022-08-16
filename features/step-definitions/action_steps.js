@@ -21,6 +21,10 @@ When(/^I login with '([^']*)' and '([^']*)'$/, async (username, password) => {
   await loginPageInteraction.loginIntoSystem(username, password);
 });
 
+When(/^I login as '([^']*)'$/, async (user) => {
+  await loginPageInteraction.loginIntoSystemThroughSwitch(user);
+});
+
 /**
  * Register a new account.
  *
