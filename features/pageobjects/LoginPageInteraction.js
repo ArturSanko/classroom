@@ -1,5 +1,6 @@
 const BaseInteraction = require('./BaseInteraction');
 const loginCredentials = require('../data/loginCredentials.js');
+const LoginCredentialsClass = require('../data/LoginCredentialsClass.js');
 
 class LoginPageInteraction extends BaseInteraction {
   constructor() {
@@ -40,28 +41,28 @@ class LoginPageInteraction extends BaseInteraction {
       case 'positiveUser':
         await this.inputText(
           this.loginNameField,
-          loginCredentials.positiveUser.login
+          LoginCredentialsClass.positiveUserLogin
         );
         await this.inputText(
           this.passwordField,
-          loginCredentials.positiveUser.password
+          LoginCredentialsClass.positiveUserPassword
         );
         await this.clickElement(this.buttonLogin);
         break;
       case 'negativeUser':
         await this.inputText(
           this.loginNameField,
-          loginCredentials.negativeUser.username
+          LoginCredentialsClass.negativeUserLogin
         );
         await this.inputText(
           this.passwordField,
-          loginCredentials.negativeUser.password
+          LoginCredentialsClass.negativeUserPassword
         );
         await this.clickElement(this.buttonLogin);
         break;
     }
   }
-
+ 
   async deleteCookies() {
     await super.deleteCookies();
   }

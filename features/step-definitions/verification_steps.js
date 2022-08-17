@@ -56,11 +56,42 @@ Then(/^I expect elements attributes:$/, async (datatable) => {
  * @param selector
  * @param message
  */
+// Then(
+//   /^I expect that (message|error message|element) of '{pageName}'.'{selector}' is equal: '([^']*)'$/,
+//   async (pageName, selector, message) => {
+//     this.selector = selector;
+//     const msg = await pageName.getElement(pageName.selector);
+//     await expect(msg).toHaveTextContaining(message);
+//   }
+// );
+
 Then(
-  /^I expect that (message|error message|element) of '{pageName}'.'{selector}' is equal: '([^']*)'$/,
-  async (pageName, selector, message) => {
-    this.selector = selector;
-    const msg = await pageName.getElement(pageName.selector);
+  /^I expect that (message|error message|element) of '([^']*)'.'([^']*)' is equal: '([^']*)'$/,
+  async (text, pageName, selector, message) => {
+    let msg;
+
+    async function verifyTextOfElement(selector) {
+      switch (selector) {
+        case 'errorMessage':
+           msg = await loginPageInteraction.getElement(
+            loginPageInteraction.errorMessage
+          );
+          break;
+        case 'userName':
+          msg = await loginPageInteraction.getElement(
+            loginPageInteraction.userName
+          );
+          break;
+        case 'successedPage':
+          msg = await registerPageInteraction.getElement(
+            registerPageInteraction.successedPage
+          );
+          break;
+      }
+    }
+
+    await verifyTextOfElement(selector);
+
     await expect(msg).toHaveTextContaining(message);
   }
 );
