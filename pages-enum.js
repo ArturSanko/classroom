@@ -6,6 +6,7 @@ const ShopInteraction = require('./features/pageobjects/ShopInteraction.js');
 
 // datas
 const Urls = require('./features/data/urls.js');
+const loginCredentials = require('./features/data/loginCredentials.js');
 
 module.exports = {
   loginPageInteraction: new LoginPageInteraction(),
@@ -13,4 +14,5 @@ module.exports = {
   registerPageInteraction: new RegisterPageInteraction(),
   shopInteraction: new ShopInteraction(),
   urls: new Urls(),
+  loginCredentials: new loginCredentials(),
 };

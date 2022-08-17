@@ -16,14 +16,17 @@ const urls = require('../data/urls.js');
  *
  * @param url
  */
-Given(/^I navigate to '([^']*)'$/, async (url) => {
+Given(/^I navigate to '{objUrls}'.'{url}'$/, async (objUrls, url) => {
+  this.url = url;
   await browser.maximizeWindow();
-  switch (url) {
-    case 'shop':
-      await browser.url(urls.shop);
-      break;
-    case 'yandex':
-      await browser.url(urls.yandex);
-      break;
-  }
+  await browser.url(objUrls.url);
+
+  // switch (url) {
+  //   case 'shop':
+  //     await browser.url(urls.shop);
+  //     break;
+  //   case 'yandex':
+  //     await browser.url(urls.yandex);
+  //     break;
+  // }
 });

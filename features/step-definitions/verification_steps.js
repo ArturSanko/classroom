@@ -59,6 +59,7 @@ Then(/^I expect elements attributes:$/, async (datatable) => {
 Then(
   /^I expect that (message|error message|element) of '{pageName}'.'{selector}' is equal: '([^']*)'$/,
   async (pageName, selector, message) => {
+    this.selector = selector;
     const msg = await pageName.getElement(pageName.selector);
     await expect(msg).toHaveTextContaining(message);
   }
