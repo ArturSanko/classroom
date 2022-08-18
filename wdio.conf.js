@@ -40,7 +40,7 @@ exports.config = {
     loginPositive: ['./features/**/loginPositive.feature'],
     registerNewUser: ['./features/**/registerNewUser.feature'],
     checkShoppingCardImages: ['./features/**/checkShoppingCardImages.feature'],
-    loginSwitch: ['./features/**/loginPositiveThroughSwitch.feature']
+    loginSwitch: ['./features/**/loginPositiveThroughSwitch.feature'],
   },
   // Patterns to exclude.
   exclude: [
@@ -130,8 +130,29 @@ exports.config = {
   // Services take over a specific job you don't want to take care of. They enhance
   // your test setup with almost no effort. Unlike plugins, they don't add new
   // commands. Instead, they hook themselves up into the test process.
-  services: ['chromedriver'],
-
+  services: [
+    ['chromedriver'],
+    [
+      'cucumber-viewport-logger',
+      {
+        numberOfSteps: 5,
+        enabled: process.env.VP_LOGGER === '1', // service will be enabled only when you set `VP_LOGGER` enviroment variable to `1`
+        // set CSS custom styles for particular elements
+        styles: {
+          wrapper: { backgroundColor: 'white' },
+          keyword: { color: 'red' },
+          text: {
+            fontSize: '30px',
+            color: 'green',
+          },
+          closeButton: {
+            color: 'red',
+          },
+        },
+      },
+    ],
+  ],
+  //['chromedriver'],
   // Framework you want to run your specs with.
   // The following are supported: Mocha, Jasmine, and Cucumber
   // see also: https://webdriver.io/docs/frameworks
