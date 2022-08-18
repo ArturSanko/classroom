@@ -2,9 +2,9 @@ Feature: The user logs into the site with invalid credentials
 
   Scenario Outline: As an unregistered user, I can not log into the site
 
-    Given I navigate to 'https://automationteststore.com/'
+    Given I navigate to 'urls'.'shop'
     When I login with '<username>' and '<password>'
-    Then I should get an error message saying '<message>'
+    Then I expect that error message of 'loginPageInteraction'.'errorMessage' is equal: '<message>'
 
     Examples:
       | username  | password | message                                     |

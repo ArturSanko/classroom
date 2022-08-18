@@ -4,6 +4,32 @@ const loginPageInteraction = require('../pageobjects/LoginPageInteraction.js');
 const pageYaInteraction = require('../pageobjects/PageYaInteraction.js');
 const registerPageInteraction = require('../pageobjects/RegisterPageInteraction.js');
 const shopInteraction = require('../pageobjects/ShopInteraction.js');
+const urls = require('../data/urls.js');
+const urlClass = require('../data/urlClass.js');
+const loginCredentialsClass = require('../data/LoginCredentialsClass.js');
+const loginCredentials = require('../data/loginCredentials.js');
+
+/**
+ * Open URL.
+ *
+ * EXAMPLES:
+ * I navigate to 'urls'.'shop'
+ * I navigate to 'urls'.'yandex'
+ *
+ * @param objUrls
+ * @param url
+ */
+Given(/^I navigate to '([^']*)'.'([^']*)'$/, async (objUrls, url) => {
+  await browser.maximizeWindow();
+  switch (url) {
+    case 'shop':
+      await browser.url(urlClass.shop);
+      break;
+    case 'yandex':
+      await browser.url(urlClass.yandex);
+      break;
+  }
+});
 
 /**
  * Log in user.
@@ -22,7 +48,7 @@ When(/^I login with '([^']*)' and '([^']*)'$/, async (username, password) => {
 });
 
 /**
- * Log in user.
+ * Log in user through switch method.
  *
  * EXAMPLES:
  * I login as 'positiveUser'

@@ -2,7 +2,7 @@ Feature: Check all shopping card images on the web site
 
     Scenario: Check all shopping card images
 
-        Given I navigate to 'https://automationteststore.com/'
+        Given I navigate to 'urls'.'shop'
         When I click 'Books' element
         Then I check shopping card item images:
             """

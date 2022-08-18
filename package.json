@@ -27,6 +27,6 @@
         "loginPositive": "npx wdio run ./wdio.conf.js --suite loginPositive",
         "registerNewUser": "npx wdio run ./wdio.conf.js --suite registerNewUser",
         "checkShoppingCardImages ": "npx wdio run ./wdio.conf.js --suite checkShoppingCardImages",
-        "loginSwitch ": "npx wdio run ./wdio.conf.js --suite loginSwitch"
+        "loginThroughSwitch ": "npx wdio run ./wdio.conf.js --suite loginSwitch"
     }
 }

@@ -4,6 +4,10 @@ const loginPageInteraction = require('../pageobjects/LoginPageInteraction.js');
 const pageYaInteraction = require('../pageobjects/PageYaInteraction.js');
 const registerPageInteraction = require('../pageobjects/RegisterPageInteraction.js');
 const shopInteraction = require('../pageobjects/ShopInteraction.js');
+const urls = require('../data/urls.js');
+const urlClass = require('../data/urlClass.js');
+const loginCredentialsClass = require('../data/LoginCredentialsClass.js');
+const loginCredentials = require('../data/loginCredentials.js');
 
 /**
  *  Verify attributes of element via JSON form.
@@ -48,14 +52,17 @@ Then(/^I expect elements attributes:$/, async (datatable) => {
  *  Verify text of element.
  *
  * EXAMPLES:
- * I expect that message of '{registerPageInteraction}'.'{successedPage}' is equal: 'YOUR ACCOUNT HAS BEEN CREATED!'
- * I expect that error message of '{loginPageInteraction}'.'{errorMessage}' is equal: 'Error: Incorrect login or password provided'
- * I expect that element of '{loginPageInteraction}'.'{userName}' is equal: 'Welcome back Name'
+ * I expect that message of 'registerPageInteraction'.'successedPage' is equal: 'YOUR ACCOUNT HAS BEEN CREATED!'
+ * I expect that error message of 'loginPageInteraction'.'errorMessage' is equal: 'Error: Incorrect login or password provided'
+ * I expect that element of 'loginPageInteraction'.'userName' is equal: 'Welcome back Name'
+ * I expect that element of 'loginPageInteraction'.'userName' is equal: '<Message>'
  *
+ * @param text
  * @param pageName
  * @param selector
  * @param message
  */
+// old step
 // Then(
 //   /^I expect that (message|error message|element) of '{pageName}'.'{selector}' is equal: '([^']*)'$/,
 //   async (pageName, selector, message) => {
@@ -68,30 +75,30 @@ Then(/^I expect elements attributes:$/, async (datatable) => {
 Then(
   /^I expect that (message|error message|element) of '([^']*)'.'([^']*)' is equal: '([^']*)'$/,
   async (text, pageName, selector, message) => {
-    let msg;
+    let elem;
 
-    async function verifyTextOfElement(selector) {
+    async function getElement(selector) {
       switch (selector) {
         case 'errorMessage':
-           msg = await loginPageInteraction.getElement(
+          elem = await loginPageInteraction.getElement(
             loginPageInteraction.errorMessage
           );
           break;
         case 'userName':
-          msg = await loginPageInteraction.getElement(
+          elem = await loginPageInteraction.getElement(
             loginPageInteraction.userName
           );
           break;
         case 'successedPage':
-          msg = await registerPageInteraction.getElement(
+          elem = await registerPageInteraction.getElement(
             registerPageInteraction.successedPage
           );
           break;
       }
     }
 
-    await verifyTextOfElement(selector);
+    await getElement(selector);
 
-    await expect(msg).toHaveTextContaining(message);
+    await expect(elem).toHaveTextContaining(message);
   }
 );
