@@ -9,6 +9,8 @@ const urlClass = require('../data/urlClass.js');
 const loginCredentialsClass = require('../data/LoginCredentialsClass.js');
 const loginCredentials = require('../data/loginCredentials.js');
 
+// const pagesEnum = require('../../pages-enum')
+
 /**
  * Open URL.
  *
