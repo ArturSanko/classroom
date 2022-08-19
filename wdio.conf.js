@@ -359,16 +359,35 @@ exports.config = {
     console.log('result.passed: ' + result.passed);
 
     const date = new Date().toLocaleString().replace(/[:,\/\s]/g, '-');
-    const nameFile = path.basename(test.file).replace(/\W/g, '_');
-    const nameTest = test.title.replace(/\W/g, '_');
+
+    const featureName = JSON.stringify(world.gherkinDocument.feature.name);
+    const featureNameNew = featureName.replace(/\W/g, '_');
+
+    const scenarioName = JSON.stringify(
+      world.gherkinDocument.feature.children[0].scenario.name
+    );
+    const scenarioNameNew = scenarioName.replace(/\W/g, '_');
+
+    const stepsText = JSON.stringify(
+      world.gherkinDocument.feature.children[0].scenario.steps[0].text
+    );
+    const stepsTextNew = stepsText.replace(/\W/g, '_');
+
+    console.log('featureName: ' + featureName);
+    console.log('featureNameNew: ' + featureNameNew);
+    console.log('scenario.name: ' + scenarioName);
+    console.log('scenarioNameNew: ' + scenarioNameNew);
+    console.log('steps.text: ' + stepsText);
+    console.log('stepsTextNew: ' + stepsTextNew);
+    console.log('date: ' + date);
 
     if (!result.passed) {
       await browser.saveScreenshot(
-        `./screenshots/Date_${date}_FileName_${nameFile}_TestName_${nameTest}.png`
+        `./screenshots/DATA_${date}_FeatureName${featureNameNew}ScenarioName${scenarioNameNew}StepsText${stepsTextNew}.png`
       );
 
       addAttachment(
-        `Screenshot_Date_${date}_FileName_${nameFile}_TestName_${nameTest}`,
+        `Data_${date}_FeatureName${featureNameNew}ScenarioName${scenarioNameNew}StepsText${stepsTextNew}`,
         Buffer.from(await browser.takeScreenshot(), 'base64'),
         'image/png'
       );
