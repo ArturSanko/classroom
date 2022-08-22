@@ -4,3 +4,4 @@ package-lock.json
 /screenshots
 /downloads
 local.logv
+/.tmp

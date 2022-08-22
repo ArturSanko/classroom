@@ -12,5 +12,11 @@ const { World } = require('@wdio/cucumber-framework');
  * @param b
  */
 When(/^I add ([^']*) and ([^']*)$/, async (a, b) => {
-  this.result = a + b;
+  async function sum(...num) {
+    const result = num
+      .map((item) => Number(item))
+      .reduce((sum, current) => sum + current, 0);
+    return String(result);
+  }
+  this.result = await sum(a, b);
 });

@@ -165,7 +165,7 @@ exports.config = {
   // If you are using Cucumber you need to specify the location of your step definitions.
   cucumberOpts: {
     // <string[]> (file/dir) require files before executing features
-    require: ['./features/step-definitions/steps.js'],
+    require: ['./features/step-definitions/**.js'],
     // <boolean> show full backtrace for errors
     backtrace: false,
     // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
@@ -272,6 +272,35 @@ exports.config = {
         });
       }
     });
+
+
+    const screenshotFolder = 'screenshots';
+
+    if (!fs.existsSync(`./${screenshotFolder}`)) {
+      fs.mkdirSync(`${screenshotFolder}`);
+    }
+
+    fs.readdir(`${screenshotFolder}`, (err, files) => {
+      if (err) throw err;
+
+      for (const file of files) {
+        fs.unlink(path.join(`${screenshotFolder}`, file), (err) => {
+          if (err) throw err;
+        });
+      }
+    });
+
+    const tmp = '.tmp/json/';
+
+    fs.readdir(`${tmp}`, (err, files) => {
+        if (err) throw err;
+  
+        for (const file of files) {
+          fs.unlink(path.join(`${tmp}`, file), (err) => {
+            if (err) throw err;
+          });
+        }
+      });
   },
   /**
    *
@@ -313,59 +342,59 @@ exports.config = {
    * @param {number}                 result.duration  duration of scenario in milliseconds
    * @param {Object}                 context          Cucumber World object
    */
-  afterScenario: function (world, result, context) {
-    console.log('afterScenario: ' + JSON.stringify(result));
-    console.log('result.passed: ' + result.passed);
+  //   afterScenario: async function (world, result, context) {
+  //     console.log('afterScenario: ' + JSON.stringify(result));
+  //     console.log('result.passed: ' + result.passed);
 
-    const date = new Date().toLocaleString().replace(/[:,\/\s]/g, '-');
+  //     const date = new Date().toLocaleString().replace(/[:,\/\s]/g, '-');
 
-    const featureName = JSON.stringify(world.gherkinDocument.feature.name);
-    const featureNameNew = featureName.replace(/\W/g, '_');
+  //     const featureName = JSON.stringify(world.gherkinDocument.feature.name);
+  //     const featureNameNew = featureName.replace(/\W/g, '_');
 
-    const scenarioName = JSON.stringify(
-      world.gherkinDocument.feature.children[0].scenario.name
-    );
-    const scenarioNameNew = scenarioName.replace(/\W/g, '_');
+  //     const scenarioName = JSON.stringify(
+  //       world.gherkinDocument.feature.children[0].scenario.name
+  //     );
+  //     const scenarioNameNew = scenarioName.replace(/\W/g, '_');
 
-    const stepsText = JSON.stringify(
-      world.gherkinDocument.feature.children[0].scenario.steps[0].text
-    );
-    const stepsTextNew = stepsText.replace(/\W/g, '_');
+  //     const stepsText = JSON.stringify(
+  //       world.gherkinDocument.feature.children[0].scenario.steps[0].text
+  //     );
+  //     const stepsTextNew = stepsText.replace(/\W/g, '_');
 
-    console.log('featureName: ' + featureName);
-    console.log('featureNameNew: ' + featureNameNew);
-    console.log('scenario.name: ' + scenarioName);
-    console.log('scenarioNameNew: ' + scenarioNameNew);
-    console.log('steps.text: ' + stepsText);
-    console.log('stepsTextNew: ' + stepsTextNew);
-    console.log('date: ' + date);
+  //     console.log('featureName: ' + featureName);
+  //     console.log('featureNameNew: ' + featureNameNew);
+  //     console.log('scenario.name: ' + scenarioName);
+  //     console.log('scenarioNameNew: ' + scenarioNameNew);
+  //     console.log('steps.text: ' + stepsText);
+  //     console.log('stepsTextNew: ' + stepsTextNew);
+  //     console.log('date: ' + date);
 
-    if (!result.passed) {
-      await browser.saveScreenshot(
-        `./screenshots/DATA_${date}_FeatureName${featureNameNew}ScenarioName${scenarioNameNew}StepsText${stepsTextNew}.png`
-      );
+  //     if (!result.passed) {
+  //       await browser.saveScreenshot(
+  //         `./screenshots/DATA_${date}_FeatureName${featureNameNew}ScenarioName${scenarioNameNew}StepsText${stepsTextNew}.png`
+  //       );
 
-      addAttachment(
-        `Data_${date}_FeatureName${featureNameNew}ScenarioName${scenarioNameNew}StepsText${stepsTextNew}`,
-        Buffer.from(await browser.takeScreenshot(), 'base64'),
-        'image/png'
-      );
+  //       addAttachment(
+  //         `Data_${date}_FeatureName${featureNameNew}ScenarioName${scenarioNameNew}StepsText${stepsTextNew}`,
+  //         Buffer.from(await browser.takeScreenshot(), 'base64'),
+  //         'image/png'
+  //       );
 
-      const html = await $('//html').getHTML();
-      addAttachment('HTML', html, 'text/html');
+  //       const html = await $('//html').getHTML();
+  //       addAttachment('HTML', html, 'text/html');
 
-      const cookies = JSON.stringify(await browser.getAllCookies());
-      addAttachment('Cookies', cookies, 'text/plain');
-    }
+  //       const cookies = JSON.stringify(await browser.getAllCookies());
+  //       addAttachment('Cookies', cookies, 'text/plain');
+  //     }
 
-    if (result.passed) {
-      const html = await $('//html').getHTML();
-      addAttachment('HTML', html, 'text/html');
+  //     if (result.passed) {
+  //       const html = await $('//html').getHTML();
+  //       addAttachment('HTML', html, 'text/html');
 
-      const cookies = JSON.stringify(await browser.getAllCookies());
-      addAttachment('Cookies', cookies, 'text/plain');
-    }
-  },
+  //       const cookies = JSON.stringify(await browser.getAllCookies());
+  //       addAttachment('Cookies', cookies, 'text/plain');
+  //     }
+  //   },
   /**
    *
    * Runs after a Cucumber Feature.

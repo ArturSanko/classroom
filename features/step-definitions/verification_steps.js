@@ -14,5 +14,5 @@ var chaiWebdriver = require('chai-webdriverio').default;
  * @param sum
  */
 Then(/^the sum was ([^']*)$/, async (sum) => {
-  expect(this.result).toEqual(sum);
+  expect(actSteps.result).toEqual(sum);
 });
