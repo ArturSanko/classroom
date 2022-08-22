@@ -1,5 +1,6 @@
 const { Given, When, Then } = require('@wdio/cucumber-framework');
 const { World } = require('@wdio/cucumber-framework');
+const { defineParameterType } = require('@cucumber/cucumber');
 
 /**
  * Add two number.
@@ -11,7 +12,7 @@ const { World } = require('@wdio/cucumber-framework');
  * @param a
  * @param b
  */
-When(/^I add ([^']*) and ([^']*)$/, async (a, b) => {
+When(/^I add ([^]*) and ([^]*)$/, async (a, b) => {
   async function sum(...num) {
     const result = num
       .map((item) => Number(item))
@@ -20,3 +21,17 @@ When(/^I add ([^']*) and ([^']*)$/, async (a, b) => {
   }
   this.result = await sum(a, b);
 });
+
+// 2. Using data transformation for parameter type, create transormation "<current data>" string to current data
+// - Use the defineParameterType CucumberJS function for data transformation
+// https://github.com/cucumber/cucumber-js/blob/main/docs/support_files/api_reference.md
+// https://github.com/cucumber/cucumber-js/blob/main/features/parameter_types.feature
+
+// let arr = ['1', 2, '0', '6'];
+// console.log('old arr: ' + arr);
+// defineParameterType({
+//   regexp: /([^]*)/,
+//   transformer: (value) => Number(value),
+//   name: 'toNumber',
+// });
+// console.log('new arr: ' + arr.defineParameterType());
