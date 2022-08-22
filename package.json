@@ -10,6 +10,8 @@
         "@wdio/local-runner": "^7.21.0",
         "@wdio/spec-reporter": "^7.21.0",
         "allure-commandline": "^2.18.1",
+        "chai": "^4.0.1",
+        "chai-webdriverio": "^1.0.0",
         "chromedriver": "^104.0.0",
         "wdio-chromedriver-service": "^7.3.2",
         "wdio-cucumberjs-json-reporter": "^4.4.3"
@@ -17,6 +19,6 @@
     "scripts": {
         "allure": "npx allure serve",
         "allTest": "npx wdio run ./wdio.conf.js",
-        "any": "npx wdio run ./wdio.conf.js --suite any"
+        "sum": "npx wdio run ./wdio.conf.js --suite sum"
     }
 }
