@@ -27,14 +27,14 @@ When(/^I add ([^]*) and ([^]*)$/, async (a, b) => {
 // https://github.com/cucumber/cucumber-js/blob/main/docs/support_files/api_reference.md
 // https://github.com/cucumber/cucumber-js/blob/main/features/parameter_types.feature
 
-// let arr = ['1', 2, '0', '6'];
-// console.log('old arr: ' + arr);
+// let a = '6'
+// console.log('old: ' + a);
 // defineParameterType({
 //   regexp: /([^]*)/,
 //   transformer: (value) => Number(value),
 //   name: 'toNumber',
 // });
-// console.log('new arr: ' + arr.defineParameterType());
+// console.log('new a: ' + a.defineParameterType());
 
 // async function defineParameterType(value, type) {
 //     let result;
