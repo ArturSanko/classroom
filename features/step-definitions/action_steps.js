@@ -19,7 +19,21 @@ When(/^I add ([^]*) and ([^]*)$/, async (a, b) => {
       .reduce((sum, current) => sum + current, 0);
     return String(result);
   }
+
+  //   let aNum = a;
+  //   let bNum = b;
+
+  //   defineParameterType({
+  //     regexp: /([^]*)/,
+  //     transformer: (value) => Number(value),
+  //     name: 'toNumber',
+  //   });
+
+  //   aNum.defineParameterType();
+  //   bNum.defineParameterType();
+
   this.result = await sum(a, b);
+  //   this.result = aNum + bNum;
 });
 
 // 2. Using data transformation for parameter type, create transormation "<current data>" string to current data
