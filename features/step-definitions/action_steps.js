@@ -35,3 +35,24 @@ When(/^I add ([^]*) and ([^]*)$/, async (a, b) => {
 //   name: 'toNumber',
 // });
 // console.log('new arr: ' + arr.defineParameterType());
+
+// async function defineParameterType(value, type) {
+//     let result;
+//     switch (type) {
+//       case 'String':
+//         result = String(value);
+//         break;
+//       case 'Number':
+//         result = Number(value);
+//         break;
+//       case 'Boolean':
+//         result = Boolean(value);
+//         break;
+//     }
+//     return result
+//   }
+
+//   let a = 5;
+//   console.log(typeof a);
+//   a = await defineParameterType(a, 'String');
+//   console.log(typeof a);
