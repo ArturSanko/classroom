@@ -4,6 +4,8 @@ const actSteps = require('./action_steps.js');
 var chai = require('chai');
 var chaiWebdriver = require('chai-webdriverio').default;
 
+const { addAttachment } = require('@wdio/allure-reporter').default;
+
 /**
  *  Verify sum.
  *
@@ -15,4 +17,5 @@ var chaiWebdriver = require('chai-webdriverio').default;
  */
 Then(/^the sum was ([^]*)$/, async (sum) => {
   expect(actSteps.result).toEqual(sum);
+  addAttachment('Sum', [sum], 'application/json');
 });

@@ -2,6 +2,8 @@ const { Given, When, Then } = require('@wdio/cucumber-framework');
 const { World } = require('@wdio/cucumber-framework');
 const { defineParameterType } = require('@cucumber/cucumber');
 
+const { addAttachment } = require('@wdio/allure-reporter').default;
+
 /**
  * Add two number.
  *
@@ -24,14 +26,15 @@ When(/^I add ([^]*) and ([^]*)$/, async (a, b) => {
   //   let bNum = b;
 
   //   defineParameterType({
-  //     regexp: /([^]*)/,
+  //     regexp: /\d/,
   //     transformer: (value) => Number(value),
   //     name: 'toNumber',
+  //     useForSnippets: false
   //   });
 
   //   aNum.defineParameterType();
   //   bNum.defineParameterType();
-
+  addAttachment('Number for sum', [a, b], 'application/json');
   this.result = await sum(a, b);
   //   this.result = aNum + bNum;
 });
@@ -43,11 +46,12 @@ When(/^I add ([^]*) and ([^]*)$/, async (a, b) => {
 
 // let a = '6'
 // console.log('old: ' + a);
-// defineParameterType({
-//   regexp: /([^]*)/,
-//   transformer: (value) => Number(value),
-//   name: 'toNumber',
-// });
+//   defineParameterType({
+//     regexp: /\d/,
+//     transformer: (value) => Number(value),
+//     name: 'toNumber',
+//     useForSnippets: false
+//   });
 // console.log('new a: ' + a.defineParameterType());
 
 // async function defineParameterType(value, type) {
