@@ -29,9 +29,21 @@ When(/^I add ([^]*) and ([^]*)$/, async (a, b) => {
     return String(result);
   }
 
-  //   const aNum = a.defineParameterType;
+  //   const aNum = a.defineParameterType({
+  //     regexp: /\d/,
+  //     transformer: (num) => Number(num),
+  //     name: 'toNumber',
+  //     useForSnippets: false,
+  //     // preferForRegexpMatch: true,
+  //   });
   //   console.log(`aNum: ${aNum} typeof: ${typeof aNum}`);
-  //   const bNum = b.defineParameterType;
+  //   const bNum = b.defineParameterType({
+  //     regexp: /\d/,
+  //     transformer: (num) => Number(num),
+  //     name: 'toNumber',
+  //     useForSnippets: false,
+  //     // preferForRegexpMatch: true,
+  //   });
   addAttachment('Number for sum', [a, b], 'application/json');
   this.result = await sum(a, b);
   //   this.result = aNum + bNum;
@@ -42,6 +54,7 @@ When(/^I add ([^]*) and ([^]*)$/, async (a, b) => {
 // https://github.com/cucumber/cucumber-js/blob/main/docs/support_files/api_reference.md
 // https://github.com/cucumber/cucumber-js/blob/main/features/parameter_types.feature
 // https://cucumber.io/blog/bdd/understanding-screenplay-(part-3)/?sbsearch=defineParameterType
+// https://github.com/cucumber/cucumber-expressions#readme
 
 // async function defineParameterType(value, type) {
 //     let result;
