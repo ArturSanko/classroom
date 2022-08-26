@@ -1,8 +1,15 @@
-const { Given, When, Then } = require('@wdio/cucumber-framework');
-const { World } = require('@wdio/cucumber-framework');
+const { When } = require('@wdio/cucumber-framework');
 const { defineParameterType } = require('@cucumber/cucumber');
 
 const { addAttachment } = require('@wdio/allure-reporter').default;
+
+defineParameterType({
+  regexp: /\d/,
+  transformer: (num) => Number(num),
+  name: 'toNumber',
+  useForSnippets: false,
+  // preferForRegexpMatch: true,
+});
 
 /**
  * Add two number.
@@ -22,18 +29,9 @@ When(/^I add ([^]*) and ([^]*)$/, async (a, b) => {
     return String(result);
   }
 
-  //   let aNum = a;
-  //   let bNum = b;
-
-  //   defineParameterType({
-  //     regexp: /\d/,
-  //     transformer: (value) => Number(value),
-  //     name: 'toNumber',
-  //     useForSnippets: false
-  //   });
-
-  //   aNum.defineParameterType();
-  //   bNum.defineParameterType();
+  //   const aNum = a.defineParameterType;
+  //   console.log(`aNum: ${aNum} typeof: ${typeof aNum}`);
+  //   const bNum = b.defineParameterType;
   addAttachment('Number for sum', [a, b], 'application/json');
   this.result = await sum(a, b);
   //   this.result = aNum + bNum;
@@ -43,16 +41,7 @@ When(/^I add ([^]*) and ([^]*)$/, async (a, b) => {
 // - Use the defineParameterType CucumberJS function for data transformation
 // https://github.com/cucumber/cucumber-js/blob/main/docs/support_files/api_reference.md
 // https://github.com/cucumber/cucumber-js/blob/main/features/parameter_types.feature
-
-// let a = '6'
-// console.log('old: ' + a);
-//   defineParameterType({
-//     regexp: /\d/,
-//     transformer: (value) => Number(value),
-//     name: 'toNumber',
-//     useForSnippets: false
-//   });
-// console.log('new a: ' + a.defineParameterType());
+// https://cucumber.io/blog/bdd/understanding-screenplay-(part-3)/?sbsearch=defineParameterType
 
 // async function defineParameterType(value, type) {
 //     let result;

@@ -1,4 +1,4 @@
-const { Given, When, Then } = require('@wdio/cucumber-framework');
+const { Then } = require('@wdio/cucumber-framework');
 const actSteps = require('./action_steps.js');
 
 var chai = require('chai');
