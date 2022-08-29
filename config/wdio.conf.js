@@ -85,7 +85,7 @@ exports.config = {
   // on a remote machine).
   runner: 'local',
 
-  hostname: 'localhost',
+  hostname: 'automationteststore.com',
   port: 4444,
   path: '/',
   //
