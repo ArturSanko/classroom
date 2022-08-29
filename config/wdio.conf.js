@@ -77,6 +77,17 @@ exports.config = {
   // Runner Configuration
   // ====================
   //
+  // ==================================
+  // Where should your test be launched
+  // ==================================
+  //
+  // WebdriverIO allows it to run your tests in arbitrary locations (e.g. locally or
+  // on a remote machine).
+  runner: 'local',
+
+  hostname: 'localhost',
+  port: 4444,
+  path: '/',
   //
   // ==================
   // Specify Test Files
