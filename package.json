@@ -14,7 +14,8 @@
         "chai-webdriverio": "^1.0.0",
         "chromedriver": "^104.0.0",
         "wdio-chromedriver-service": "^7.3.2",
-        "wdio-cucumberjs-json-reporter": "^4.4.3"
+        "wdio-cucumberjs-json-reporter": "^4.4.3",
+        "wdio-docker-service": "^3.2.1"
     },
     "scripts": {
         "allure": "npx allure serve",
