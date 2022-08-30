@@ -14,7 +14,8 @@
         "chai-webdriverio": "^1.0.0",
         "chromedriver": "^103.0.0",
         "dotenv": "^16.0.1",
-        "wdio-chromedriver-service": "^7.3.2"
+        "wdio-chromedriver-service": "^7.3.2",
+        "wdio-docker-service": "^3.2.1"
     },
     "scripts": {
         "allTests": "npx wdio run ./config/wdio.conf.js",

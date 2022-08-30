@@ -71,6 +71,8 @@ const bsServies = [
   ],
 ];
 const localServises = ['chromedriver'];
+const docker = ['docker'];
+
 exports.config = {
   //
   // ====================
@@ -80,8 +82,7 @@ exports.config = {
   //
   // ==================
   // Specify Test Files
-  // ==================
-  // Define which test specs should run. The pattern is relative to the directory
+  // ==================  // Define which test specs should run. The pattern is relative to the directory
   // from which `wdio` was called.
   //
   // The specs are defined as an array of spec files (optionally using wildcards
@@ -177,7 +178,7 @@ exports.config = {
   // Services take over a specific job you don't want to take care of. They enhance
   // your test setup with almost no effort. Unlike plugins, they don't add new
   // commands. Instead, they hook themselves up into the test process.
-  services: localServises, // localServises  bsServies
+  services: docker, // localServises  bsServies docker
 
   // Framework you want to run your specs with.
   // The following are supported: Mocha, Jasmine, and Cucumber
