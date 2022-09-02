@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  node:
+    build: .
+    image: mocka_test
+    container_name: mocka_test
+    ports:
+      - "4444:4444"
+    command: npx wdio run ./config/wdio.conf.js --suite positiveAndNegativeLogin
+  openjdk:
+    build: .
+    image: allure_result
+    container_name: allure_result
+    network_mode: "host"
+    command: npx allure serve
