@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  node:
+    build: .
+    image: cucumber_test
+    container_name: cucumber_test
+  # cucumber/cucumber-build:
+  #   build: .
+  #   image: cucumber_test
+  #   container_name: cucumber_test
+  #   command: npx wdio run ./wdio.conf.js --suite sum
