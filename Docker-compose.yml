@@ -2,23 +2,26 @@ version: "3.8"
 
 services:
 
-  openjdk:
-    build: .
-    image: allure_result
-    container_name: allure_result
-    ports:
-      - "4444:4444"
+  # openjdk:
+    # build: .
+    # image: openjdk
+    # restart: always
+    # container_name: allure_result
+    # # ports:
+    #   - "4444:4444"
     # logging:
     #   driver: local
 
   node:
     build: .
-    image: mocka_test
+    image: node
     container_name: mocka_test
-    network_mode: "host"
+    # ports:
+    #   - "5555:5555"
+    # network_mode: "host"
     # logging:
     #   driver: local
     command: 
-    - |
+    # - |
       npx wdio run ./config/wdio.conf.js --suite positiveAndNegativeLogin 
-      npx allure serve
+      # npx allure serve
