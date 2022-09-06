@@ -13,7 +13,7 @@ services:
     #   driver: local
 
   node:
-    build: .
+    # build: .
     image: node
     container_name: mocka_test
     # ports:
