@@ -12,8 +12,27 @@ services:
     # logging:
     #   driver: local
 
+  # allure:
+  #   image: "frankescobar/allure-docker-service"
+  #   container_name: allure_result
+  #   environment:
+  #     CHECK_RESULTS_EVERY_SECONDS: 1
+  #     KEEP_HISTORY: 1
+  #   ports:
+  #     - "5050:5050"
+  #   volumes:
+  #     - ./allure-results/**.xml
+
+  # allure-ui:
+  #   image: "frankescobar/allure-docker-service-ui"
+  #   environment:
+  #     ALLURE_DOCKER_PUBLIC_API_URL: "http://localhost:5050"
+  #     ALLURE_DOCKER_PUBLIC_API_URL_PREFIX: ""
+  #   ports:
+  #     - "5252:5252"
+
   node:
-    # build: .
+    build: .
     image: node
     container_name: mocka_test
     # ports:
@@ -25,3 +44,14 @@ services:
     # - |
       npx wdio run ./config/wdio.conf.js --suite positiveAndNegativeLogin 
       # npx allure serve
+
+  # allure:
+  #   image: "frankescobar/allure-docker-service"
+  #   container_name: allure_result
+  #   environment:
+  #     CHECK_RESULTS_EVERY_SECONDS: 1
+  #     KEEP_HISTORY: 1
+  #   ports:
+  #     - "5050:5050"
+  #   volumes:
+  #     - ./allure-results/
