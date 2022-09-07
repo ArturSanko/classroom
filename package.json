@@ -1,0 +1,22 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "api tests",
+  "scripts": {
+    "getPetsID": "mocha ./tests/**/pet.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArturSanko/classroom.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArturSanko/classroom/issues"
+  },
+  "homepage": "https://github.com/ArturSanko/classroom#readme",
+  "devDependencies": {
+    "got": "^12.4.1",
+    "mocha": "^10.0.0"
+  }
+}
