@@ -6,7 +6,11 @@
   "description": "api tests",
   "scripts": {
     "startTest": "npm run ...",
-    "getPetsID": "mocha ./tests/**/pet.test.js"
+    "allTests":"mocha ./tests/**/**.test.js",
+    "getPetsID": "mocha ./tests/**/petID.test.js",    
+    "getPetsStatus": "mocha ./tests/**/petStatus.test.js",
+    "getPetsTag": "mocha ./tests/**/petTag.test.js"
+
   },
   "repository": {
     "type": "git",
