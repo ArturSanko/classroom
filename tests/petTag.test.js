@@ -7,6 +7,11 @@ describe('Pet', async () => {
   it("Get pet's tag", async () => {
     const body = await pet.findByTags('tag1');
     assert(body.length > 0);
-    assert(body.some((pet) => pet.tags.some((tag) => tag.name === 'tag1')));
+    assert(
+      body.every(
+        (pet) => pet.tags.some((tag) => tag.name === 'tag1'),
+        'Every returnd pet must contain tag1'
+      )
+    );
   });
 });
