@@ -9,8 +9,10 @@
     "allTests":"mocha ./tests/**/**.test.js",
     "getPetsID": "mocha ./tests/**/petID.test.js",    
     "getPetsStatus": "mocha ./tests/**/petStatus.test.js",
-    "getPetsTag": "mocha ./tests/**/petTag.test.js"
-
+    "getPetsTag": "mocha ./tests/**/petTag.test.js",
+    "postAddPet": "mocha ./tests/**/petAdd.test.js",
+    "putUpdatePet": "mocha ./tests/**/petUpdate.test.js",
+    "deletePet": "mocha ./tests/**/petDelete.test.js"
   },
   "repository": {
     "type": "git",

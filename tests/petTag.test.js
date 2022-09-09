@@ -1,4 +1,3 @@
-import got from 'got';
 import { strict as assert } from 'assert';
 import { PetController } from '../api/controller/pet.controller.js';
 const pet = new PetController();

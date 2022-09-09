@@ -25,5 +25,27 @@ export class PetController {
     );
     return JSON.parse(response.body);
   }
-}
 
+  async addNew(jsonPet) {
+    const response = await got(`https://petstore.swagger.io/v2/pet`, {
+      method: 'POST',
+      json: jsonPet,
+    });
+    return JSON.parse(response.body);
+  }
+
+  async delete(id) {
+    const response = await got(`https://petstore.swagger.io/v2/pet/${id}`, {
+      method: 'DELETE',
+    });
+    return JSON.parse(response.body);
+  }
+
+  async update(jsonPet) {
+    const response = await got(`https://petstore.swagger.io/v2/pet`, {
+      method: 'PUT',
+      json: jsonPet,
+    });
+    return JSON.parse(response.body);
+  }
+}
