@@ -291,15 +291,15 @@ exports.config = {
 
     const tmp = '.tmp/json/';
 
-    fs.readdir(`${tmp}`, (err, files) => {
-      if (err) throw err;
+    // fs.readdir(`${tmp}`, (err, files) => {
+    //   if (err) throw err;
 
-      for (const file of files) {
-        fs.unlink(path.join(`${tmp}`, file), (err) => {
-          if (err) throw err;
-        });
-      }
-    });
+    //   for (const file of files) {
+    //     fs.unlink(path.join(`${tmp}`, file), (err) => {
+    //       if (err) throw err;
+    //     });
+    //   }
+    // });
   },
   /**
    *
