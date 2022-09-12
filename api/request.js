@@ -1,10 +1,10 @@
-import { Options, Method } from 'got';
+// import { Options, Method } from 'got';
 import got from 'got';
 
 export class JSONRequest {
-  //   protected options: any = {
-  //      responsTyoe: 'json';
-  //   }
+  options = {
+    responsType: 'json',
+  };
 
   url(url) {
     this.options.url = url;

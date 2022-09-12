@@ -1,9 +1,16 @@
 import got from 'got';
+import { JSONRequest } from '../request.js';
 
 export class PetController {
   async getById(id) {
-    const response = await got(`https://petstore.swagger.io/v2/pet/${id}`);
-    return JSON.parse(response.body);
+    return (
+      await new JSONRequest()
+        .url(`https://petstore.swagger.io/v2/pet/${id}`)
+        .send()
+    ).body;
+
+    // const response = await got(`https://petstore.swagger.io/v2/pet/${id}`);
+    // return JSON.parse(response.body);
   }
 
   async findByTags(...tags) {
