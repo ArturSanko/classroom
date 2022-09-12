@@ -1,10 +1,12 @@
+import { Options } from 'got';
 // import { Options, Method } from 'got';
+
 import got from 'got';
 
 export class JSONRequest {
-  options = {
-    responsType: 'json',
-  };
+  options = new Options ({
+    responseType: 'json',
+  });
 
   url(url) {
     this.options.url = url;
