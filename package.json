@@ -14,6 +14,7 @@
     "postNewPet": "mocha ./tests/**/postNewPet.test.js --timeout 10000",
     "putCreatedPet": "mocha ./tests/**/putCreatedPet.test.js --timeout 10000",
     "deletePet": "mocha ./tests/**/deletePet.test.js --timeout 10000",
+    "smokePet": "mocha ./tests/**/smokePet.test.js --timeout 10000",
 
  
     "getUsers": "mocha ./tests/**/getUsers.test.js --timeout 10000",
