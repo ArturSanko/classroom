@@ -7,10 +7,13 @@
   "main": "index.js",
   "scripts": {
     "startTest": "npm run ...",
-    "getPetID": "mocha ./tests/**/getPetID.test.js",
-    "getUsers": "mocha ./tests/**/getUsers.test.js",
-    "getUserID": "mocha ./tests/**/getUserID.test.js"
 
+    "getPetID": "mocha ./tests/**/getPetID.test.js",
+    "getPetStatus": "mocha ./tests/**/getPetStatus.test.js",
+
+    "getUsers": "mocha ./tests/**/getUsers.test.js",
+    "getUserID": "mocha ./tests/**/getUserID.test.js",
+    "getUsersByQueries": "mocha ./tests/**/getUsersByQueries.test.js"
   },
   "repository": {
     "type": "git",

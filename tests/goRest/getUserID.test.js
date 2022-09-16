@@ -7,7 +7,6 @@ const request = supertest('https://gorest.co.in/public/v2/');
 describe('Users', () => {
   it("Get users' id", () => {
     return request.get(`users/2327?access-token=${token}`).then((res) => {
-      console.log(res.body);
       expect(res.body.id).to.equal(2327);
     });
   });
