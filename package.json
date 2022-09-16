@@ -8,7 +8,8 @@
   "scripts": {
     "startTest": "npm run ...",
     "getPetID": "mocha ./tests/**/getPetID.test.js",
-    "getUsers": "mocha ./tests/**/getUsers.test.js"
+    "getUsers": "mocha ./tests/**/getUsers.test.js",
+    "getUserID": "mocha ./tests/**/getUserID.test.js"
 
   },
   "repository": {
