@@ -10,10 +10,14 @@
 
     "getPetID": "mocha ./tests/**/getPetID.test.js",
     "getPetStatus": "mocha ./tests/**/getPetStatus.test.js",
+    "postNewPet": "mocha ./tests/**/postNewPet.test.js",
+
 
     "getUsers": "mocha ./tests/**/getUsers.test.js",
     "getUserID": "mocha ./tests/**/getUserID.test.js",
-    "getUsersByQueries": "mocha ./tests/**/getUsersByQueries.test.js"
+    "getUsersByQueries": "mocha ./tests/**/getUsersByQueries.test.js",
+    "postNewUser": "mocha ./tests/**/postNewUser.test.js"
+
   },
   "repository": {
     "type": "git",
