@@ -6,8 +6,8 @@ const request = supertest('https://gorest.co.in/public/v2/');
 
 describe('Users', () => {
   it("Get users' queries", () => {
-    const url = `users?access-token=${token}?page=2&gender=male&status=active`;
-    return request.get(url).then((res) => {
+    const endPoint = `users?access-token=${token}?page=2&gender=male&status=active`;
+    return request.get(endPoint).then((res) => {
       for (let i = 0; i < res.body.length; i++) {
         expect(res.body[i].gender).to.equal('male');
         expect(res.body[i].status).to.equal('active');
