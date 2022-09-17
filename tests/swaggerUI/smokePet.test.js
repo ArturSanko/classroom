@@ -1,53 +1,34 @@
 import supertest from 'supertest';
 import { expect } from 'chai';
-const request = supertest('https://petstore.swagger.io/v2/');
+import { urls } from '../../data/urls.js';
+import { dataPets } from '../../data/dataPets.js';
 
-describe('Pets', () => {
+const request = supertest(urls.swaggerIO);
+
+describe('Pets', async () => {
   let petID;
-  context('POST method', () => {
-    it('New pet was created', () => {
+  context('POST method', async () => {
+    it('New pet was created', async () => {
       const endPoint = 'pet';
 
-      const data = {
-        category: {
-          id: Math.floor(Math.random() * (10 - 1) + 1),
-          name: `type_${Math.floor(Math.random() * (10 - 1) + 1)}`,
-        },
-        name: `name_${Math.floor(Math.random() * (10 - 1) + 1)}`,
-        photoUrls: ['string'],
-        tags: [
-          {
-            id: Math.floor(Math.random() * (10 - 1) + 1),
-            name: 'string',
-          },
-        ],
-        status: 'available',
-      };
+      const res = await request.post(endPoint).send(dataPets.dataCreate);
 
-      return request
-        .post(endPoint)
-        .send(data)
-        .then((res) => {
-          console.log(res.body);
-          expect(res.body).to.deep.include(data);
-          petID = res.body.id;
-        });
+      expect(res.body).to.deep.include(dataPets.dataCreate);
+      petID = res.body.id;
     });
   });
 
-  context('GET method', () => {
-    it('Info was got about pet', () => {
+  context('GET method', async () => {
+    it('Info was got about pet', async () => {
       const endPoint = `pet/${petID}`;
 
-      return request.get(endPoint).then((res) => {
-        expect(res.body.id).to.equal(petID);
-        console.log(res.body);
-      });
+      const res = await request.get(endPoint);
+      expect(res.body.id).to.equal(petID);
     });
   });
 
-  context('PUT method', () => {
-    it('Pet was updated', () => {
+  context('PUT method', async () => {
+    it('Pet was updated', async () => {
       const endPoint = 'pet';
 
       const data = {
@@ -67,29 +48,25 @@ describe('Pets', () => {
         status: 'available',
       };
 
-      return request
-        .put(endPoint)
-        .send(data)
-        .then((res) => {
-          expect(res.body).to.deep.include(data);
-          console.log(res.body);
-        });
+      const res = await request.put(endPoint).send(data);
+
+      expect(res.body).to.deep.include(data);
     });
   });
 
-  context('DELETE method', () => {
-    it('Pet was deleted', () => {
+  context('DELETE method', async () => {
+    it('Pet was deleted', async () => {
       const endPoint = `pet/${petID}`;
 
-      return request.delete(endPoint).then((res) => {
-        const data = {
-          code: 200,
-          type: 'unknown',
-          message: `${petID}`,
-        };
+      const res = await request.delete(endPoint);
 
-        expect(res.body).to.deep.include(data);
-      });
+      const data = {
+        code: 200,
+        type: 'unknown',
+        message: `${petID}`,
+      };
+
+      expect(res.body).to.deep.include();
     });
   });
 });
