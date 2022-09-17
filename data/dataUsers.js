@@ -11,4 +11,9 @@ export let dataUsers = {
     gender: 'female',
     status: 'inactive',
   },
+  dataInvalid: {
+    name: 'apiName',
+    gender: 'male',
+    status: 'active',
+  },
 };
