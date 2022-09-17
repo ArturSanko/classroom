@@ -1,19 +1,21 @@
+import { faker } from '@faker-js/faker';
+
 export let dataUsers = {
   dataCreate: {
-    name: 'apiName',
-    email: `test_${Math.floor(Math.random() * (1000 - 1) + 1)}@mail.test`,
-    gender: 'male',
+    name: faker.name.firstName(),
+    email: faker.internet.email(),
+    gender: faker.name.sex(),
     status: 'active',
   },
   dataUpdate: {
-    name: 'api_Name',
-    email: `test_${Math.floor(Math.random() * (1000 - 1) + 1)}@mail.test`,
-    gender: 'female',
-    status: 'inactive',
+    name: faker.name.firstName(),
+    email: faker.internet.email(),
+    gender: faker.name.sex(),
+    status: 'active',
   },
   dataInvalid: {
-    name: 'apiName',
-    gender: 'male',
+    name: faker.name.firstName(),
+    gender: faker.name.sex(),
     status: 'active',
   },
 };

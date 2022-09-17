@@ -7,16 +7,13 @@
   "main": "index.js",
   "scripts": {
     "startTest": "npm run ...",
-    "allTests":"mocha ./tests/**/**.test.js",
-
+    "allTests": "mocha ./tests/**/**.test.js",
     "getPetID": "mocha ./tests/**/getPetID.test.js --timeout 10000",
     "getPetStatus": "mocha ./tests/**/getPetStatus.test.js --timeout 10000",
     "postNewPet": "mocha ./tests/**/postNewPet.test.js --timeout 10000",
     "putCreatedPet": "mocha ./tests/**/putCreatedPet.test.js --timeout 10000",
     "deletePet": "mocha ./tests/**/deletePet.test.js --timeout 10000",
     "smokePet": "mocha ./tests/**/smokePet.test.js --timeout 10000",
-
- 
     "getUsers": "mocha ./tests/**/getUsers.test.js --timeout 10000",
     "getUserID": "mocha ./tests/**/getUserID.test.js --timeout 10000",
     "getUsersByQueries": "mocha ./tests/**/getUsersByQueries.test.js --timeout 10000",
@@ -37,6 +34,7 @@
   },
   "homepage": "https://github.com/ArturSanko/classroom#readme",
   "devDependencies": {
+    "@faker-js/faker": "^7.5.0",
     "chai": "^4.3.6",
     "mocha": "^10.0.0",
     "mochawesome": "^7.1.3",
