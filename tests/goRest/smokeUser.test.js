@@ -4,10 +4,10 @@ const token =
   'eeea55dff37131907983a341c104a5f510e2aec2ef15ee5ea997eb65a3955769';
 const request = supertest('https://gorest.co.in/public/v2/');
 
-describe('Users', () => {
+describe('Users', async () => {
   let userID;
-  context('POST method', () => {
-    it('New user was created', () => {
+  context('POST method', async () => {
+    it('New user was created', async () => {
       const endPoint = 'users';
 
       const data = {
@@ -17,32 +17,30 @@ describe('Users', () => {
         status: 'active',
       };
 
-      return request
+      const res = await request
         .post(endPoint)
         .set('Authorization', `Bearer ${token}`)
-        .send(data)
-        .then((res) => {
-          expect(res.body).to.deep.include(data);
-          userID = res.body.id;
-        });
+        .send(data);
+
+      expect(res.body).to.deep.include(data);
+      userID = res.body.id;
     });
   });
 
-  context('GET method', () => {
-    it("Info was got about user", () => {
+  context('GET method', async () => {
+    it('Info was got about user', async () => {
       const endPoint = `users/${userID}`;
 
-      return request
+      const res = await request
         .get(endPoint)
-        .set('Authorization', `Bearer ${token}`)
-        .then((res) => {
-          expect(res.body.id).to.equal(userID);
-        });
+        .set('Authorization', `Bearer ${token}`);
+
+      expect(res.body.id).to.equal(userID);
     });
   });
 
-  context('PUT method', () => {
-    it('User was updated', () => {
+  context('PUT method', async () => {
+    it('User was updated', async () => {
       const endPoint = `users/${userID}`;
 
       const data = {
@@ -52,26 +50,24 @@ describe('Users', () => {
         status: 'inactive',
       };
 
-      return request
+      const res = await request
         .put(endPoint)
         .set('Authorization', `Bearer ${token}`)
-        .send(data)
-        .then((res) => {
-          expect(res.body).to.deep.include(data);
-        });
+        .send(data);
+
+      expect(res.body).to.deep.include(data);
     });
   });
 
-  context('DELETE method', () => {
-    it('User was deleted', () => {
-        const endPoint = `users/${userID}`;
+  context('DELETE method', async () => {
+    it('User was deleted', async () => {
+      const endPoint = `users/${userID}`;
 
-      return request
+      const res = await request
         .delete(endPoint)
-        .set('Authorization', `Bearer ${token}`)
-        .then((res) => {
-          expect(res.body).to.be.empty;
-        });
+        .set('Authorization', `Bearer ${token}`);
+
+      expect(res.body).to.be.empty;
     });
   });
 });
