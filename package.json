@@ -20,8 +20,8 @@
     "postNewUser": "mocha ./tests/**/postNewUser.test.js --timeout 10000",
     "putCreatedUser": "mocha ./tests/**/putCreatedUser.test.js --timeout 10000",
     "deleteUser": "mocha ./tests/**/deleteUser.test.js --timeout 10000",
-    "smokeUser": "mocha ./tests/**/smokeUser.test.js --timeout 10000",
-    "negativeTest": "mocha ./tests/**/negative.test.js --timeout 10000"
+    "smokeUser": "mocha ./tests/**/smokeUser.test.js --timeout 10000  --reporter mochawesome",
+    "negativeTest": "mocha ./tests/**/negative.test.js --timeout 10000  --reporter mochawesome"
   },
   "repository": {
     "type": "git",
