@@ -1,24 +1,31 @@
 {
-    "name": "webdriverio-tests",
-    "version": "0.1.0",
-    "private": true,
-    "devDependencies": {
-        "@wdio/allure-reporter": "^7.20.7",
-        "@wdio/browserstack-service": "^7.20.9",
-        "@wdio/cli": "^7.20.5",
-        "@wdio/local-runner": "^7.20.5",
-        "@wdio/mocha-framework": "^7.20.3",
-        "@wdio/spec-reporter": "^7.20.3",
-        "allure-commandline": "^2.18.1",
-        "chai": "^4.0.2",
-        "chai-webdriverio": "^1.0.0",
-        "chromedriver": "^103.0.0",
-        "dotenv": "^16.0.1",
-        "wdio-chromedriver-service": "^7.3.2"
-    },
-    "scripts": {
-        "allTests": "npx wdio run ./config/wdio.conf.js",
-        "allure": "npx allure serve",
-        "positiveAndNegativeLogin": "npx wdio run ./config/wdio.conf.js --suite positiveAndNegativeLogin"
-    }
+  "name": "api",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": "./index.js",
+  "description": "api tests",
+  "scripts": {
+    "startTest": "npm run ...",
+    "allTests":"mocha ./tests/**/**.test.js",
+    "getPetsID": "mocha ./tests/**/petID.test.js",    
+    "getPetsStatus": "mocha ./tests/**/petStatus.test.js",
+    "getPetsTag": "mocha ./tests/**/petTag.test.js",
+    "postAddPet": "mocha ./tests/**/petAdd.test.js",
+    "putUpdatePet": "mocha ./tests/**/petUpdate.test.js",
+    "deletePet": "mocha ./tests/**/petDelete.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArturSanko/classroom.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArturSanko/classroom/issues"
+  },
+  "homepage": "https://github.com/ArturSanko/classroom#readme",
+  "devDependencies": {
+    "got": "^12.4.1",
+    "mocha": "^10.0.0"
+  }
 }
