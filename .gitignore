@@ -1,6 +1,3 @@
-/allure-results
 package-lock.json
 /node_modules
-/screenshots
-/downloads
-local.log
+/mochawesome-report
