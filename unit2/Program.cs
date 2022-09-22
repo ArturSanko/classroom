@@ -8,7 +8,6 @@ namespace Unit2
         {
             Console.WriteLine("UNIT 2 task 1");
             Car car = new Car();
-
             car.color = "black";
             Console.WriteLine("car's color is: " + car.color);
             car.color = "green";
@@ -19,7 +18,7 @@ namespace Unit2
             Fruits fruits = new Fruits();
             Console.WriteLine("fruits' sum is: " + fruits.getSumOfFruits());
 
-            Console.WriteLine("UNIT 2 task 3"); // do not work
+            Console.WriteLine("UNIT 2 task 3");
             Determine determine = new Determine();
             determine.determineName("Vasay");
             determine.determineName("Artur");
