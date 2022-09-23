@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Unit3
+namespace Unit4
 {
     /*
         Создать 2 объекта: animal и cat, в объект animal добавить свойство move, объект cat должен наследовать свойство move,
