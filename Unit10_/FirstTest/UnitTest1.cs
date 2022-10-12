@@ -1,4 +1,4 @@
-// dotnet test ICanWin.csproj   -> to run a test
+// dotnet test FirstTest.csproj   -> to run a test
 /*
 Task - I Can Win  
 Автоматизировать следующий сценарий:
@@ -13,34 +13,42 @@ namespace FirstTest
     [TestClass]
     public class UnitTest1
     {
+        IWebDriver driver = new OpenQA.Selenium.Chrome.ChromeDriver();
+        // var driver = new ChromeDriver(@"C:\Internship\drivers");
+        string url = "https://pastebin.com";
+        By newPaste = By.Id("postform-text");
+        By dropDownPasteExpiration = By.Id("select2-postform-expiration-container");
+        By tenMinutes = By.XPath("//li[text()='10 Minutes']");
+        By pasteName = By.Id("postform-name");
+        string textPaste = "Hello from WebDriver";
+        string textPasteName = "helloweb";
+        int timeout = 1000;
+
+        [SetUp]
+        public void Initialize()
+        {
+            // SeleniumSetMethods.OpenURL(driver, url);
+        }
 
         [TestMethod]
         public void TestMethod1()
         {
-            var url = "https://pastebin.com";
-            By newPaste = By.Id("postform-text");
-            By dropDownPasteExpiration = By.Id("select2-postform-expiration-container");
-            By tenMinutes = By.XPath("//li[text()='10 Minutes']");
-            By pasteName = By.Id("postform-name");
+            SeleniumSetMethods.OpenURL(driver, url);
+            Thread.Sleep(timeout);
+            SeleniumSetMethods.InputTextIntoElement(driver, newPaste, textPaste);
+            Thread.Sleep(timeout);
+            SeleniumSetMethods.ClickElement(driver, dropDownPasteExpiration);
+            Thread.Sleep(timeout);
+            SeleniumSetMethods.ClickElement(driver, tenMinutes);
+            Thread.Sleep(timeout);
+            SeleniumSetMethods.InputTextIntoElement(driver, pasteName, textPasteName);
+            Thread.Sleep(timeout);
+        }
 
-            var textPate = "Hello from WebDriver";
-            var textPasteName = "helloweb";
-
-            var driver = new ChromeDriver(@"C:\Internship\drivers");
-            driver = new OpenQA.Selenium.Chrome.ChromeDriver();
-
-            driver.Navigate().GoToUrl(url);
-            Thread.Sleep(2000);
-            driver.Manage().Window.Maximize();
-            driver.FindElement(newPaste).SendKeys(textPate);
-            Thread.Sleep(2000);
-            driver.FindElement(dropDownPasteExpiration).Click();
-            Thread.Sleep(2000);
-            driver.FindElement(tenMinutes).Click();
-            Thread.Sleep(2000);
-            driver.FindElement(pasteName).SendKeys(textPasteName);
-            Thread.Sleep(2000);
-            driver.Quit();
+        [TestCleanup]
+        public void TearDown()
+        {
+            SeleniumSetMethods.Quit(driver);
         }
     }
 }

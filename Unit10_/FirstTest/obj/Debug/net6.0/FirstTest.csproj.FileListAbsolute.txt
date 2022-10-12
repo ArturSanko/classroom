@@ -97,3 +97,4 @@ C:\Internship\Sprints from classrom_google_com\classroom\Unit10_\FirstTest\obj\D
 C:\Internship\Sprints from classrom_google_com\classroom\Unit10_\FirstTest\obj\Debug\net6.0\FirstTest.pdb
 C:\Internship\Sprints from classrom_google_com\classroom\Unit10_\FirstTest\obj\Debug\net6.0\FirstTest.genruntimeconfig.cache
 C:\Internship\Sprints from classrom_google_com\classroom\Unit10_\FirstTest\obj\Debug\net6.0\ref\FirstTest.dll
+C:\Internship\Sprints from classrom_google_com\classroom\Unit10_\FirstTest\bin\Debug\net6.0\nunit.framework.dll
