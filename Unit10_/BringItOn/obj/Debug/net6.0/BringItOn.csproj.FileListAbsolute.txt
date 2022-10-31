@@ -97,3 +97,4 @@ C:\Internship\Sprints from classrom_google_com\classroom\Unit10_\BringItOn\obj\D
 C:\Internship\Sprints from classrom_google_com\classroom\Unit10_\BringItOn\obj\Debug\net6.0\BringItOn.pdb
 C:\Internship\Sprints from classrom_google_com\classroom\Unit10_\BringItOn\obj\Debug\net6.0\BringItOn.genruntimeconfig.cache
 C:\Internship\Sprints from classrom_google_com\classroom\Unit10_\BringItOn\obj\Debug\net6.0\ref\BringItOn.dll
+C:\Internship\Sprints from classrom_google_com\classroom\Unit10_\BringItOn\bin\Debug\net6.0\nunit.framework.dll
