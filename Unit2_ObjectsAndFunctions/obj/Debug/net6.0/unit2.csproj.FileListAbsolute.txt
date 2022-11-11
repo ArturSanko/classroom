@@ -1,0 +1,15 @@
+C:\Internship\Sprints from classrom_google_com\classroom\unit2\bin\Debug\net6.0\unit2.exe
+C:\Internship\Sprints from classrom_google_com\classroom\unit2\bin\Debug\net6.0\unit2.deps.json
+C:\Internship\Sprints from classrom_google_com\classroom\unit2\bin\Debug\net6.0\unit2.runtimeconfig.json
+C:\Internship\Sprints from classrom_google_com\classroom\unit2\bin\Debug\net6.0\unit2.dll
+C:\Internship\Sprints from classrom_google_com\classroom\unit2\bin\Debug\net6.0\unit2.pdb
+C:\Internship\Sprints from classrom_google_com\classroom\unit2\obj\Debug\net6.0\unit2.csproj.AssemblyReference.cache
+C:\Internship\Sprints from classrom_google_com\classroom\unit2\obj\Debug\net6.0\unit2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Internship\Sprints from classrom_google_com\classroom\unit2\obj\Debug\net6.0\unit2.AssemblyInfoInputs.cache
+C:\Internship\Sprints from classrom_google_com\classroom\unit2\obj\Debug\net6.0\unit2.AssemblyInfo.cs
+C:\Internship\Sprints from classrom_google_com\classroom\unit2\obj\Debug\net6.0\unit2.csproj.CoreCompileInputs.cache
+C:\Internship\Sprints from classrom_google_com\classroom\unit2\obj\Debug\net6.0\unit2.dll
+C:\Internship\Sprints from classrom_google_com\classroom\unit2\obj\Debug\net6.0\refint\unit2.dll
+C:\Internship\Sprints from classrom_google_com\classroom\unit2\obj\Debug\net6.0\unit2.pdb
+C:\Internship\Sprints from classrom_google_com\classroom\unit2\obj\Debug\net6.0\unit2.genruntimeconfig.cache
+C:\Internship\Sprints from classrom_google_com\classroom\unit2\obj\Debug\net6.0\ref\unit2.dll
